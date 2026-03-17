@@ -22,21 +22,23 @@ function App () {
     const isAdmin = location.pathname === '/admin';
 
     return(
-        <div className={`${isAdmin ? '' : 'pb-24'} bg-white min-h-screen`}>
+        <div className="flex flex-col min-h-screen bg-white">
         {!isAdmin && <Navbar />}
 
-        <Routes>
-            <Route path ='/' element={<Landing />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/team' element={<Team />} />
-            <Route path='/project' element={<Project />} />
-            <Route path='/volunteer' element={<Volunteer />} />
-            <Route path='/form' element={<Form />} />
-            <Route path='/notice' element={<Notice />} />
-            <Route path='/gallery' element={<Gallery />} />
-            <Route path='/partners' element={<Partners />} />
-            <Route path='/admin' element={<AdminDashboard />} />
-        </Routes>
+        <main className="flex-grow flex flex-col">
+            <Routes>
+                <Route path ='/' element={<Landing />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/team' element={<Team />} />
+                <Route path='/project' element={<Project />} />
+                <Route path='/volunteer' element={<Volunteer />} />
+                <Route path='/form' element={<Form />} />
+                <Route path='/notice' element={<Notice />} />
+                <Route path='/gallery' element={<Gallery />} />
+                <Route path='/partners' element={<Partners />} />
+                <Route path='/admin' element={<AdminDashboard />} />
+            </Routes>
+        </main>
            
 
         {!isAdmin && <Footer />}

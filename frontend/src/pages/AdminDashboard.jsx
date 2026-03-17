@@ -8,6 +8,37 @@ const AdminDashboard = () => {
   const [loginForm, setLoginForm] = useState({ username: '', password: '' });
   const [activeTab, setActiveTab] = useState('notices');
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+
+  const handleFileUpload = async (e, setter, field, isMultiple = false) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setUploading(true);
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const res = await fetch(`${API_BASE}/upload`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload failed');
+      
+      setter(prev => ({ 
+        ...prev, 
+        [field]: isMultiple ? (prev[field] ? prev[field] + ', ' + data.url : data.url) : data.url 
+      }));
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setUploading(false);
+      // Reset the file input so the same file can be selected again if needed
+      e.target.value = null;
+    }
+  };
 
   // Data states
   const [notices, setNotices] = useState([]);
@@ -94,7 +125,6 @@ const AdminDashboard = () => {
     setLoading(false);
   };
 
-  // Login
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -103,13 +133,20 @@ const AdminDashboard = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginForm)
       });
-      if (!res.ok) throw new Error('Login failed');
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Login failed. Check your credentials.');
+      }
       const data = await res.json();
       localStorage.setItem('adminToken', data.token);
       setToken(data.token);
       setLoginForm({ username: '', password: '' });
-    } catch {
-      alert('Login failed. Check your credentials.');
+    } catch (err) {
+      if (err.message === 'Failed to fetch') {
+        alert('Cannot connect to the server. Ensure the backend is running on port 8000.');
+      } else {
+        alert(err.message || 'Login failed. Check your credentials.');
+      }
     }
   };
 
@@ -474,7 +511,16 @@ const AdminDashboard = () => {
               </div>
               <div className="mb-4"><label className={labelClass}>Description</label><textarea value={projectForm.description} onChange={(e) => setProjectForm({...projectForm, description: e.target.value})} rows="3" className={inputClass + ' resize-none'} required /></div>
               <div className="grid md:grid-cols-3 gap-4 mb-4">
-                <div><label className={labelClass}>Images (comma-separated URLs)</label><input type="text" value={projectForm.images} onChange={(e) => setProjectForm({...projectForm, images: e.target.value})} className={inputClass} /></div>
+                <div>
+                  <label className={labelClass}>Images (URLs) {uploading && <span className="text-teal-500 text-xs font-normal">Uploading...</span>}</label>
+                  <div className="flex gap-2">
+                    <input type="text" value={projectForm.images} onChange={(e) => setProjectForm({...projectForm, images: e.target.value})} className={inputClass} placeholder="URL1, URL2..." />
+                    <label className="flex items-center justify-center px-4 bg-gray-50 border-2 border-dashed border-cyan-300 rounded-xl cursor-pointer hover:bg-cyan-50 whitespace-nowrap">
+                      <span className="text-sm text-teal-600 font-semibold">Upload</span>
+                      <input type="file" className="hidden" accept="image/*" onChange={(e) => handleFileUpload(e, setProjectForm, 'images', true)} />
+                    </label>
+                  </div>
+                </div>
                 <div><label className={labelClass}>Video URL</label><input type="text" value={projectForm.videoUrl} onChange={(e) => setProjectForm({...projectForm, videoUrl: e.target.value})} className={inputClass} /></div>
                 <div><label className={labelClass}>Color Scheme</label>
                   <select value={projectForm.colorScheme} onChange={(e) => setProjectForm({...projectForm, colorScheme: e.target.value})} className={inputClass}>
@@ -517,7 +563,16 @@ const AdminDashboard = () => {
               <div className="grid md:grid-cols-3 gap-4 mb-4">
                 <div><label className={labelClass}>Name</label><input type="text" value={teamForm.name} onChange={(e) => setTeamForm({...teamForm, name: e.target.value})} className={inputClass} required /></div>
                 <div><label className={labelClass}>Position</label><input type="text" value={teamForm.position} onChange={(e) => setTeamForm({...teamForm, position: e.target.value})} className={inputClass} required /></div>
-                <div><label className={labelClass}>Image URL</label><input type="text" value={teamForm.imageUrl} onChange={(e) => setTeamForm({...teamForm, imageUrl: e.target.value})} className={inputClass} /></div>
+                <div>
+                  <label className={labelClass}>Image URL {uploading && <span className="text-teal-500 text-xs font-normal">Uploading...</span>}</label>
+                  <div className="flex gap-2">
+                    <input type="text" value={teamForm.imageUrl} onChange={(e) => setTeamForm({...teamForm, imageUrl: e.target.value})} className={inputClass} />
+                    <label className="flex items-center justify-center px-4 bg-gray-50 border-2 border-dashed border-cyan-300 rounded-xl cursor-pointer hover:bg-cyan-50 whitespace-nowrap">
+                      <span className="text-sm text-teal-600 font-semibold">Upload</span>
+                      <input type="file" className="hidden" accept="image/*" onChange={(e) => handleFileUpload(e, setTeamForm, 'imageUrl')} />
+                    </label>
+                  </div>
+                </div>
               </div>
               <div className="mb-4"><label className={labelClass}>Quote (one paragraph per line)</label><textarea value={teamForm.quote} onChange={(e) => setTeamForm({...teamForm, quote: e.target.value})} rows="4" className={inputClass + ' resize-none'} /></div>
               <div className="flex gap-3">
@@ -559,7 +614,16 @@ const AdminDashboard = () => {
                 <div><label className={labelClass}>Website</label><input type="url" value={sponsorForm.website} onChange={(e) => setSponsorForm({...sponsorForm, website: e.target.value})} className={inputClass} /></div>
               </div>
               <div className="grid md:grid-cols-2 gap-4 mb-4">
-                <div><label className={labelClass}>Logo URL</label><input type="text" value={sponsorForm.logoUrl} onChange={(e) => setSponsorForm({...sponsorForm, logoUrl: e.target.value})} className={inputClass} /></div>
+                <div>
+                  <label className={labelClass}>Logo URL {uploading && <span className="text-teal-500 text-xs font-normal">Uploading...</span>}</label>
+                  <div className="flex gap-2">
+                    <input type="text" value={sponsorForm.logoUrl} onChange={(e) => setSponsorForm({...sponsorForm, logoUrl: e.target.value})} className={inputClass} />
+                    <label className="flex items-center justify-center px-4 bg-gray-50 border-2 border-dashed border-cyan-300 rounded-xl cursor-pointer hover:bg-cyan-50 whitespace-nowrap">
+                      <span className="text-sm text-teal-600 font-semibold">Upload</span>
+                      <input type="file" className="hidden" accept="image/*" onChange={(e) => handleFileUpload(e, setSponsorForm, 'logoUrl')} />
+                    </label>
+                  </div>
+                </div>
                 <div><label className={labelClass}>Tier</label>
                   <select value={sponsorForm.tier} onChange={(e) => setSponsorForm({...sponsorForm, tier: e.target.value})} className={inputClass}>
                     <option value="Gold">Gold</option><option value="Silver">Silver</option><option value="Bronze">Bronze</option>

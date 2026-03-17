@@ -25,119 +25,93 @@ const Navbar = () => {
     }
   };
 
+  const navLinks = [
+    { label: 'Home', path: '/' },
+    { label: 'About', path: '/about' },
+    { label: 'Projects', path: '/project' },
+    { label: 'Notice', path: '/notice' },
+    { label: 'Volunteer', path: '/volunteer' },
+    { label: 'Our Team', path: '/team' },
+    { label: 'Gallery', path: '/gallery' },
+    { label: 'Partners', path: '/partners' }
+  ];
+
   return (
-    <nav className="py-4 bg-gradient-to-r from-teal-500 via-cyan-400 to-sky-300 px-8 md:sticky md:top-0 shadow-md z-50 w-full">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-5 font-bold text-2xl text-white">
-          <img src={logo} alt="Ek-Prayass club logo" height="50px" width="50px" className="rounded-full" />
-          <div className="border-b-4 border-white">Ek-Prayass</div>
+    <nav className="py-4 bg-gradient-to-r from-[#17c1c8] to-[#6ed2fc] shadow-md px-8 md:sticky md:top-0 z-50 w-full transition-all duration-300">
+      <div className="flex justify-between items-center max-w-7xl mx-auto">
+        {/* Logo Section */}
+        <div className="flex items-center gap-4 group cursor-pointer" onClick={() => navigate('/')}>
+          <div className="relative overflow-hidden rounded-full ring-2 ring-white/50 shadow-sm transition-all group-hover:shadow-white/80 group-hover:scale-105 duration-300">
+             <img src={logo} alt="Ek-Prayass logo" height="45" width="45" className="object-cover" />
+          </div>
+          <div className="flex flex-col">
+            <span className="font-display font-bold text-[22px] text-white tracking-tight flex flex-col items-start gap-0.5">
+              Ek-Prayass
+              <span className="w-[105%] h-[3px] bg-white rounded-full"></span>
+            </span>
+          </div>
         </div>
 
-        
-        <div className="hidden md:block">
-          <ul className="flex gap-5 text-white font-medium items-center">
-            <li className="p-2 hover:text-white/80 transition-colors">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="p-2 hover:text-white/80 transition-colors">
-              <Link to="/about">About</Link>
-            </li>
-            <li className="p-2 hover:text-white/80 transition-colors">
-              <Link to="/project">Projects</Link>
-            </li>
-            <li className="p-2 hover:text-white/80 transition-colors">
-              <Link to="/notice">Notice</Link>
-            </li>
-            <li className="p-2 hover:text-white/80 transition-colors">
-              <Link to="/volunteer">Volunteer</Link>
-            </li>
-            <li className="p-2 hover:text-white/80 transition-colors">
-              <Link to="/team">Our Team</Link>
-            </li>
-            <li className="p-2 hover:text-white/80 transition-colors">
-              <Link to="/gallery">Gallery</Link>
-            </li>
-            <li className="p-2 hover:text-white/80 transition-colors">
-              <Link to="/partners">Partners</Link>
-            </li>
+        {/* Desktop Menu */}
+        <div className="hidden lg:block">
+          <ul className="flex gap-2 text-white font-semibold items-center text-[15px]">
+            {navLinks.map((item) => (
+              <li key={item.label}>
+                <Link 
+                  to={item.path}
+                  className="px-3 py-2 rounded-lg hover:bg-white/20 transition-colors duration-300"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
             
-            <li className="p-2">
+            <li className="ml-4">
               <button
                 onClick={handleDonateClick}
-                className="text-teal-700 hover:scale-105 transition-all duration-300 font-semibold bg-white rounded-lg p-3 shadow-md"
+                className="group flex items-center justify-center text-teal-700 bg-white font-bold rounded-xl px-5 py-2.5 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 Donate
-                <HeartHandshake className="inline-block ml-2" size={20} />
+                <HeartHandshake className="inline-block ml-2 text-teal-600 group-hover:scale-110 transition-transform" size={18} />
               </button>
             </li>
-
           </ul>
         </div>
 
-        
-        <div className="md:hidden">
-          <button onClick={toggleMenu} className="p-2 text-white">
+        {/* Mobile Menu Toggle */}
+        <div className="lg:hidden">
+          <button onClick={toggleMenu} className="p-2 text-white hover:bg-white/20 rounded-lg transition-colors">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      
+      {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden mt-4 pb-4 border-t border-white/30">
-          <ul className="flex flex-col gap-2 text-white font-medium">
-            <li className="p-2">
-              <Link to="/" onClick={toggleMenu}>
-                Home
-              </Link>
-            </li>
-            <li className="p-2">
-              <Link to="/about" onClick={toggleMenu}>
-                About
-              </Link>
-            </li>
-            <li className="p-2">
-              <Link to="/project" onClick={toggleMenu}>
-                Projects
-              </Link>
-            </li>
-            <li className="p-2">
-              <Link to="/notice" onClick={toggleMenu}>
-                Notice
-              </Link>
-            </li>
-            <li className="p-2">
-              <Link to="/volunteer" onClick={toggleMenu}>
-                Volunteer
-              </Link>
-            </li>
-            <li className="p-2">
-              <Link to="/team" onClick={toggleMenu}>
-                Team
-              </Link>
-            </li>
-            <li className="p-2">
-              <Link to="/gallery" onClick={toggleMenu}>
-                Gallery
-              </Link>
-            </li>
-            <li className="p-2">
-              <Link to="/partners" onClick={toggleMenu}>
-                Partners
-              </Link>
-            </li>
-
+        <div className="lg:hidden mt-4 pt-4 pb-4 border-t border-white/30 animate-fade-in-up">
+          <ul className="flex flex-col gap-1 text-white font-medium px-2">
+            {navLinks.map((item) => (
+               <li key={`mobile-${item.label}`}>
+                <Link 
+                  to={item.path}
+                  onClick={toggleMenu}
+                  className="block p-3 rounded-xl hover:bg-white/20 transition-colors text-center"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
            
-            <li className="p-2">
+            <li className="mt-6 px-2">
               <button
                 onClick={() => {
                   setIsMenuOpen(false);
                   handleDonateClick();
                 }}
-                className="text-teal-700 font-semibold bg-white rounded-lg p-3 w-full shadow-md"
+                className="w-full text-teal-700 font-bold bg-white rounded-xl p-3 shadow-md hover:shadow-lg transition-all flex items-center justify-center"
               >
                 Donate
-                <HeartHandshake className="inline-block ml-2" size={20} />
+                <HeartHandshake className="inline-block ml-2 text-teal-600" size={18} />
               </button>
             </li>
           </ul>

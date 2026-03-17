@@ -4,7 +4,7 @@ const volunteers = require('./routes/volunteers');
 const sponsors = require('./routes/sponsors');
 const projects = require('./routes/projects');
 const team = require('./routes/team');
-
+const uploadRoute = require('./routes/upload');
 const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -17,7 +17,8 @@ const PORT = process.env.PORT || 8000;
 const allowedOrigins = [
   'http://localhost:5173', // for local frontend dev
   'https://notice-theta.vercel.app',
-  'https://ek-prayass.vercel.app'
+  'https://ek-prayass.vercel.app',
+  'https://frontend-red-theta-89.vercel.app'
 ];
 
 app.use(cors({
@@ -47,5 +48,6 @@ app.use('/api/volunteers', volunteers);
 app.use('/api/sponsors', sponsors);
 app.use('/api/projects', projects);
 app.use('/api/team', team);
+app.use('/api/upload', uploadRoute);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

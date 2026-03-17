@@ -51,60 +51,36 @@ const fallbackProjects = [
 
 const colorSchemes = {
   cyan: {
-    bg: 'from-white to-cyan-50',
-    border: 'border-cyan-200 hover:border-teal-400',
+    bg: 'from-cyan-50/50 to-white hover:from-cyan-50 hover:to-white',
+    border: 'border-cyan-100 hover:border-cyan-300',
     heading: 'from-teal-600 via-cyan-600 to-sky-600',
-    tagBg: 'from-cyan-100 to-teal-100',
-    tagPillBg: 'from-cyan-200 to-teal-200',
-    tagText: 'text-teal-900',
-    cardBg: 'from-cyan-100 to-teal-100',
-    imgBorder: 'border-cyan-300 hover:border-teal-400',
-    imgGlow: 'from-teal-400 to-cyan-400',
-    blob: 'from-cyan-200 to-teal-200',
-    videoBg: 'from-teal-900 to-cyan-900',
-    videoBorder: 'border-teal-300'
+    tagBg: 'bg-cyan-50 border border-cyan-100',
+    tagText: 'text-cyan-700',
+    glow: 'shadow-cyan-500/10 hover:shadow-cyan-500/20'
   },
   teal: {
-    bg: 'from-white to-teal-50',
-    border: 'border-teal-200 hover:border-teal-400',
-    heading: 'from-teal-600 via-cyan-600 to-sky-600',
-    tagBg: 'from-teal-100 to-cyan-100',
-    tagPillBg: 'from-teal-200 to-cyan-200',
-    tagText: 'text-teal-900',
-    cardBg: 'from-teal-100 to-cyan-100',
-    imgBorder: 'border-teal-300 hover:border-teal-400',
-    imgGlow: 'from-teal-400 to-cyan-400',
-    blob: 'from-teal-200 to-cyan-200',
-    videoBg: 'from-teal-900 to-cyan-900',
-    videoBorder: 'border-teal-300'
+    bg: 'from-teal-50/50 to-white hover:from-teal-50 hover:to-white',
+    border: 'border-teal-100 hover:border-teal-300',
+    heading: 'from-teal-700 to-emerald-600',
+    tagBg: 'bg-teal-50 border border-teal-100',
+    tagText: 'text-teal-700',
+    glow: 'shadow-teal-500/10 hover:shadow-teal-500/20'
   },
   green: {
-    bg: 'from-white to-green-50',
-    border: 'border-green-200 hover:border-green-400',
-    heading: 'from-green-600 via-emerald-600 to-teal-600',
-    tagBg: 'from-green-100 to-emerald-100',
-    tagPillBg: 'from-green-200 to-emerald-200',
-    tagText: 'text-green-900',
-    cardBg: 'from-green-100 to-emerald-100',
-    imgBorder: 'border-green-300 hover:border-green-400',
-    imgGlow: 'from-green-400 to-emerald-400',
-    blob: 'from-green-200 to-emerald-200',
-    videoBg: 'from-green-900 to-emerald-900',
-    videoBorder: 'border-green-300'
+    bg: 'from-emerald-50/50 to-white hover:from-emerald-50 hover:to-white',
+    border: 'border-emerald-100 hover:border-emerald-300',
+    heading: 'from-emerald-600 to-green-600',
+    tagBg: 'bg-emerald-50 border border-emerald-100',
+    tagText: 'text-emerald-700',
+    glow: 'shadow-emerald-500/10 hover:shadow-emerald-500/20'
   },
   pink: {
-    bg: 'from-white to-pink-50',
-    border: 'border-pink-200 hover:border-pink-400',
-    heading: 'from-pink-600 via-rose-600 to-purple-600',
-    tagBg: 'from-pink-100 to-rose-100',
-    tagPillBg: 'from-pink-200 to-rose-200',
-    tagText: 'text-pink-900',
-    cardBg: 'from-pink-100 to-rose-100',
-    imgBorder: 'border-pink-300 hover:border-pink-400',
-    imgGlow: 'from-pink-400 to-rose-400',
-    blob: 'from-pink-200 to-rose-200',
-    videoBg: 'from-pink-900 to-rose-900',
-    videoBorder: 'border-pink-300'
+    bg: 'from-pink-50/50 to-white hover:from-pink-50 hover:to-white',
+    border: 'border-pink-100 hover:border-pink-300',
+    heading: 'from-rose-500 to-pink-600',
+    tagBg: 'bg-pink-50 border border-pink-100',
+    tagText: 'text-pink-700',
+    glow: 'shadow-pink-500/10 hover:shadow-pink-500/20'
   }
 };
 
@@ -132,93 +108,82 @@ const Project = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-sky-50">
-      
+    <div className="min-h-screen bg-slate-50 relative">
+      {/* Abstract Background Elements */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cyan-200/20 blur-[120px] rounded-full mix-blend-multiply pointer-events-none"></div>
+      <div className="absolute top-[40%] left-[-10%] w-[600px] h-[600px] bg-sky-200/20 blur-[120px] rounded-full mix-blend-multiply pointer-events-none"></div>
+
       {/* Header Section */}
-      <div className='text-center py-10 sm:py-16 md:py-20 px-4 relative overflow-hidden'>
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-100/20 to-teal-100/20 backdrop-blur-3xl"></div>
-        <div className="relative z-10">
-          <div className="inline-block mb-6 sm:mb-8 md:mb-10">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl bg-clip-text font-black text-transparent bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500 drop-shadow-2xl mb-4 sm:mb-6 animate-pulse">
-              Our Projects
-            </h1>
-            <div className="w-full h-2 sm:h-3 bg-gradient-to-r from-teal-400 via-cyan-400 to-sky-400 rounded-full shadow-xl animate-pulse"></div>
-          </div>
-          <div className="max-w-5xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl border border-cyan-200">
-            <p className="text-gray-800 text-base sm:text-lg md:text-xl leading-relaxed">
+      <div className='text-center py-20 lg:py-28 px-4 relative flex flex-col items-center animate-fade-in-up'>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-extrabold tracking-tight text-slate-800 mb-6 drop-shadow-sm">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">Projects</span>
+          </h1>
+          
+          <div className="max-w-4xl mx-auto bg-white/60 backdrop-blur-xl rounded-[2rem] p-8 shadow-xl shadow-slate-200/50 border border-white/80 ring-1 ring-slate-900/5">
+            <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-light">
               Ek-Prayass is a youth-led initiative dedicated to creating positive change in society through collective action and compassion. Our mission is to empower communities, support the underprivileged, and drive impactful projects in areas like education, environment, health, and social welfare. Every step we take is a small yet meaningful effort towards building a better, more inclusive world.
             </p>
           </div>
-          <div className="flex justify-center items-center mt-6 sm:mt-8 space-x-4 sm:space-x-6">
-            <div className="w-3 h-3 sm:w-4 sm:h-4 bg-teal-400 rounded-full animate-bounce"></div>
-            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-cyan-400 rounded-full animate-bounce delay-100"></div>
-            <div className="w-4 h-4 sm:w-5 sm:h-5 bg-sky-400 rounded-full animate-bounce delay-200"></div>
-          </div>
-        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 pb-12 sm:pb-16 md:pb-20 space-y-12 sm:space-y-16 md:space-y-20">
-        {projects.map((project) => {
+      <div className="max-w-6xl mx-auto px-6 pb-24 space-y-24">
+        {projects.map((project, idx) => {
           const scheme = colorSchemes[project.colorScheme] || colorSchemes.cyan;
           return (
-            <div key={project._id} className={`group bg-gradient-to-br ${scheme.bg} rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border-2 ${scheme.border} hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2`}>
-              <div className="p-4 sm:p-6 md:p-8 lg:p-12 relative">
+            <div key={project._id} className={`group bg-gradient-to-br ${scheme.bg} rounded-[3rem] shadow-xl ${scheme.glow} overflow-hidden border ${scheme.border} transition-all duration-500 hover:-translate-y-2 animate-fade-in-up`} style={{ animationDelay: `${idx * 0.1}s` }}>
+              <div className="p-8 lg:p-14 relative flex flex-col gap-10">
                 
-                {/* Title */}
-                <div className="text-center mb-6 sm:mb-8 md:mb-10 relative z-10">
-                  <div className={`inline-block p-3 sm:p-4 md:p-6 bg-gradient-to-r ${scheme.tagBg} rounded-2xl sm:rounded-3xl shadow-lg mb-4 sm:mb-6`}>
-                    <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r ${scheme.heading} mb-2 sm:mb-4`}>
-                      {project.title}
-                    </h2>
-                    {project.tagline && (
-                      <div className={`inline-block px-4 sm:px-6 md:px-8 py-2 sm:py-3 bg-gradient-to-r ${scheme.tagPillBg} rounded-full shadow-md`}>
-                        <p className={`text-lg sm:text-xl md:text-2xl font-bold ${scheme.tagText} italic`}>
-                          {project.tagline}
-                        </p>
-                      </div>
-                    )}
-                  </div>
+                {/* Header Info */}
+                <div className="text-center md:text-left flex flex-col md:flex-row justify-between items-center md:items-start gap-4 z-10">
+                   <div>
+                     <h2 className={`text-4xl md:text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r ${scheme.heading} mb-4`}>
+                       {project.title}
+                     </h2>
+                     {project.tagline && (
+                       <span className={`inline-block px-5 py-2 rounded-full text-sm font-semibold tracking-wide ${scheme.tagBg} ${scheme.tagText} shadow-sm`}>
+                         {project.tagline}
+                       </span>
+                     )}
+                   </div>
+                   
+                   {/* Optional icon or graphic here based on scheme */}
                 </div>
 
                 {/* Description */}
-                <div className={`bg-white/70 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border ${scheme.border.split(' ')[0]} mb-6 sm:mb-8`}>
-                  <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed text-center">
+                <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-sm border border-white relative z-10 w-full md:w-3/4">
+                  <p className="text-slate-600 text-lg leading-relaxed font-light">
                     {project.description}
                   </p>
                 </div>
 
-                {/* Video */}
-                {(project.video || project.videoUrl) && (
-                  <div className="flex justify-center mb-6 sm:mb-8">
-                    <div className={`relative w-full max-w-xs sm:max-w-lg md:max-w-2xl bg-gradient-to-r ${scheme.videoBg} rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border-4 ${scheme.videoBorder}`}>
-                      <div className="aspect-video">
+                {/* Media Gallery Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+                   {/* Video First if exists */}
+                   {(project.video || project.videoUrl) && (
+                      <div className="col-span-1 md:col-span-2 lg:col-span-2 rounded-3xl overflow-hidden shadow-lg border border-slate-200 relative group/video">
+                        <div className="absolute inset-0 bg-slate-900/10 z-10 opacity-0 group-hover/video:opacity-100 transition-opacity pointer-events-none"></div>
                         <video
                           src={project.video || project.videoUrl}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full aspect-video object-cover"
                           controls
                           muted
                           playsInline
                         />
                       </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Images */}
-                {project.images && project.images.length > 0 && (
-                  <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8 flex-wrap">
-                    {project.images.map((img, idx) => (
-                      <div key={idx} className="relative group">
-                        <div className={`absolute inset-0 bg-gradient-to-r ${scheme.imgGlow} rounded-xl sm:rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300`}></div>
+                   )}
+                   
+                   {/* Images */}
+                   {project.images && project.images.map((img, i) => (
+                      <div key={i} className="rounded-3xl overflow-hidden shadow-lg border border-slate-200 bg-white aspect-[4/3] group/img">
                         <img
                           src={img}
-                          alt={`${project.title} - photo ${idx + 1}`}
-                          className={`relative w-56 sm:w-60 md:w-64 h-40 sm:h-44 md:h-48 object-cover rounded-xl sm:rounded-2xl shadow-xl border-4 ${scheme.imgBorder} transition-all duration-300 transform hover:scale-105`}
+                          alt={`${project.title} - photo ${i + 1}`}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110"
                         />
                       </div>
-                    ))}
-                  </div>
-                )}
+                   ))}
+                </div>
+
               </div>
             </div>
           );
