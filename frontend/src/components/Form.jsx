@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 
 import emailjs from '@emailjs/browser';
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8000/api';
 
 const Form = () => {
 
@@ -21,6 +22,20 @@ const Form = () => {
         ...formData, 
         [e.target.name]: e.target.value
     });
+  };
+
+  // Save to backend database
+  const saveToBackend = async (data) => {
+    try {
+      await fetch(`${API_BASE}/volunteers`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      console.error('Backend save error:', err);
+      // Don't block form submission if backend fails
+    }
   };
 
   const handleSubmit = (e) => {
@@ -45,6 +60,17 @@ const Form = () => {
     .then((response) => {
       alert("Thank you! Your message has been sent.");
       console.log('SUCCESS!', response.status, response.text);
+
+      // Also save to backend database
+      saveToBackend({
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        purpose: purpose,
+        volunteerRole: formData.volunteerRole,
+        message: formData.message
+      });
+
       setFormData({
         fullName: '',
         email: '',
@@ -180,7 +206,7 @@ const Form = () => {
                                 placeholder="Tell us more about how you'd like to get involved, your skills, experience, or any questions you have..."
                                 required
                             />        
-                        </div > 
+                        </div> 
 
                         <div className="text-center pt-6">
                             <button 

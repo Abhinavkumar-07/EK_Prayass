@@ -12,13 +12,16 @@ import prabhat from '../assets/prabhatsir.jpeg';
 import khushi from '../assets/khushimam.jpeg';
 import akshama from '../assets/akshma.jpg';
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8000/api';
+
 const images = [team3, team1, team2, team4, team5, team6];
 
-const teamMembers = [
+const fallbackMembers = [
   {
+    _id: 'prabhat',
     name: "Prabhat Kumar Rai",
     position: "President",
-    image: prabhat,
+    imageUrl: prabhat,
     quote: [
       "As the President of our social club, I feel deeply honored to lead a team of passionate individuals committed to making a difference.",
       "For me, this club is more than just a group — it's a community built on compassion, inclusivity, and the belief that small actions can create meaningful change.",
@@ -27,9 +30,10 @@ const teamMembers = [
     ]
   },
   {
+    _id: 'khushi',
     name: "Khushi",
     position: "Vice-President",
-    image: khushi,
+    imageUrl: khushi,
     quote: [
       "Being the Vice President of this club is not just a role, it's a भावना (emotion) close to my heart.",
       "I believe true समाज सेवा (social service) starts with listening — to each other, to our communities, and to the बदलाव (change) we want to see.",
@@ -39,9 +43,10 @@ const teamMembers = [
     ]
   },
   {
+    _id: 'akshama',
     name: "Akshama",
     position: "Event Management Head",
-    image: akshama,
+    imageUrl: akshama,
     quote: [
       "As the Event Management Head, I believe that every event is an opportunity — to bring people together, to spark conversations, and to celebrate the spirit of सेवा (service) and togetherness.",
       "Behind every successful आयोजन (event) is a team that works with दिल (heart), dedication, and determination. I'm proud to lead with those values at the core.",
@@ -50,9 +55,10 @@ const teamMembers = [
     ]
   },
   {
+    _id: 'anubha',
     name: "Anubha",
     position: "Social Media Head",
-    image: khushi, // Replace with correct image if needed
+    imageUrl: khushi,
     quote: [
       "As the Social Media Head, I see every post, story, and caption as a chance to connect, inspire, and spread our सोच (vision) to a wider audience.",
       "Social media isn't just about content — it's about भावना (emotion), impact, and community. My goal is to ensure that our काम (work), events, and ideas reach लोगों तक (people far and wide) with authenticity and creativity.",
@@ -64,13 +70,34 @@ const teamMembers = [
 
 const Team = () => {
   const [index, setIndex] = useState(0);
+  const [teamMembers, setTeamMembers] = useState(fallbackMembers);
 
   useEffect(() => {
+    document.title = 'Our Team | Ek-Prayass';
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 2000);
-    return () => clearInterval(interval);
+
+    fetchTeam();
+
+    return () => {
+      clearInterval(interval);
+      document.title = 'Ek Prayass';
+    };
   }, []);
+
+  const fetchTeam = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/team`);
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        setTeamMembers(data);
+      }
+      // If empty, keep fallback
+    } catch (err) {
+      console.error('Error fetching team:', err);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-sky-50 py-16 px-4">
@@ -106,7 +133,7 @@ const Team = () => {
               <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-100 to-teal-100 aspect-video shadow-inner">
                 <img 
                   src={images[index]} 
-                  alt={`Team group photo ${index + 1}`} 
+                  alt={`Ek-Prayass team group photo ${index + 1}`} 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -125,15 +152,15 @@ const Team = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {teamMembers.map((member, idx) => (
-            <div key={idx} className="group">
+            <div key={member._id || idx} className="group">
               <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-cyan-200">
                 <div className="p-8 pb-6">
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                     <div className="relative">
                       <div className="w-32 h-32 rounded-full overflow-hidden bg-gradient-to-br from-teal-400 to-cyan-500 p-1 shadow-lg">
                         <img 
-                          src={member.image} 
-                          alt={member.name}
+                          src={member.imageUrl || member.image} 
+                          alt={`${member.name} - ${member.position} of Ek-Prayass`}
                           className="w-full h-full object-cover rounded-full bg-white"
                         />
                       </div>
@@ -153,7 +180,7 @@ const Team = () => {
                   <div className="bg-gradient-to-br from-gray-50 to-cyan-50 rounded-2xl p-6 relative">
                     <div className="absolute top-4 left-4 text-4xl text-cyan-300 font-serif">"</div>
                     <div className="space-y-3 pt-4">
-                      {member.quote.map((paragraph, pIdx) => (
+                      {(member.quote || []).map((paragraph, pIdx) => (
                         <p key={pIdx} className="text-gray-700 leading-relaxed text-sm">
                           {paragraph}
                         </p>

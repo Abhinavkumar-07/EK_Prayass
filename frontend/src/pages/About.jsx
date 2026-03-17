@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import videoSrc from '../assets/vi.mp4';  // Import your video file
 
 const About = () => {
+  useEffect(() => {
+    document.title = 'About Us | Ek-Prayass';
+    return () => { document.title = 'Ek Prayass'; };
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-sky-50 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/780221923.jpg';
 
 const Footer = () => {
@@ -10,7 +11,7 @@ const Footer = () => {
                     {/* 1st section */}
                     <div className="w-full sm:w-1/2 lg:w-1/4 px-2">
                         <div className="flex items-center gap-3 font-bold text-2xl align-middle pb-3 pt-3 text-white">
-                            <img src={logo} alt="Ek-prayass" height="50px" width="50px" className="rounded-full" />
+                            <img src={logo} alt="Ek-Prayass club logo" height="50px" width="50px" className="rounded-full" />
                             <div className="border-b-4 border-cyan-400">
                                 Ek-Prayass
                                 <p className="text-sm italic text-gray-400">JAAGROOKTA KI ORR</p>
@@ -25,11 +26,13 @@ const Footer = () => {
                     <div className="w-full sm:w-1/2 lg:w-1/4 px-2">
                         <h3 className="font-semibold text-lg mb-3 text-white">Quick Links</h3>
                         <ul className="space-y-2 text-gray-400">
-                            <li className="hover:text-cyan-400 transition cursor-pointer">Home</li>
-                            <li className="hover:text-cyan-400 transition cursor-pointer">About</li>
-                            <li className="hover:text-cyan-400 transition cursor-pointer">Our Work</li>
-                            <li className="hover:text-cyan-400 transition cursor-pointer">Notices</li>
-                            <li className="hover:text-cyan-400 transition cursor-pointer">Contact</li>
+                            <li className="hover:text-cyan-400 transition cursor-pointer"><Link to="/">Home</Link></li>
+                            <li className="hover:text-cyan-400 transition cursor-pointer"><Link to="/about">About</Link></li>
+                            <li className="hover:text-cyan-400 transition cursor-pointer"><Link to="/project">Our Work</Link></li>
+                            <li className="hover:text-cyan-400 transition cursor-pointer"><Link to="/notice">Notices</Link></li>
+                            <li className="hover:text-cyan-400 transition cursor-pointer"><Link to="/gallery">Gallery</Link></li>
+                            <li className="hover:text-cyan-400 transition cursor-pointer"><Link to="/partners">Partners</Link></li>
+                            <li className="hover:text-cyan-400 transition cursor-pointer"><Link to="/volunteer">Volunteer</Link></li>
                         </ul>
                     </div>
 
@@ -41,7 +44,7 @@ const Footer = () => {
                             <li><a href="#" className="hover:text-cyan-400 transition cursor-pointer">Privacy Policy</a></li>
                             <li><a href="#" className="hover:text-cyan-400 transition cursor-pointer">Terms of Service</a></li>
                             <li><a href="#" className="hover:text-cyan-400 transition cursor-pointer">Support</a></li>
-                            <li><a href="#" className="hover:text-cyan-400 transition cursor-pointer">Contact Us</a></li>
+                            <li><Link to="/form" className="hover:text-cyan-400 transition cursor-pointer">Contact Us</Link></li>
                         </ul>
                     </div>
 
@@ -68,7 +71,7 @@ const Footer = () => {
                 <hr className="border-gray-700" />
 
                 <div className="text-center text-lg pb-2 pt-2 text-gray-400">
-                    <p>&copy; 2025 Ek-Pryass. All rights reserved.</p>
+                    <p>&copy; 2025 Ek-Prayass. All rights reserved.</p>
                 </div>
             </div>
         </footer>

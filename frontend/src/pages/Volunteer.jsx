@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import About from '../pages/About.jsx';
 import Form from '../components/Form.jsx';
@@ -6,6 +6,10 @@ import { useNavigate, useLocation  } from 'react-router-dom';
 
 
 const Volunteer = () => {
+  useEffect(() => {
+    document.title = 'Volunteer | Ek-Prayass';
+    return () => { document.title = 'Ek Prayass'; };
+  }, []);
 
     const navigate = useNavigate();
   const location = useLocation();

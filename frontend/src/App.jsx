@@ -1,5 +1,5 @@
-import React,{ useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import React from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import './index.css';
 import Navbar from './components/Navbar.jsx';
@@ -12,13 +12,18 @@ import Project from './pages/Project.jsx';
 import Volunteer from './pages/Volunteer.jsx';
 import Notice from './pages/Notice.jsx';
 import Landing from './pages/Landing.jsx';
+import AdminDashboard from './pages/AdminDashboard.jsx';
+import Gallery from './pages/Gallery.jsx';
+import Partners from './pages/Partners.jsx';
 
 
-    
 function App () {
+    const location = useLocation();
+    const isAdmin = location.pathname === '/admin';
+
     return(
-        <div className="pb-24 bg-white min-h-screen">
-        <Navbar />
+        <div className={`${isAdmin ? '' : 'pb-24'} bg-white min-h-screen`}>
+        {!isAdmin && <Navbar />}
 
         <Routes>
             <Route path ='/' element={<Landing />} />
@@ -28,10 +33,13 @@ function App () {
             <Route path='/volunteer' element={<Volunteer />} />
             <Route path='/form' element={<Form />} />
             <Route path='/notice' element={<Notice />} />
+            <Route path='/gallery' element={<Gallery />} />
+            <Route path='/partners' element={<Partners />} />
+            <Route path='/admin' element={<AdminDashboard />} />
         </Routes>
            
 
-        <Footer />
+        {!isAdmin && <Footer />}
         </div>
     )
 }

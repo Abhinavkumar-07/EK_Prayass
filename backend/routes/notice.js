@@ -1,84 +1,53 @@
 const express = require('express');
-
 const router = express.Router();
-
 const Notice = require('../models/Notice');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const authMiddleware = require('../middleware/authMiddleware');
 
-
-const ADMIN_USER = {
-    id:'ekp123',
-    passwordHash: '$2b$10$GNV5PyrP4GkAdv9Cix8eDuzCYaJQnAPinZ/yGfh.SnrBUXQ7qh0fq'
-};
-
-const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
-
-router.post('/',async(req,res)=>{
-    const token = req.headers.authorization?.split(' ')[1];
-    if(!token) {
-        return res.status(401).json({ error: 'Unauthorized' });
-    }
-    try {
-        jwt.verify(token,JWT_SECRET);
-        const {title, message,postedBy} = req.body;
-        const newNotice = new Notice ({
-            title,
-            message,
-            postedBy
-        });
-
-        const savedNotice = await newNotice.save();
-        res.status(201).json(savedNotice);
-    } catch (err) {
-        res.status(500).json({ message: 'Error creating notice', err });
-    }
+// GET /api/notices — public: list all notices
+router.get('/', async (req, res) => {
+  try {
+    const notices = await Notice.find().sort({ date: -1 });
+    res.status(200).json(notices);
+  } catch (err) {
+    res.status(500).json({ error: 'Error fetching notices', err });
+  }
 });
 
-router.get('/',async (req,res)=>{
-    try {
-        const notices = await Notice.find().sort({date:-1});
-        res.status(200).json(notices);
-    } catch (err) {
-        res.status(500).json({ error: 'Error fetching notices', err });
-    }
-
+// POST /api/notices — admin-protected: create notice
+router.post('/', authMiddleware, async (req, res) => {
+  try {
+    const { title, message, postedBy } = req.body;
+    const newNotice = new Notice({ title, message, postedBy });
+    const savedNotice = await newNotice.save();
+    res.status(201).json(savedNotice);
+  } catch (err) {
+    res.status(500).json({ message: 'Error creating notice', err });
+  }
 });
 
-router.post('/admin/login',(req,res)=>{
-    const { id, password } = req.body;
+// PUT /api/notices/:id — admin-protected: update notice
+router.put('/:id', authMiddleware, async (req, res) => {
+  try {
+    const updated = await Notice.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updated) return res.status(404).json({ error: 'Notice not found' });
+    res.json(updated);
+  } catch (err) {
+    res.status(500).json({ error: 'Error updating notice' });
+  }
+});
 
-    if(id!== ADMIN_USER.id) {
-        return res.status(401).json({ error: 'Invalid ID or password' });
+// DELETE /api/notices/:id — admin-protected: delete notice
+router.delete('/:id', authMiddleware, async (req, res) => {
+  try {
+    const deletedNotice = await Notice.findByIdAndDelete(req.params.id);
+    if (!deletedNotice) {
+      return res.status(404).json({ error: 'Notice not found' });
     }
-
-    const isValid = bcrypt.compareSync(password,ADMIN_USER.passwordHash);
-    if(!isValid) {
-        return res.status(401).json({ error: 'Invalid ID or password' });
-    }
-
-    const token = jwt.sign({ id: ADMIN_USER.id }, JWT_SECRET,{expiresIn: '1h'});
-    res.json({ token });
-})
-
-router.delete('/:id',async(req,res)=>{
-    const token = req.headers.authorization?.split(' ')[1];
-    if(!token) {
-        return res.status(401).json({ error: 'Unauthorized' });
-    }
-    try {
-        jwt.verify(token, JWT_SECRET);
-        const deletedNotice = await Notice.findByIdAndDelete(req.params.id);
-        if(!deletedNotice) {
-            return res.status(404).json({error :'Notice not found'});
-
-        }
-        res.json({message :'Notice deleted successfully'});
-
-    } catch (err) {
-        console.error('Error deleting notice:', err);
-        res.status(500).json({error:'Server error while delelting'});
-    }
+    res.json({ message: 'Notice deleted successfully' });
+  } catch (err) {
+    console.error('Error deleting notice:', err);
+    res.status(500).json({ error: 'Server error while deleting' });
+  }
 });
 
 module.exports = router;

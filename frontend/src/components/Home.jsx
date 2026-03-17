@@ -3,8 +3,8 @@ import { Play, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // Import assets properly so Vite handles them
-import heroImage from '../assets/heroimage.jpg';
-import circleImage from '../assets/6899f9aa6b3d2817a563de22f4a6d607.jpg';
+import heroImage from '../assets/new.jpeg';
+import circleImage from '../assets/O.jpeg';
 import videoSrc from '../assets/vi.mp4';
 
 const Home = () => {

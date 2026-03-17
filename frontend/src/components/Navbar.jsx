@@ -29,13 +29,13 @@ const Navbar = () => {
     <nav className="py-4 bg-gradient-to-r from-teal-500 via-cyan-400 to-sky-300 px-8 md:sticky md:top-0 shadow-md z-50 w-full">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-5 font-bold text-2xl text-white">
-          <img src={logo} alt="logo" height="50px" width="50px" className="rounded-full" />
+          <img src={logo} alt="Ek-Prayass club logo" height="50px" width="50px" className="rounded-full" />
           <div className="border-b-4 border-white">Ek-Prayass</div>
         </div>
 
         
         <div className="hidden md:block">
-          <ul className="flex gap-5 text-white font-medium">
+          <ul className="flex gap-5 text-white font-medium items-center">
             <li className="p-2 hover:text-white/80 transition-colors">
               <Link to="/">Home</Link>
             </li>
@@ -54,6 +54,12 @@ const Navbar = () => {
             <li className="p-2 hover:text-white/80 transition-colors">
               <Link to="/team">Our Team</Link>
             </li>
+            <li className="p-2 hover:text-white/80 transition-colors">
+              <Link to="/gallery">Gallery</Link>
+            </li>
+            <li className="p-2 hover:text-white/80 transition-colors">
+              <Link to="/partners">Partners</Link>
+            </li>
             
             <li className="p-2">
               <button
@@ -64,6 +70,7 @@ const Navbar = () => {
                 <HeartHandshake className="inline-block ml-2" size={20} />
               </button>
             </li>
+
           </ul>
         </div>
 
@@ -109,6 +116,17 @@ const Navbar = () => {
                 Team
               </Link>
             </li>
+            <li className="p-2">
+              <Link to="/gallery" onClick={toggleMenu}>
+                Gallery
+              </Link>
+            </li>
+            <li className="p-2">
+              <Link to="/partners" onClick={toggleMenu}>
+                Partners
+              </Link>
+            </li>
+
            
             <li className="p-2">
               <button
