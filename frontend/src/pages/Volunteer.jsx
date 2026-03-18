@@ -44,7 +44,7 @@ const Volunteer = () => {
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-black tracking-tight mb-8">
                         Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500 drop-shadow-sm">Domains</span>
                     </h1>
-                    <div className="max-w-4xl mx-auto bg-white/60 backdrop-blur-xl rounded-[2rem] p-8 shadow-xl shadow-slate-200/50 border border-white/80 ring-1 ring-slate-900/5">
+                    <div className="max-w-4xl mx-auto bg-white/60 backdrop-blur-xl rounded-[2.5rem] rounded-tl-[1rem] rounded-br-[1rem] p-8 shadow-xl shadow-slate-200/50 border border-white/80 ring-1 ring-slate-900/5 transform rotate-[-1deg] hover:rotate-0 transition-transform duration-500">
                          <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-light">
                              Discover the diverse areas where we excel and make a meaningful impact through our dedicated volunteer work.
                          </p>
@@ -66,8 +66,8 @@ const Volunteer = () => {
                         { title: "Photography & Video", desc: "Photography and videography capture moments, tell stories, and bring visions to life through visuals and creativity.", color: "fuchsia" },
                         { title: "Content Writing", desc: "Content writing is the art of crafting engaging, informative, and persuasive text that connects with audiences.", color: "rose" }
                     ].map((domain, index) => (
-                        <div key={index} className="group h-full animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                            <div className="h-full bg-white/70 backdrop-blur-md rounded-[2rem] shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-white/50 ring-1 ring-slate-900/5 hover:-translate-y-2 relative overflow-hidden flex flex-col">
+                        <div key={index} className={`group h-full animate-fade-in-up transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform duration-500`} style={{ animationDelay: `${index * 0.1}s` }}>
+                            <div className="h-full bg-white/70 backdrop-blur-md rounded-[2.5rem] rounded-tr-[1.5rem] rounded-bl-[1.5rem] shadow-lg hover:shadow-2xl hover:shadow-cyan-900/10 transition-all duration-500 p-8 border border-white/50 ring-1 ring-slate-900/5 hover:-translate-y-2 relative overflow-hidden flex flex-col">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-100/50 to-teal-100/50 rounded-full blur-2xl -translate-y-1/2 translate-x-1/3 group-hover:scale-150 transition-transform duration-700"></div>
                                 <div className="relative z-10 flex flex-col h-full">
                                     <h3 className="text-2xl font-display font-bold text-slate-800 mb-4 group-hover:text-cyan-600 transition-colors duration-300 leading-tight">
@@ -85,7 +85,7 @@ const Volunteer = () => {
 
             {/* CTA Section */}
             <div className="relative z-10 max-w-6xl mx-auto px-6 pb-24">
-                <div className="bg-gradient-to-br from-teal-500 to-cyan-500 rounded-[3rem] shadow-2xl p-12 lg:p-16 text-center transform relative overflow-hidden group">
+                <div className="bg-gradient-to-br from-teal-500 to-cyan-500 rounded-[4rem] rounded-tl-[2rem] rounded-br-[2rem] shadow-2xl p-12 lg:p-16 text-center transform relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 group-hover:bg-white/20 transition-colors duration-700"></div>
                     <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-900/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
                     
@@ -99,7 +99,7 @@ const Volunteer = () => {
                         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                             <button 
                                 onClick={handleGetInvolvedClick}
-                                className="w-full sm:w-auto bg-white text-teal-700 font-semibold py-4 px-10 rounded-xl hover:bg-cyan-50 transition-all duration-300 shadow-xl hover:shadow-cyan-900/20 transform hover:-translate-y-1 text-lg">
+                                className="w-full sm:w-auto bg-white text-teal-700 font-bold py-4 px-10 rounded-[2rem] rounded-tl-xl rounded-br-xl hover:bg-cyan-50 transition-all duration-300 shadow-xl hover:shadow-cyan-900/20 transform hover:-translate-y-1 hover:rotate-1 text-lg">
                                 Get Involved Today
                             </button>
                             <Link to="/about" className="w-full sm:w-auto">

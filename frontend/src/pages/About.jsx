@@ -62,13 +62,13 @@ const About = () => {
 
             <div className="flex flex-col sm:flex-row gap-6 pt-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <Link to="/volunteer">
-                <button className="group px-10 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <button className="group px-10 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-bold text-lg rounded-[2rem] rounded-tr-xl rounded-bl-xl shadow-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1 hover:-rotate-1 transition-all duration-300 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="relative z-10">Join Our Community</span>
                 </button>
               </Link>
               <Link to="/team">
-                <button className="group px-10 py-4 border-3 border-teal-400 text-teal-600 font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl hover:border-cyan-500 hover:text-cyan-600 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 bg-white hover:bg-gradient-to-r hover:from-cyan-50 hover:to-teal-50">
+                <button className="group px-10 py-4 border-2 border-teal-200 text-teal-600 font-bold text-lg rounded-[2rem] rounded-tl-xl rounded-br-xl shadow-lg hover:shadow-xl hover:border-cyan-300 hover:text-cyan-700 transform hover:scale-105 hover:-translate-y-1 hover:rotate-1 transition-all duration-300 bg-white hover:bg-gradient-to-r hover:from-cyan-50 hover:to-teal-50">
                   Learn More
                 </button>
               </Link>
@@ -104,9 +104,9 @@ const About = () => {
 
           {/* Video Section */}
           <div className="relative animate-fade-in lg:mt-0 mt-12">
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-[2.5rem] blur-2xl opacity-20"></div>
-            <div className="relative overflow-hidden rounded-[2.5rem] shadow-2xl border border-white/50 bg-white/50 backdrop-blur-xl p-2 group">
-              <div className="relative rounded-3xl overflow-hidden bg-slate-900 aspect-[4/3] sm:aspect-video lg:aspect-[4/3]">
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-[3rem] blur-2xl opacity-20"></div>
+            <div className="relative overflow-hidden rounded-[3rem] rounded-tr-[1.5rem] rounded-bl-[1.5rem] shadow-2xl border border-white/50 bg-white/50 backdrop-blur-xl p-2 group transform rotate-[1deg] hover:rotate-0 transition-transform duration-500">
+              <div className="relative rounded-[2.5rem] rounded-tr-xl rounded-bl-xl overflow-hidden bg-slate-900 aspect-[4/3] sm:aspect-video lg:aspect-[4/3]">
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent z-10 pointer-events-none"></div>
                 <video
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -126,7 +126,7 @@ const About = () => {
 
         {/* Additional Features Section */}
         <div className="mt-32 text-center pb-20 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-          <div className="bg-white/70 backdrop-blur-xl rounded-[3rem] shadow-xl p-10 md:p-16 border border-white hover:shadow-2xl transition-all duration-300 ring-1 ring-slate-900/5">
+          <div className="bg-white/70 backdrop-blur-xl rounded-[3.5rem] rounded-tl-[2rem] rounded-br-[2rem] shadow-xl p-10 md:p-16 border border-white hover:shadow-2xl transition-all duration-300 ring-1 ring-slate-900/5">
             <h3 className="text-4xl md:text-5xl font-display font-bold text-slate-800 mb-6 tracking-tight">
               Why Choose Our{' '}
               <span className="bg-gradient-to-r from-teal-500 to-cyan-600 bg-clip-text text-transparent">

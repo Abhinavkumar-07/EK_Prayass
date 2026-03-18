@@ -294,14 +294,14 @@ const AdminDashboard = () => {
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center px-4">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl shadow-2xl mb-4">
-              <Shield className="w-10 h-10 text-white" />
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-[1.5rem] rounded-tl-md rounded-br-md shadow-2xl mb-4 transform -rotate-2">
+              <Shield className="w-10 h-10 text-white transform rotate-2" />
             </div>
             <h1 className="text-3xl font-bold text-white mb-2">Admin Panel</h1>
             <p className="text-gray-400">Ek-Prayass Dashboard</p>
           </div>
 
-          <form onSubmit={handleLogin} className="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-gray-700">
+          <form onSubmit={handleLogin} className="bg-gray-800/80 backdrop-blur-sm rounded-[2rem] rounded-tr-[1rem] rounded-bl-[1rem] p-8 shadow-2xl border border-gray-700">
             <div className="space-y-5">
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">Username</label>
@@ -327,7 +327,7 @@ const AdminDashboard = () => {
               </div>
               <button
                 type="submit"
-                className="w-full py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold rounded-xl hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
+                className="w-full py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold rounded-[1.5rem] rounded-tl-md rounded-br-md hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] hover:-rotate-1"
               >
                 Sign In
               </button>
@@ -386,7 +386,7 @@ const AdminDashboard = () => {
 
       {/* Tabs */}
       <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="flex flex-wrap gap-2 mb-8 bg-white p-2 rounded-2xl shadow-md border border-cyan-100">
+        <div className="flex flex-wrap gap-2 mb-8 bg-white p-2 rounded-[2rem] rounded-tl-xl rounded-br-xl shadow-md border border-cyan-100">
           {tabs.map(tab => (
             <button
               key={tab.key}
@@ -413,7 +413,7 @@ const AdminDashboard = () => {
         {/* NOTICES TAB */}
         {!loading && activeTab === 'notices' && (
           <div className="space-y-6">
-            <form onSubmit={handleNoticeSubmit} className="bg-white rounded-2xl shadow-lg border border-cyan-100 p-6">
+            <form onSubmit={handleNoticeSubmit} className="bg-white rounded-[2rem] rounded-tr-xl rounded-bl-xl shadow-lg border border-cyan-100 p-6">
               <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <Plus className="w-5 h-5 text-teal-500" />
                 {editingId ? 'Edit Notice' : 'Create Notice'}
@@ -442,7 +442,7 @@ const AdminDashboard = () => {
 
             <div className="space-y-3">
               {notices.map(n => (
-                <div key={n._id} className="bg-white rounded-xl shadow-sm border border-cyan-100 p-5 flex justify-between items-start hover:shadow-md transition-shadow">
+                <div key={n._id} className="bg-white rounded-[1.5rem] rounded-tl-lg rounded-br-lg shadow-sm border border-cyan-100 p-5 flex justify-between items-start hover:shadow-md transition-shadow">
                   <div className="flex-1">
                     <h3 className="font-bold text-gray-800">{n.title}</h3>
                     <p className="text-gray-600 text-sm mt-1">{n.message}</p>
@@ -467,7 +467,7 @@ const AdminDashboard = () => {
               Volunteer Applications ({volunteers.length})
             </h2>
             {volunteers.map(v => (
-              <div key={v._id} className="bg-white rounded-xl shadow-sm border border-cyan-100 p-5 hover:shadow-md transition-shadow">
+              <div key={v._id} className="bg-white rounded-[1.5rem] rounded-tl-lg rounded-br-lg shadow-sm border border-cyan-100 p-5 hover:shadow-md transition-shadow">
                 <div className="flex flex-wrap justify-between items-start gap-4">
                   <div>
                     <h3 className="font-bold text-gray-800">{v.fullName}</h3>
@@ -500,7 +500,7 @@ const AdminDashboard = () => {
         {/* PROJECTS TAB */}
         {!loading && activeTab === 'projects' && (
           <div className="space-y-6">
-            <form onSubmit={handleProjectSubmit} className="bg-white rounded-2xl shadow-lg border border-cyan-100 p-6">
+            <form onSubmit={handleProjectSubmit} className="bg-white rounded-[2rem] rounded-tr-xl rounded-bl-xl shadow-lg border border-cyan-100 p-6">
               <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <Plus className="w-5 h-5 text-teal-500" />
                 {editingId ? 'Edit Project' : 'Add Project'}
@@ -535,7 +535,7 @@ const AdminDashboard = () => {
             </form>
             <div className="space-y-3">
               {projects.map(p => (
-                <div key={p._id} className="bg-white rounded-xl shadow-sm border border-cyan-100 p-5 flex justify-between items-start hover:shadow-md transition-shadow">
+                <div key={p._id} className="bg-white rounded-[1.5rem] rounded-tl-lg rounded-br-lg shadow-sm border border-cyan-100 p-5 flex justify-between items-start hover:shadow-md transition-shadow">
                   <div className="flex-1">
                     <h3 className="font-bold text-gray-800">{p.title}</h3>
                     {p.tagline && <p className="text-teal-600 text-sm italic">{p.tagline}</p>}
@@ -555,7 +555,7 @@ const AdminDashboard = () => {
         {/* TEAM TAB */}
         {!loading && activeTab === 'team' && (
           <div className="space-y-6">
-            <form onSubmit={handleTeamSubmit} className="bg-white rounded-2xl shadow-lg border border-cyan-100 p-6">
+            <form onSubmit={handleTeamSubmit} className="bg-white rounded-[2rem] rounded-tr-xl rounded-bl-xl shadow-lg border border-cyan-100 p-6">
               <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <Plus className="w-5 h-5 text-teal-500" />
                 {editingId ? 'Edit Team Member' : 'Add Team Member'}
@@ -582,7 +582,7 @@ const AdminDashboard = () => {
             </form>
             <div className="space-y-3">
               {teamMembers.map(m => (
-                <div key={m._id} className="bg-white rounded-xl shadow-sm border border-cyan-100 p-5 flex justify-between items-start hover:shadow-md transition-shadow">
+                <div key={m._id} className="bg-white rounded-[1.5rem] rounded-tl-lg rounded-br-lg shadow-sm border border-cyan-100 p-5 flex justify-between items-start hover:shadow-md transition-shadow">
                   <div className="flex items-center gap-4 flex-1">
                     {m.imageUrl && <img src={m.imageUrl} alt={m.name} className="w-12 h-12 rounded-full object-cover border-2 border-teal-300" />}
                     <div>
@@ -604,7 +604,7 @@ const AdminDashboard = () => {
         {/* SPONSORS TAB */}
         {!loading && activeTab === 'sponsors' && (
           <div className="space-y-6">
-            <form onSubmit={handleSponsorSubmit} className="bg-white rounded-2xl shadow-lg border border-cyan-100 p-6">
+            <form onSubmit={handleSponsorSubmit} className="bg-white rounded-[2rem] rounded-tr-xl rounded-bl-xl shadow-lg border border-cyan-100 p-6">
               <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <Plus className="w-5 h-5 text-teal-500" />
                 {editingId ? 'Edit Sponsor' : 'Add Sponsor'}
@@ -638,7 +638,7 @@ const AdminDashboard = () => {
             </form>
             <div className="space-y-3">
               {sponsors.map(s => (
-                <div key={s._id} className="bg-white rounded-xl shadow-sm border border-cyan-100 p-5 flex justify-between items-start hover:shadow-md transition-shadow">
+                <div key={s._id} className="bg-white rounded-[1.5rem] rounded-tl-lg rounded-br-lg shadow-sm border border-cyan-100 p-5 flex justify-between items-start hover:shadow-md transition-shadow">
                   <div className="flex items-center gap-4 flex-1">
                     {s.logoUrl && <img src={s.logoUrl} alt={s.name} className="w-12 h-12 rounded-lg object-contain border border-gray-200" />}
                     <div>

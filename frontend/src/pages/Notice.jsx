@@ -39,7 +39,7 @@ const Notice = () => {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center bg-white/70 backdrop-blur-md p-4 rounded-3xl shadow-lg shadow-cyan-900/5 border border-white mb-6 transform hover:scale-110 transition-transform duration-300 ring-1 ring-slate-900/5">
+          <div className="inline-flex items-center justify-center bg-white/70 backdrop-blur-md p-4 rounded-[1.5rem] rounded-tr-[0.5rem] rounded-bl-[0.5rem] shadow-lg shadow-cyan-900/5 border border-white mb-6 transform hover:scale-110 transition-transform duration-300 ring-1 ring-slate-900/5 rotate-[-2deg] hover:rotate-0">
             <Bell className="w-8 h-8 text-teal-500" />
           </div>
           <h1 className="text-5xl md:text-6xl font-display font-black text-slate-800 mb-4 tracking-tight">Notice <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">Board</span></h1>
@@ -48,12 +48,12 @@ const Notice = () => {
 
         {/* Notice Count & Loading */}
         <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-4 bg-white/50 backdrop-blur-sm px-6 py-3 rounded-2xl border border-white shadow-sm w-full md:w-auto">
-            <div className="bg-gradient-to-r from-teal-500 to-cyan-500 p-2 rounded-xl shadow-md">
+          <div className="flex items-center gap-4 bg-white/50 backdrop-blur-sm px-6 py-3 rounded-[2rem] rounded-tl-xl rounded-br-xl border border-white shadow-sm w-full md:w-auto">
+            <div className="bg-gradient-to-r from-teal-500 to-cyan-500 p-2 rounded-[1rem] rounded-tr-md rounded-bl-md shadow-md">
               <Bell className="w-5 h-5 text-white" />
             </div>
             <h2 className="text-xl font-bold text-slate-800 font-display">All Notices</h2>
-            <span className="bg-cyan-100 text-teal-800 px-3 py-1 rounded-full text-sm font-bold shadow-inner">
+            <span className="bg-cyan-100 text-teal-800 px-3 py-1 rounded-[1rem] rounded-bl-sm rounded-tr-sm text-sm font-bold shadow-inner">
               {notices.length}
             </span>
           </div>
@@ -81,7 +81,7 @@ const Notice = () => {
             {notices.map((notice, idx) => (
               <div
                 key={notice._id}
-                className="group bg-white/70 backdrop-blur-xl rounded-[2rem] shadow-lg border border-white ring-1 ring-slate-900/5 overflow-hidden hover:shadow-2xl hover:shadow-cyan-900/10 transition-all duration-500 transform hover:-translate-y-1 animate-fade-in-up"
+                className={`group bg-white/70 backdrop-blur-xl rounded-[2.5rem] rounded-tl-[1rem] rounded-br-[1rem] shadow-lg border border-white ring-1 ring-slate-900/5 overflow-hidden hover:shadow-2xl hover:shadow-cyan-900/10 transition-all duration-500 transform hover:-translate-y-1 animate-fade-in-up ${idx % 2 === 0 ? 'rotate-[0.5deg]' : '-rotate-[0.5deg]'} hover:rotate-0`}
                 style={{ animationDelay: `${idx * 0.1}s` }}
               >
                 <div className="p-8 relative overflow-hidden">

@@ -57,7 +57,7 @@ const Partners = () => {
       <div className="relative overflow-hidden py-24 px-4 pb-16 z-10 animate-fade-in-up">
         
         <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-md px-5 py-2.5 rounded-full text-sm font-semibold text-teal-700 shadow-sm border border-cyan-100 mb-8 border-white ring-1 ring-slate-900/5 hover:scale-105 transition-transform duration-300">
+          <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-md px-6 py-3 rounded-[2rem] rounded-tr-[1rem] rounded-bl-[1rem] text-sm font-semibold text-teal-700 shadow-sm border border-cyan-100 mb-8 ring-1 ring-slate-900/5 hover:scale-105 transition-transform duration-300">
             <Handshake className="w-4 h-4 text-cyan-500" />
             Partnerships & Sponsorships
           </div>
@@ -70,15 +70,15 @@ const Partners = () => {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12 mb-8">
-            <div className="bg-white/60 backdrop-blur-xl p-8 rounded-[2rem] shadow-xl border border-white ring-1 ring-slate-900/5 group hover:shadow-cyan-900/10 hover:-translate-y-2 transition-all duration-500">
+            <div className="bg-white/60 backdrop-blur-xl p-8 rounded-[2rem] rounded-tl-[1rem] rounded-br-[1rem] shadow-xl border border-white ring-1 ring-slate-900/5 group hover:shadow-cyan-900/10 hover:-translate-y-2 transition-all duration-500">
               <div className="text-4xl md:text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500 mb-3 group-hover:scale-110 transition-transform duration-300">100+</div>
               <p className="text-slate-600 font-medium tracking-wide">Community Members</p>
             </div>
-            <div className="bg-white/60 backdrop-blur-xl p-8 rounded-[2rem] shadow-xl border border-white ring-1 ring-slate-900/5 group hover:shadow-cyan-900/10 hover:-translate-y-2 transition-all duration-500">
+            <div className="bg-white/60 backdrop-blur-xl p-8 rounded-[2rem] rounded-tr-[1rem] rounded-bl-[1rem] shadow-xl border border-white ring-1 ring-slate-900/5 group hover:shadow-cyan-900/10 hover:-translate-y-2 transition-all duration-500">
               <div className="text-4xl md:text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-teal-500 mb-3 group-hover:scale-110 transition-transform duration-300">25+</div>
               <p className="text-slate-600 font-medium tracking-wide">Projects Completed</p>
             </div>
-            <div className="bg-white/60 backdrop-blur-xl p-8 rounded-[2rem] shadow-xl border border-white ring-1 ring-slate-900/5 group hover:shadow-cyan-900/10 hover:-translate-y-2 transition-all duration-500">
+            <div className="bg-white/60 backdrop-blur-xl p-8 rounded-[2rem] rounded-tl-[1rem] rounded-br-[1rem] shadow-xl border border-white ring-1 ring-slate-900/5 group hover:shadow-cyan-900/10 hover:-translate-y-2 transition-all duration-500">
               <div className="text-4xl md:text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-cyan-500 mb-3 group-hover:scale-110 transition-transform duration-300">15+</div>
               <p className="text-slate-600 font-medium tracking-wide">Communities Served</p>
             </div>
@@ -98,7 +98,7 @@ const Partners = () => {
             const config = tierConfig[tier];
             const TierIcon = config.icon;
             return (
-              <div key={tier} className="group relative bg-white/70 backdrop-blur-xl rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white ring-1 ring-slate-900/5 hover:-translate-y-2 flex flex-col h-full z-10">
+              <div key={tier} className="group relative bg-white/70 backdrop-blur-xl rounded-[3rem] rounded-tr-[1.5rem] rounded-bl-[1.5rem] shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white ring-1 ring-slate-900/5 hover:-translate-y-2 flex flex-col h-full z-10">
                 <div className={`absolute inset-0 bg-gradient-to-b ${config.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
                 <div className={`bg-gradient-to-r ${config.gradient} p-8 text-center relative overflow-hidden`}>
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/3 group-hover:scale-150 transition-transform duration-700"></div>
@@ -163,7 +163,7 @@ const Partners = () => {
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                   {group.list.map(s => (
-                    <div key={s._id} className={`group bg-white/80 backdrop-blur-xl rounded-[2rem] p-8 border ${config.border} shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ring-1 ring-slate-900/5`}>
+                    <div key={s._id} className={`group bg-white/80 backdrop-blur-xl rounded-[2.5rem] rounded-tl-[1rem] rounded-br-[1rem] p-8 border ${config.border} shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ring-1 ring-slate-900/5`}>
                       <div className="flex flex-col gap-5 mb-4">
                         <div className="flex items-center justify-between">
                             {s.logoUrl ? (

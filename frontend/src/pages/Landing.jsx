@@ -9,7 +9,7 @@ const Landing = () => {
         <div>
             <Home />
             <About />
-            <Team />
+            <Team isHome={true} />
             <Form />
         </div>
     )

@@ -130,7 +130,7 @@ const Project = () => {
         {projects.map((project, idx) => {
           const scheme = colorSchemes[project.colorScheme] || colorSchemes.cyan;
           return (
-            <div key={project._id} className={`group bg-gradient-to-br ${scheme.bg} rounded-[3rem] shadow-xl ${scheme.glow} overflow-hidden border ${scheme.border} transition-all duration-500 hover:-translate-y-2 animate-fade-in-up`} style={{ animationDelay: `${idx * 0.1}s` }}>
+            <div key={project._id} className={`group bg-gradient-to-br ${scheme.bg} rounded-[3.5rem] rounded-tl-[1rem] rounded-br-[1rem] shadow-xl ${scheme.glow} overflow-hidden border ${scheme.border} transition-all duration-500 hover:-translate-y-2 transform ${idx % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 animate-fade-in-up`} style={{ animationDelay: `${idx * 0.1}s` }}>
               <div className="p-8 lg:p-14 relative flex flex-col gap-10">
                 
                 {/* Header Info */}
@@ -150,7 +150,7 @@ const Project = () => {
                 </div>
 
                 {/* Description */}
-                <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-sm border border-white relative z-10 w-full md:w-3/4">
+                <div className={`bg-white/80 backdrop-blur-md rounded-[2.5rem] rounded-tr-[1rem] rounded-bl-[1rem] p-8 shadow-sm border border-white relative z-10 w-full md:w-3/4 transform ${idx % 2 === 0 ? '-rotate-1' : 'rotate-1'}`}>
                   <p className="text-slate-600 text-lg leading-relaxed font-light">
                     {project.description}
                   </p>

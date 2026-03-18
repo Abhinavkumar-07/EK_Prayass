@@ -39,12 +39,12 @@ const Home = () => {
         
         {/* Left Content Area (Text & CTA) */}
         <div className="w-full lg:w-1/2 text-center lg:text-left space-y-8 animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-5 py-2.5 rounded-full text-sm font-semibold text-teal-700 border border-teal-100 shadow-sm hover:shadow-md hover:bg-white/80 transition-all cursor-default">
+          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-6 py-3 rounded-[2rem] rounded-tr-xl rounded-bl-xl text-sm font-semibold text-teal-700 border border-teal-100 shadow-sm shadow-teal-500/10 hover:shadow-md hover:bg-white/80 transition-all cursor-default transform hover:-translate-y-1">
              <Sparkles className="w-4 h-4 text-cyan-500" />
              <span className="tracking-wide uppercase text-xs">Youth-Led Initiative</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-extrabold leading-[1.1] tracking-tight text-slate-800">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-extrabold leading-[1.1] tracking-tighter text-slate-800">
             Changing Lives <br className="hidden lg:block" /> Through
             <span className="block mt-2 bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500 bg-clip-text text-transparent pb-2">
               Awareness.
@@ -57,7 +57,7 @@ const Home = () => {
           
           <div className="flex flex-col sm:flex-row gap-5 pt-4 items-center justify-center lg:justify-start">
              <Link to="/about" className="w-full sm:w-auto">
-              <button className="group relative overflow-hidden bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold rounded-2xl px-8 py-4 w-full flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-1 transition-all duration-300">
+              <button className="group relative overflow-hidden bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold rounded-[2rem] rounded-tr-xl rounded-bl-xl px-8 py-4 w-full flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-1 hover:rotate-1 transition-all duration-300">
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                 <span className="relative flex items-center gap-2">
                   Know More
@@ -70,9 +70,9 @@ const Home = () => {
              
              <button
                onClick={openVideo}
-               className="group relative bg-white border border-slate-200 text-slate-700 hover:text-teal-700 font-semibold rounded-2xl px-8 py-4 w-full sm:w-auto flex items-center justify-center gap-3 shadow-sm hover:shadow-xl hover:border-cyan-200 transition-all duration-300 hover:-translate-y-1"
+               className="group relative bg-white border border-slate-200 text-slate-700 hover:text-teal-700 font-semibold rounded-[2rem] rounded-tl-xl rounded-br-xl px-8 py-4 w-full sm:w-auto flex items-center justify-center gap-3 shadow-sm hover:shadow-xl hover:border-cyan-200 transition-all duration-300 hover:-translate-y-1 hover:-rotate-1"
              >
-                <div className="w-10 h-10 bg-gradient-to-tr from-teal-100 to-cyan-50 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:from-teal-500 group-hover:to-cyan-500 transition-all duration-300">
+                <div className="w-10 h-10 bg-gradient-to-tr from-teal-100 to-cyan-50 rounded-[1rem] rounded-bl-md rounded-tr-md flex items-center justify-center group-hover:scale-110 group-hover:from-teal-500 group-hover:to-cyan-500 transition-all duration-300">
                   <Play className="w-4 h-4 text-teal-600 group-hover:text-white ml-1 transition-colors" fill="currentColor" />
                 </div>
                 <span>Watch Story</span>
@@ -81,14 +81,14 @@ const Home = () => {
         </div>
 
         {/* Right Content Area (Images & Graphics) */}
-        <div className="w-full lg:w-1/2 relative animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <div className="w-full lg:w-1/2 relative animate-fade-in pl-4 sm:pl-8 lg:pl-0 mt-10 lg:mt-0" style={{ animationDelay: '0.2s' }}>
           <div className="relative max-w-md mx-auto aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-900/10 ring-1 ring-slate-900/5 transition-transform duration-500 hover:scale-[1.02] group">
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <img src={heroImage} alt="Volunteer making an impact" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </div>
           
           {/* Floating Avatar Graph */}
-          <div className="absolute -top-6 -left-6 sm:-left-12 w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-white p-2 shadow-xl shadow-slate-900/5 rotate-[-6deg] animate-float glass pointer-events-none" style={{ animationDelay: '1s' }}>
+          <div className="absolute -top-6 -left-4 sm:-left-8 lg:-left-12 w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-white p-2 shadow-xl shadow-slate-900/5 rotate-[-6deg] animate-float glass pointer-events-none" style={{ animationDelay: '1s' }}>
             <img src={circleImage} alt="Community Circle" className="w-full h-full object-cover rounded-xl" />
           </div>
 

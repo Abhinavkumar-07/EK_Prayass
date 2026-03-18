@@ -69,7 +69,7 @@ const Navbar = () => {
             <li className="ml-4">
               <button
                 onClick={handleDonateClick}
-                className="group flex items-center justify-center text-teal-700 bg-white font-bold rounded-xl px-5 py-2.5 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+                className="group flex items-center justify-center text-teal-700 bg-white font-bold rounded-[1.5rem] rounded-tr-[0.5rem] rounded-bl-[0.5rem] px-5 py-2.5 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:rotate-1"
               >
                 Donate
                 <HeartHandshake className="inline-block ml-2 text-teal-600 group-hover:scale-110 transition-transform" size={18} />

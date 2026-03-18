@@ -110,7 +110,7 @@ const Form = () => {
                 </div>
             {/* Form Containter */}
 
-            <div className="bg-white rounded-3xl p-8 shadow-2xl md:p-12 border border-cyan-200">
+            <div className="bg-white rounded-[2.5rem] rounded-tl-[1rem] rounded-br-[1rem] p-8 shadow-2xl md:p-12 border border-cyan-200">
                 <form onSubmit={handleSubmit} className="space-y-8">
                     <div className="grid md:grid-cols-2 gap-6" >
                         <div className="space-y-2">
@@ -168,7 +168,7 @@ const Form = () => {
                                         <button
                                             key={option}
                                             type="button"
-                                             className={`px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl ${
+                                             className={`px-8 py-4 rounded-[1.5rem] rounded-tl-md rounded-br-md font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl ${
                                                 isSelected(option)
                                                     ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white border-2 border-teal-500"
                                                     : "bg-white text-teal-600 border-2 border-teal-400 hover:bg-teal-50"
@@ -220,7 +220,7 @@ const Form = () => {
                     <div className="text-center pt-8">
                         <button 
                             type="submit"
-                            className="group px-12 py-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-cyan-500/25 transform hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 relative overflow-hidden w-full sm:w-auto">
+                            className="group px-12 py-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-bold text-lg rounded-[2rem] rounded-tr-xl rounded-bl-xl shadow-xl hover:shadow-2xl hover:shadow-cyan-500/25 transform hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 relative overflow-hidden w-full sm:w-auto">
                             <span className="relative z-10 flex items-center justify-center gap-2">
                                 Send Message
                                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

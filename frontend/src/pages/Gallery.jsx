@@ -71,7 +71,7 @@ const Gallery = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm border border-cyan-100 px-5 py-2.5 rounded-full text-sm font-semibold text-teal-700 shadow-sm mb-6">
+          <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm border border-cyan-100 px-6 py-3 rounded-[2rem] rounded-tr-[1rem] rounded-bl-[1rem] text-sm font-semibold text-teal-700 shadow-sm mb-6 transition-all duration-300 hover:scale-105 hover:shadow-md cursor-default">
             <Camera className="w-4 h-4 text-cyan-500" />
             Our Memories
           </div>
@@ -106,7 +106,7 @@ const Gallery = () => {
           {filtered.map((item, idx) => (
             <div
               key={idx}
-              className="group relative break-inside-avoid rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 border border-white/50 ring-1 ring-slate-900/5 bg-white"
+              className={`group relative break-inside-avoid rounded-[2rem] rounded-tl-xl rounded-br-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 border border-white/50 ring-1 ring-slate-900/5 bg-white ${idx % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0`}
               onClick={() => setLightboxItem(item)}
               style={{ animationDelay: `${idx * 0.1}s` }}
             >

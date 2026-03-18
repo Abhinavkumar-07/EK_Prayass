@@ -78,7 +78,7 @@ const fallbackMembers = [
   }
 ];
 
-const Team = () => {
+const Team = ({ isHome = false }) => {
   const [index, setIndex] = useState(0);
   const [teamMembers, setTeamMembers] = useState(fallbackMembers);
 
@@ -101,7 +101,10 @@ const Team = () => {
       const res = await fetch(`${API_BASE}/team`);
       const data = await res.json();
       if (Array.isArray(data) && data.length > 0) {
-        setTeamMembers(data);
+        // The DB contains members added via Admin (like Abhinav).
+        // The static leadership members (Prabhat, Khushi, etc.) are in fallbackMembers.
+        const staticLeadership = fallbackMembers.filter(m => m._id !== 'abhinav');
+        setTeamMembers([...staticLeadership, ...data]);
       }
       // If empty, keep fallback
     } catch (err) {
@@ -132,10 +135,10 @@ const Team = () => {
         </div>
 
         <div className="mt-20 mb-20 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-          <div className="bg-white/70 backdrop-blur-md rounded-[2.5rem] shadow-xl overflow-hidden border border-white/50 ring-1 ring-slate-900/5">
+          <div className="bg-white/70 backdrop-blur-md rounded-[2.5rem] rounded-tl-[4rem] rounded-br-[4rem] shadow-xl shadow-cyan-900/5 overflow-hidden border border-white/80 ring-1 ring-slate-900/5">
             <div className="bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500 p-8 relative overflow-hidden">
                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-center text-white relative z-10">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-center text-white relative z-10 tracking-tight">
                 Together We Can
               </h2>
             </div>
@@ -163,13 +166,18 @@ const Team = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {teamMembers.map((member, idx) => (
-            <div key={member._id || idx} className="group h-full">
-              <div className="h-full bg-white/70 backdrop-blur-md rounded-[2rem] shadow-lg hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-500 overflow-hidden border border-white/50 ring-1 ring-slate-900/5 hover:-translate-y-2 flex flex-col">
+          {teamMembers.filter(member => {
+            if (isHome) {
+              return !(member.name && member.name.toLowerCase().includes('abhinav'));
+            }
+            return true;
+          }).map((member, idx) => (
+            <div key={member._id || idx} className="group h-full transform transition-transform duration-500 hover:-translate-y-2 hover:rotate-[1deg]">
+              <div className="h-full bg-white/70 backdrop-blur-md rounded-[2.5rem] rounded-tr-[4rem] rounded-bl-[4rem] shadow-lg shadow-cyan-900/5 hover:shadow-2xl hover:shadow-cyan-500/15 transition-all duration-500 overflow-hidden border border-white/80 ring-1 ring-slate-900/5 flex flex-col">
                 <div className="p-8 pb-6 border-b border-slate-100 bg-gradient-to-br from-white to-slate-50/50">
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                     <div className="relative">
-                      <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden ring-4 ring-cyan-50 shadow-xl group-hover:ring-cyan-200 transition-all duration-500 rotate-[-3deg] group-hover:rotate-0">
+                      <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-[2rem] rounded-tl-[3rem] rounded-br-[3rem] overflow-hidden ring-4 ring-cyan-50 shadow-xl shadow-cyan-900/5 group-hover:ring-cyan-200 transition-all duration-500 rotate-[-4deg] group-hover:rotate-0">
                         <img 
                           src={member.imageUrl || member.image} 
                           alt={`${member.name} - ${member.position}`}
@@ -178,10 +186,10 @@ const Team = () => {
                       </div>
                     </div>
                     <div className="text-center sm:text-left flex-1 pt-2">
-                      <h2 className="text-2xl font-display font-bold text-slate-800 mb-3 truncate">
+                      <h2 className="text-2xl font-display font-bold text-slate-800 mb-3 truncate tracking-tight">
                         {member.name}
                       </h2>
-                      <div className="inline-flex items-center px-4 py-2 bg-cyan-50 text-cyan-700 rounded-xl text-sm font-semibold border border-cyan-100 shadow-sm">
+                      <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-cyan-50 to-teal-50 text-cyan-800 rounded-[1rem] rounded-br-sm rounded-tl-sm text-sm font-semibold border border-cyan-100 shadow-sm shadow-cyan-900/5 transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
                         {member.position}
                       </div>
                     </div>
@@ -206,8 +214,8 @@ const Team = () => {
         </div>
 
         <div className="text-center mt-32 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500 rounded-[3rem] transform rotate-1 opacity-20 blur-xl"></div>
-          <div className="bg-gradient-to-br from-teal-500 to-cyan-500 rounded-[3rem] shadow-2xl p-12 lg:p-16 text-white relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500 rounded-[4rem] rounded-tr-[2rem] rounded-bl-[2rem] transform rotate-1 opacity-20 blur-xl"></div>
+          <div className="bg-gradient-to-br from-teal-500 to-cyan-500 rounded-[4rem] rounded-tr-[2rem] rounded-bl-[2rem] shadow-2xl shadow-cyan-500/20 p-12 lg:p-16 text-white relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 group-hover:bg-white/20 transition-colors duration-700"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-900/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
 
@@ -219,7 +227,7 @@ const Team = () => {
                 Together, we can create meaningful change in our community. Every voice matters, every action counts. Become part of our family today.
               </p>
               <Link to="/volunteer">
-                <button className="bg-white text-teal-700 px-10 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-cyan-900/20 transform hover:-translate-y-1 transition-all duration-300 group-hover:bg-cyan-50">
+                <button className="bg-white text-teal-700 px-10 py-4 rounded-[2rem] rounded-tl-xl rounded-br-xl font-bold text-lg hover:shadow-xl hover:shadow-cyan-900/30 transform hover:-translate-y-1 hover:rotate-1 transition-all duration-300 group-hover:bg-cyan-50">
                   Become a Volunteer
                 </button>
               </Link>
