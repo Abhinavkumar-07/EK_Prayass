@@ -81,19 +81,21 @@ const Home = () => {
         </div>
 
         {/* Right Content Area (Images & Graphics) */}
-        <div className="w-full lg:w-1/2 relative animate-fade-in pl-4 sm:pl-8 lg:pl-0 mt-10 lg:mt-0" style={{ animationDelay: '0.2s' }}>
-          <div className="relative max-w-md mx-auto aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-900/10 ring-1 ring-slate-900/5 transition-transform duration-500 hover:scale-[1.02] group">
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <img src={heroImage} alt="Volunteer making an impact" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          </div>
-          
-          {/* Floating Avatar Graph */}
-          <div className="absolute -top-6 -left-4 sm:-left-8 lg:-left-12 w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-white p-2 shadow-xl shadow-slate-900/5 rotate-[-6deg] animate-float glass pointer-events-none" style={{ animationDelay: '1s' }}>
-            <img src={circleImage} alt="Community Circle" className="w-full h-full object-cover rounded-xl" />
-          </div>
+        <div className="w-full lg:w-1/2 flex justify-center animate-fade-in mt-10 lg:mt-0" style={{ animationDelay: '0.2s' }}>
+          <div className="relative w-[85%] sm:w-[80%] max-w-[400px]">
+            {/* Main Image */}
+            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-900/10 ring-1 ring-slate-900/5 transition-transform duration-500 hover:scale-[1.02] group z-0">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <img src={heroImage} alt="Volunteer making an impact" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            </div>
+            
+            {/* Floating Avatar Graph */}
+            <div className="absolute -top-6 -left-6 sm:-left-10 lg:-left-12 w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-white p-2 shadow-xl shadow-slate-900/5 rotate-[-6deg] animate-float glass pointer-events-none z-10" style={{ animationDelay: '1s' }}>
+              <img src={circleImage} alt="Community Circle" className="w-full h-full object-cover rounded-xl" />
+            </div>
 
-          {/* Floating Stat Card */}
-           <div className="absolute -bottom-6 -right-4 sm:-right-8 bg-white/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-xl shadow-slate-900/10 border border-white/50 animate-float" style={{ animationDelay: '2.5s' }}>
+            {/* Floating Stat Card */}
+            <div className="absolute -bottom-6 -right-6 sm:-right-8 bg-white/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-xl shadow-slate-900/10 border border-white/50 animate-float z-10" style={{ animationDelay: '2.5s' }}>
               <div className="flex items-center gap-4">
                  <div className="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center">
                     <Sparkles className="w-6 h-6 text-cyan-600" />
@@ -103,7 +105,8 @@ const Home = () => {
                     <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Lives Impacted</p>
                  </div>
               </div>
-           </div>
+            </div>
+          </div>
         </div>
       </div>
 
