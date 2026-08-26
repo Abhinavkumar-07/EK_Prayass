@@ -20,7 +20,7 @@ const images = [team3, team1, team2, team4, team5, team6];
 const fallbackMembers = [
   {
     _id: 'prabhat',
-    name: "Prabhat Kumar Rai",
+    name: "Swasti Mitaal",
     position: "President",
     imageUrl: prabhat,
     quote: [
@@ -32,7 +32,7 @@ const fallbackMembers = [
   },
   {
     _id: 'khushi',
-    name: "Khushi",
+    name: "Avi Gupta",
     position: "Vice-President",
     imageUrl: khushi,
     quote: [

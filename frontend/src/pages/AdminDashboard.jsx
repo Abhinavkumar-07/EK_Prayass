@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, LogOut, Bell, Users, FolderOpen, UserCircle, Handshake, Plus, Trash2, Edit3, Save, X, Eye, ChevronDown } from 'lucide-react';
+import { Shield, LogOut, Bell, Users, FolderOpen, UserCircle, Handshake, Plus, Trash2, Edit3, Save, X, Eye, ChevronDown, CheckCircle } from 'lucide-react';
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8000/api';
 
@@ -46,12 +46,16 @@ const AdminDashboard = () => {
   const [projects, setProjects] = useState([]);
   const [teamMembers, setTeamMembers] = useState([]);
   const [sponsors, setSponsors] = useState([]);
+  const [clubMembers, setClubMembers] = useState([]);
+  const [attendanceLogs, setAttendanceLogs] = useState([]);
 
   // Form states
   const [noticeForm, setNoticeForm] = useState({ title: '', message: '', postedBy: 'Admin' });
   const [sponsorForm, setSponsorForm] = useState({ name: '', logoUrl: '', website: '', tier: 'Bronze', description: '' });
   const [projectForm, setProjectForm] = useState({ title: '', tagline: '', description: '', images: '', videoUrl: '', colorScheme: 'cyan', order: 0 });
   const [teamForm, setTeamForm] = useState({ name: '', position: '', imageUrl: '', quote: '', order: 0 });
+  const [clubMemberForm, setClubMemberForm] = useState({ username: '', password: '', name: '', role: 'Member', attendance: '0%', imageUrl: '' });
+  const [attendanceForm, setAttendanceForm] = useState({ type: 'Meeting', date: new Date().toISOString().split('T')[0], purpose: '', presentMembers: [] });
 
   const [editingId, setEditingId] = useState(null);
   const [editingType, setEditingType] = useState(null);
@@ -116,6 +120,23 @@ const AdminDashboard = () => {
           const res = await fetch(`${API_BASE}/sponsors`);
           const data = await res.json();
           setSponsors(Array.isArray(data) ? data : []);
+          break;
+        }
+        case 'clubmembers': {
+          const res = await fetch(`${API_BASE}/admin/clubmembers`, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          const data = await res.json();
+          setClubMembers(Array.isArray(data) ? data : []);
+          break;
+        }
+        case 'attendance': {
+          const resLogs = await fetch(`${API_BASE}/admin/attendance`, { headers: { Authorization: `Bearer ${token}` } });
+          const resMembers = await fetch(`${API_BASE}/admin/clubmembers`, { headers: { Authorization: `Bearer ${token}` } });
+          const logsData = await resLogs.json();
+          const membersData = await resMembers.json();
+          setAttendanceLogs(Array.isArray(logsData) ? logsData : []);
+          setClubMembers(Array.isArray(membersData) ? membersData : []);
           break;
         }
       }
@@ -264,6 +285,65 @@ const AdminDashboard = () => {
     }
   };
 
+  // Club Member CRUD
+  const handleClubMemberSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const method = editingId ? 'PUT' : 'POST';
+      const url = editingId ? `${API_BASE}/admin/clubmembers/${editingId}` : `${API_BASE}/admin/clubmembers`;
+      
+      const res = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify(clubMemberForm)
+      });
+      
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed');
+      
+      setClubMemberForm({ username: '', password: '', name: '', role: 'Member', attendance: '0%', imageUrl: '' });
+      setEditingId(null);
+      setEditingType(null);
+      fetchData();
+    } catch(err) {
+      alert(err.message || 'Error saving club member');
+    }
+  };
+
+  // Attendance Submit
+  const handleAttendanceSubmit = async (e) => {
+    e.preventDefault();
+    if (attendanceForm.presentMembers.length === 0) {
+      alert('Please select at least one member.');
+      return;
+    }
+    try {
+      const res = await fetch(`${API_BASE}/admin/attendance`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify(attendanceForm)
+      });
+      if (!res.ok) throw new Error('Failed');
+      setAttendanceForm({ type: 'Meeting', date: new Date().toISOString().split('T')[0], purpose: '', presentMembers: [] });
+      fetchData();
+      alert('Attendance logged successfully!');
+    } catch(err) {
+      alert('Error saving attendance');
+    }
+  };
+
+  const toggleAttendanceMember = (id) => {
+    setAttendanceForm(prev => {
+      const isPresent = prev.presentMembers.includes(id);
+      return {
+        ...prev,
+        presentMembers: isPresent 
+          ? prev.presentMembers.filter(mId => mId !== id)
+          : [...prev.presentMembers, id]
+      };
+    });
+  };
+
   // Volunteer status update
   const handleVolunteerStatus = async (id, status) => {
     try {
@@ -286,6 +366,8 @@ const AdminDashboard = () => {
     setSponsorForm({ name: '', logoUrl: '', website: '', tier: 'Bronze', description: '' });
     setProjectForm({ title: '', tagline: '', description: '', images: '', videoUrl: '', colorScheme: 'cyan', order: 0 });
     setTeamForm({ name: '', position: '', imageUrl: '', quote: '', order: 0 });
+    setClubMemberForm({ username: '', password: '', name: '', role: 'Member', attendance: '0%', imageUrl: '' });
+    setAttendanceForm({ type: 'Meeting', date: new Date().toISOString().split('T')[0], purpose: '', presentMembers: [] });
   };
 
   // LOGIN SCREEN
@@ -344,7 +426,9 @@ const AdminDashboard = () => {
     { key: 'volunteers', label: 'Volunteers', icon: Users },
     { key: 'projects', label: 'Projects', icon: FolderOpen },
     { key: 'team', label: 'Team', icon: UserCircle },
-    { key: 'sponsors', label: 'Sponsors', icon: Handshake }
+    { key: 'sponsors', label: 'Sponsors', icon: Handshake },
+    { key: 'clubmembers', label: 'Club Members', icon: Users },
+    { key: 'attendance', label: 'Attendance', icon: CheckCircle }
   ];
 
   const statusColors = {
@@ -656,6 +740,160 @@ const AdminDashboard = () => {
             </div>
           </div>
         )}
+        {/* Club Members Tab */}
+        {activeTab === 'clubmembers' && (
+          <div className="animate-fade-in space-y-6">
+            <h2 className="text-2xl font-black text-slate-800 flex items-center gap-2 mb-6">
+              <Users className="w-6 h-6 text-cyan-600" />
+              Club Members
+            </h2>
+            
+            <form onSubmit={handleClubMemberSubmit} className="bg-white rounded-[2rem] rounded-tr-lg rounded-bl-lg shadow-sm border border-cyan-100 p-6 sm:p-8 space-y-6 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-50 rounded-full -translate-y-16 translate-x-16 z-0"></div>
+              <h3 className="font-bold text-slate-800 text-lg relative z-10 flex items-center gap-2">
+                {editingId ? <Edit3 className="w-5 h-5 text-teal-500" /> : <Users className="w-5 h-5 text-teal-500" />}
+                {editingId ? 'Edit Club Member' : 'Add New Club Member'}
+              </h3>
+              
+              <div className="grid md:grid-cols-2 gap-4 relative z-10">
+                <div><label className={labelClass}>Name</label><input type="text" value={clubMemberForm.name} onChange={(e) => setClubMemberForm({...clubMemberForm, name: e.target.value})} className={inputClass} required /></div>
+                <div><label className={labelClass}>Username</label><input type="text" value={clubMemberForm.username} onChange={(e) => setClubMemberForm({...clubMemberForm, username: e.target.value})} className={inputClass} required disabled={!!editingId} /></div>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-4 relative z-10">
+                {!editingId && (
+                  <div><label className={labelClass}>Password</label><input type="text" value={clubMemberForm.password} onChange={(e) => setClubMemberForm({...clubMemberForm, password: e.target.value})} className={inputClass} required /></div>
+                )}
+                <div><label className={labelClass}>Role</label><input type="text" value={clubMemberForm.role} onChange={(e) => setClubMemberForm({...clubMemberForm, role: e.target.value})} className={inputClass} required /></div>
+                <div><label className={labelClass}>Attendance</label><input type="text" value={clubMemberForm.attendance} onChange={(e) => setClubMemberForm({...clubMemberForm, attendance: e.target.value})} className={inputClass} /></div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4 relative z-10">
+                <div>
+                  <label className={labelClass}>Profile Image {uploading && <span className="text-teal-500 text-xs font-normal">Uploading...</span>}</label>
+                  <div className="flex gap-2">
+                    <input type="text" value={clubMemberForm.imageUrl} onChange={(e) => setClubMemberForm({...clubMemberForm, imageUrl: e.target.value})} className={inputClass} />
+                    <label className="flex items-center justify-center px-4 bg-gray-50 border-2 border-dashed border-cyan-300 rounded-xl cursor-pointer hover:bg-cyan-50 whitespace-nowrap">
+                      <span className="text-sm text-teal-600 font-semibold">Upload</span>
+                      <input type="file" className="hidden" accept="image/*" onChange={(e) => handleFileUpload(e, setClubMemberForm, 'imageUrl')} />
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-3 relative z-10">
+                <button type="submit" className="px-6 py-2 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold rounded-xl hover:from-teal-600 hover:to-cyan-600 transition-all shadow-md flex items-center gap-2"><Save className="w-4 h-4" />{editingId ? 'Update' : 'Create'}</button>
+                {editingId && <button type="button" onClick={cancelEdit} className="px-6 py-2 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition-all flex items-center gap-2"><X className="w-4 h-4" />Cancel</button>}
+              </div>
+            </form>
+
+            <div className="space-y-3">
+              {clubMembers.map(m => (
+                <div key={m._id} className="bg-white rounded-[1.5rem] rounded-tl-lg rounded-br-lg shadow-sm border border-cyan-100 p-5 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-md transition-shadow gap-4">
+                  <div className="flex items-center gap-4 flex-1">
+                    {m.imageUrl ? <img src={m.imageUrl} alt={m.name} className="w-12 h-12 rounded-full object-cover border border-gray-200" /> : <div className="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600 font-bold">{m.name.charAt(0)}</div>}
+                    <div>
+                      <h3 className="font-bold text-gray-800">{m.name}</h3>
+                      <p className="text-sm text-gray-500">@{m.username} • {m.role} • {m.attendance}</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <button onClick={() => { setEditingId(m._id); setEditingType('clubmembers'); setClubMemberForm({ name: m.name, username: m.username, password: '', role: m.role, attendance: m.attendance || '', imageUrl: m.imageUrl || '' }); }} className="p-2 text-teal-600 hover:bg-teal-50 rounded-lg transition-colors"><Edit3 className="w-4 h-4" /></button>
+                    <button onClick={() => handleDelete('admin/clubmembers', m._id)} className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"><Trash2 className="w-4 h-4" /></button>
+                  </div>
+                </div>
+              ))}
+              {clubMembers.length === 0 && <p className="text-center text-gray-400 py-8">No club members yet.</p>}
+            </div>
+          </div>
+        )}
+
+        {/* Attendance Tab */}
+        {activeTab === 'attendance' && (
+          <div className="animate-fade-in space-y-8">
+            <div className="bg-white rounded-[2rem] shadow-sm border border-cyan-100 p-6 sm:p-8">
+              <h2 className="text-2xl font-black text-slate-800 flex items-center gap-2 mb-6">
+                <CheckCircle className="w-6 h-6 text-emerald-500" />
+                Take Attendance
+              </h2>
+              
+              <form onSubmit={handleAttendanceSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div>
+                    <label className={labelClass}>Type</label>
+                    <select value={attendanceForm.type} onChange={e => setAttendanceForm({...attendanceForm, type: e.target.value})} className={inputClass}>
+                      <option value="Meeting">Club Meeting</option>
+                      <option value="Event">NGO Event</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className={labelClass}>Date</label>
+                    <input type="date" value={attendanceForm.date} onChange={e => setAttendanceForm({...attendanceForm, date: e.target.value})} className={inputClass} required />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Purpose / Topic</label>
+                    <input type="text" placeholder="e.g. Planning Meeting" value={attendanceForm.purpose} onChange={e => setAttendanceForm({...attendanceForm, purpose: e.target.value})} className={inputClass} required />
+                  </div>
+                </div>
+
+                <div className="border border-slate-200 rounded-xl overflow-hidden">
+                  <div className="bg-slate-50 p-4 border-b border-slate-200 font-bold text-slate-700 flex justify-between items-center">
+                    <span>Select Present Members</span>
+                    <button type="button" onClick={() => {
+                      if (attendanceForm.presentMembers.length === clubMembers.length) {
+                        setAttendanceForm(prev => ({...prev, presentMembers: []}));
+                      } else {
+                        setAttendanceForm(prev => ({...prev, presentMembers: clubMembers.map(m => m._id)}));
+                      }
+                    }} className="text-sm text-cyan-600 hover:underline">
+                      {attendanceForm.presentMembers.length === clubMembers.length ? 'Deselect All' : 'Select All'}
+                    </button>
+                  </div>
+                  <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 max-h-96 overflow-y-auto">
+                    {clubMembers.map(m => (
+                      <label key={m._id} className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${attendanceForm.presentMembers.includes(m._id) ? 'bg-emerald-50 border-emerald-200' : 'bg-white border-slate-200 hover:bg-slate-50'}`}>
+                        <input type="checkbox" checked={attendanceForm.presentMembers.includes(m._id)} onChange={() => toggleAttendanceMember(m._id)} className="w-5 h-5 text-emerald-500 rounded focus:ring-emerald-500" />
+                        <div className="flex items-center gap-2">
+                          {m.imageUrl ? <img src={m.imageUrl} alt="" className="w-8 h-8 rounded-full object-cover" /> : <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-xs font-bold">{m.name.charAt(0)}</div>}
+                          <span className={`font-medium ${attendanceForm.presentMembers.includes(m._id) ? 'text-emerald-900' : 'text-slate-700'}`}>{m.name}</span>
+                        </div>
+                      </label>
+                    ))}
+                    {clubMembers.length === 0 && <p className="text-slate-500 italic col-span-full">No members found. Add some in the Club Members tab first.</p>}
+                  </div>
+                </div>
+
+                <button type="submit" className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold rounded-xl hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                  Save Attendance Record
+                </button>
+              </form>
+            </div>
+
+            <div className="bg-white rounded-[2rem] shadow-sm border border-slate-100 p-6 sm:p-8">
+              <h3 className="font-bold text-slate-800 text-xl mb-6">Recent Attendance Logs</h3>
+              <div className="space-y-4">
+                {attendanceLogs.map(log => (
+                  <div key={log._id} className="border border-slate-100 rounded-xl p-4 hover:bg-slate-50 transition-colors">
+                    <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-3">
+                      <div>
+                        <span className={`inline-block px-2.5 py-1 text-xs font-bold rounded-full mr-3 ${log.type === 'Meeting' ? 'bg-blue-100 text-blue-700' : 'bg-purple-100 text-purple-700'}`}>{log.type}</span>
+                        <span className="font-bold text-slate-800">{log.purpose}</span>
+                      </div>
+                      <div className="text-sm text-slate-500 font-medium">
+                        {new Date(log.date).toLocaleDateString()}
+                      </div>
+                    </div>
+                    <div className="text-sm text-slate-600 bg-white p-3 rounded-lg border border-slate-100 inline-block w-full">
+                      <span className="font-semibold text-slate-800">{log.presentMembers?.length || 0} Members Present:</span> {log.presentMembers?.map(m => m.name).join(', ') || 'None'}
+                    </div>
+                  </div>
+                ))}
+                {attendanceLogs.length === 0 && <p className="text-slate-500 italic text-center py-4">No attendance records found.</p>}
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   );
