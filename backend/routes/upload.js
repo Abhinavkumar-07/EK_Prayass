@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const authMiddleware = require('../middleware/authMiddleware');
 
 const upload = multer({ storage: multer.memoryStorage() });
 
-router.post('/', upload.single('image'), async (req, res) => {
+// POST /api/upload — admin-protected: upload image to ImgBB
+router.post('/', authMiddleware, upload.single('image'), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ error: 'No image provided' });

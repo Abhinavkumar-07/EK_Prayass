@@ -14,12 +14,14 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-const allowedOrigins = [
-  'http://localhost:5173', // for local frontend dev
-  'https://notice-theta.vercel.app',
-  'https://ek-prayass.vercel.app',
-  'https://frontend-red-theta-89.vercel.app'
-];
+const allowedOrigins = process.env.ALLOWED_ORIGINS 
+  ? process.env.ALLOWED_ORIGINS.split(',') 
+  : [
+      'http://localhost:5173', // for local frontend dev
+      'https://notice-theta.vercel.app',
+      'https://ek-prayass.vercel.app',
+      'https://frontend-red-theta-89.vercel.app'
+    ];
 
 app.use(cors({
   origin: allowedOrigins,
@@ -28,14 +30,14 @@ app.use(cors({
 
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
-  console.log("Connected to MongoDB");
-}).catch((err) => {
-  console.error("MongoDB connection error:", err);
-});
+mongoose.connect(process.env.MONGO_URL)
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
+  });
 
 app.get('/', (req, res) => {
   res.send('Ek-prayass Website is live');
@@ -49,5 +51,10 @@ app.use('/api/sponsors', sponsors);
 app.use('/api/projects', projects);
 app.use('/api/team', team);
 app.use('/api/upload', uploadRoute);
+
+// 404 catch-all
+app.use((req, res) => {
+  res.status(404).json({ error: 'Route not found' });
+});
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

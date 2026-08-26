@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/780221923.jpg';
+import logo from '../assets/favicon.jpg';
 
 const Footer = () => {
     return (
@@ -37,17 +37,23 @@ const Footer = () => {
 
                     {/* 3rd section */}
                     <div>
-                        <h3 className="font-semibold text-[15px] text-white mb-5">Resources</h3>
+                        <h3 className="font-semibold text-[15px] text-white mb-5">Get Involved</h3>
                         <ul className="space-y-3">
-                            {['FAQ', 'Privacy Policy', 'Terms of Service', 'Support', 'Contact Us'].map(item => (
-                                <li key={item}>
-                                    <Link to={item === 'Contact Us' ? '/form' : '#'} className="text-slate-400 text-[14px] hover:text-[#17c1c8] transition-colors duration-200">
-                                        {item}
+                            {[
+                                { label: 'Volunteer With Us', path: '/volunteer' },
+                                { label: 'Our Projects', path: '/project' },
+                                { label: 'Our Team', path: '/team' },
+                                { label: 'Contact Us', path: '/form' },
+                            ].map(item => (
+                                <li key={item.label}>
+                                    <Link to={item.path} className="text-slate-400 text-[14px] hover:text-[#17c1c8] transition-colors duration-200">
+                                        {item.label}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
+
 
                     {/* 4th section - Follow Us */}
                     <div>

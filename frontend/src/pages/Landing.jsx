@@ -1,7 +1,7 @@
-import Reacr from 'react';
+import React from 'react';
 import Home from '../components/Home.jsx';
-import About from '../pages/About.jsx';
-import Team from '../pages/Team.jsx';
+import About from './About.jsx';
+import Team from './Team.jsx';
 import Form from '../components/Form.jsx';
 
 const Landing = () => {

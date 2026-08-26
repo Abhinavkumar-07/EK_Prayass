@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-import logo from '../assets/780221923.jpg';
+import logo from '../assets/favicon.jpg';
 import { Home, User, Menu, X, HeartHandshake } from 'lucide-react';
 
 const Navbar = () => {

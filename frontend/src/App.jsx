@@ -4,7 +4,6 @@ import './App.css'
 import './index.css';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
-import Home from './components/Home.jsx';
 import About from './pages/About.jsx';
 import Form from './components/Form.jsx';
 import Team from './pages/Team.jsx';
@@ -13,8 +12,8 @@ import Volunteer from './pages/Volunteer.jsx';
 import Notice from './pages/Notice.jsx';
 import Landing from './pages/Landing.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
-import Gallery from './pages/Gallery.jsx';
 import Partners from './pages/Partners.jsx';
+import Gallery from './pages/Gallery.jsx';
 
 
 function App () {
