@@ -279,6 +279,7 @@ const ClubMemberDashboard = () => {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         )}
 
