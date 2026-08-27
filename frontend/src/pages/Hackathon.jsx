@@ -331,7 +331,7 @@ const Hackathon = () => {
             <span className="text-gray-500">A launchpad for student innovators.</span>
           </h2>
           <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-6">
-            Aavishkaar is a premium hackathon organized by Club Ek-Prayass and Club AISS, inspired by the 
+            Aavishkaar is a hackathon organized by Club Ek-Prayass and Club AISS, inspired by the 
             Smart India Hackathon (SIH) framework. Build real products, get mentored, 
             and compete for a direct entry to the national stage.
           </p>
