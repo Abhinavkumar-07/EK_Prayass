@@ -35,7 +35,7 @@ const About = () => {
                   <span className="bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500 bg-clip-text text-transparent drop-shadow-sm">
                     Change
                   </span>
-                  <div className="absolute -bottom-2 left-0 w-full h-1.5 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full"></div>
+                  {/* <div className="absolute -bottom-2 left-0 w-full h-1.5 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full"></div> */}
                 </span>
                 <br />
                 Through Community and{' '}
