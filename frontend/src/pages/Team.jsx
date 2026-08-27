@@ -23,7 +23,7 @@ const fallbackMembers = [
     _id: 'prabhat',
     name: "Swasti Mitaal",
     position: "President",
-    imageUrl: swastiImg,
+    imageUrl: swasti_maam,
     quote: [
       "As the President of our social club, I feel deeply honored to lead a team of passionate individuals committed to making a difference.",
       "For me, this club is more than just a group — it's a community built on compassion, inclusivity, and the belief that small actions can create meaningful change.",
@@ -35,7 +35,7 @@ const fallbackMembers = [
     _id: 'khushi',
     name: "Avi Gupta",
     position: "Vice-President",
-    imageUrl: aviImg,
+    imageUrl: Avi_sir,
     quote: [
       "Being the Vice President of this club is not just a role, it's a भावना (emotion) close to my heart.",
       "I believe true समाज सेवा (social service) starts with listening — to each other, to our communities, and to the बदलाव (change) we want to see.",
