@@ -688,7 +688,7 @@ const Hackathon = () => {
             The stage is set — are you?
           </p>
           <a
-            href={REGISTER_URL}
+            href="https://docs.google.com/forms/d/e/1FAIpQLSe7d99M-xSBoL6jj8MjAjEihgHsgpcZtCiWze2kpSshUWuDPw/viewform"
             className="group inline-flex items-center gap-3 bg-amber-400 hover:bg-amber-300 text-black font-bold px-12 py-5 rounded-xl text-lg transition-all hover:shadow-2xl hover:shadow-amber-400/20 hover:-translate-y-1"
           >
             Register Now
