@@ -134,6 +134,75 @@ const stats = [
   { number: '₹250', label: 'Fee / Team' },
 ];
 
+const problemStatements = [
+  {
+    track: "Healthcare & Well-being",
+    problems: [
+      "SIH26133 – Accessibility and Quality of Public Healthcare Services, Particularly in Rural & Underserved Areas",
+      "SIH26038 – Explainable AI for Diabetic Retinopathy Screening in Rural India",
+      "SIH26003 – AI-Based Cognitive Gaming and Memory Assistance Platform for Elderly Dementia Patients",
+      "SIH26094 – AI-Powered Mental Health Monitoring and Distress Prediction for Victims of Atrocities",
+      "SIH26093 – AI-Based Stress & Trauma Assessment for Victims/Complainants",
+      "SIH26113 – Human Augmentation Technologies for Healthcare, Rehabilitation, Assistive Living & Personal Mobility",
+      "SIH26181 – AI-Powered Personal Health Companion with Real-Time Health Monitoring & Early Warnings"
+    ]
+  },
+  {
+    track: "Rural, Agriculture & Livelihood Empowerment",
+    problems: [
+      "SIH26132 – Strengthening Market Linkages and Price Discovery for Farmers",
+      "SIH26033 – Multiple Intermediaries Reduce Farmers' Earnings and Increase Consumer Prices",
+      "SIH26090 – AI-Driven Market Linkage and Smart Cataloging Mobile Application for Marginalized Artisans",
+      "SIH26097 – AI-Driven Voice Assistant for Livelihood Mapping and Skilling Recommendations for SC Communities",
+      "SIH26091 – AI-Driven Hyper-Local Business Advisory and Financial Structuring Assistant for Rural Micro-Entrepreneurs",
+      "SIH26022 – Smart Solar-Powered Drying & Packaging System for Rural Women Artisans",
+      "SIH26020 – Innovative Hand-Spinning Equipment for Enhancing Khadi Artisan Productivity and Income",
+      "SIH26128 – Early Detection, Prevention and Management of Livestock Diseases"
+    ]
+  },
+  {
+    track: "Women & Community Empowerment",
+    problems: [
+      "SIH26022 – Smart Solar-Powered Drying & Packaging System for Rural Women Artisans",
+      "SIH26043 – Platform to Crowdsource Societal Challenges and Connect Citizens, Universities and Industry",
+      "SIH26097 – AI-Driven Voice Assistant for Livelihood Mapping and Skilling Recommendations for SC Communities"
+    ]
+  },
+  {
+    track: "Environment, Climate & Disaster Resilience",
+    problems: [
+      "SIH26192 – Flash Flood Prediction System for Hilly Regions",
+      "SIH26191 – Identifying Hazard Red Zones and Relocation Needs for Vulnerable Habitations",
+      "SIH26178 – AI Environmental Monitoring for Floods, Fires, Pollution and Other Hazards",
+      "SIH26082 – Air Pollution–Weather Coupled Forecasting System",
+      "SIH26083 – Extreme Heatwave Early Warning & Human Thermal Stress Index",
+      "SIH26001 – AI-Based Early Warning and Landslide Risk Monitoring System",
+      "SIH26071 – AI/ML-Based Heavy Rainfall Early Warning and Inundation Prediction",
+      "SIH26072 – AI/ML-Based Thunderstorm and Lightning Nowcasting"
+    ]
+  },
+  {
+    track: "Inclusive Society & Accessibility",
+    problems: [
+      "SIH26042 – AI-Powered Vernacular Pedagogy and Real-Time Translation for Mother-Tongue Primary Education",
+      "SIH26113 – Human Augmentation Technologies for Healthcare, Rehabilitation, Assistive Living & Personal Mobility",
+      "SIH26075 – CAPACITY CONNECT – Digital Capacity Building and Learning Management Portal",
+      "SIH26134 – Aligning Skill-Development Programs with Job-Market Requirements",
+      "SIH26135 – Tracking Employment Outcomes, Skill Gaps and Skilling Impact"
+    ]
+  },
+  {
+    track: "Governance & Citizen-Centric Services",
+    problems: [
+      "SIH26043 – Platform to Crowdsource Societal Challenges and Connect Citizens, Universities and Industry",
+      "SIH26129 – Integration of Government Digital Platforms to Reduce Fragmented Service Delivery",
+      "SIH26102 – AI System to Detect Fraud and Inefficiencies in MPLAD Scheme Implementation",
+      "SIH26016 – Real-Time National Land Acquisition & Management System",
+      "SIH26018 – Intelligent Land Record Digitization and Validation System"
+    ]
+  }
+];
+
 
 // ─── Main Component ────────────────────────────
 const Hackathon = () => {
@@ -483,6 +552,41 @@ const Hackathon = () => {
         </div>
       </Section>
 
+
+
+      {/* ════════════ THEMATIC TRACKS & PROBLEM STATEMENTS ════════════ */}
+      <Section id="tracks" className="py-24 md:py-32 bg-[#0f0f0f]">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-amber-400 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Choose Your Path</p>
+            <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight">
+              Thematic Tracks &<br />
+              <span className="text-gray-500">Problem Statements.</span>
+            </h2>
+            <p className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto">
+              Explore the real-world SIH problem statements you can tackle during Aavishkaar '26.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {problemStatements.map((track, i) => (
+              <div key={i} className="rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden">
+                <div className="p-6 md:p-8">
+                  <h3 className="font-display font-bold text-xl md:text-2xl text-amber-400 mb-4">{track.track}</h3>
+                  <ul className="space-y-3">
+                    {track.problems.map((prob, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <ChevronRight className="w-4 h-4 text-white/40 mt-1 flex-shrink-0" />
+                        <span className="text-gray-300 text-sm md:text-base leading-relaxed">{prob}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
 
 
       {/* ════════════ FAQ ════════════ */}
