@@ -223,9 +223,12 @@ const Hackathon = () => {
           <Link to="/" className="text-gray-400 text-sm hover:text-white transition-colors z-10">
             ← Ek-Prayas
           </Link>
-          <span className="absolute left-1/2 -translate-x-1/2 font-display font-bold text-lg tracking-tight">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="absolute left-1/2 -translate-x-1/2 font-display font-bold text-lg tracking-tight hover:opacity-80 transition-opacity"
+          >
             <span className="text-amber-400">AAVISH</span>KAAR
-          </span>
+          </button>
           <div className="hidden md:flex items-center gap-6 z-10">
             <a href="#about" className="text-gray-400 text-sm hover:text-white transition-colors">About</a>
             <a href="#timeline" className="text-gray-400 text-sm hover:text-white transition-colors">Timeline</a>
