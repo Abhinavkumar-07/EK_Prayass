@@ -37,7 +37,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="py-4 bg-gradient-to-r from-[#17c1c8] to-[#6ed2fc] shadow-md px-8 md:sticky md:top-0 z-50 w-full transition-all duration-300">
+    <nav className="py-4 bg-gradient-to-r from-[#17c1c8] to-[#6ed2fc] px-8 w-full transition-all duration-300">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         {/* Logo Section */}
         <div className="flex items-center gap-4 group cursor-pointer" onClick={() => navigate('/')}>

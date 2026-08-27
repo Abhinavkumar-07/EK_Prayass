@@ -27,24 +27,24 @@ function App () {
 
     return(
         <div className="flex flex-col min-h-screen bg-white">
-        {!hideShell && <Navbar />}
-
-        {/* TEMPORARY: Hackathon announcement strip — Remove after October 2026 */}
         {!hideShell && (
-          <Link
-            to="/hackathon"
-            className="relative block bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-black py-4 px-6 text-center group hover:from-amber-400 hover:via-amber-300 hover:to-yellow-300 transition-all duration-300 z-40 shadow-md"
-          >
-            <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-base md:text-lg font-semibold">
-              <span className="animate-pulse text-xl">🚀</span>
-              <span className="hidden sm:inline opacity-90">Ek-Prayas presents</span>
-              <span className="font-black tracking-tight text-xl">AAVISHKAAR</span>
-              <span className="hidden md:inline opacity-90">— A 36-Hour National Hackathon</span>
-              <span className="bg-black text-amber-400 text-sm font-bold px-4 py-1.5 rounded-full ml-3 group-hover:bg-black/80 group-hover:-translate-y-0.5 transition-all shadow-sm">
-                  Register Now →
-              </span>
-            </div>
-          </Link>
+          <div className="sticky top-0 z-50 w-full flex flex-col shadow-md">
+            <Link
+              to="/hackathon"
+              className="relative block bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-black py-4 px-6 text-center group hover:from-amber-400 hover:via-amber-300 hover:to-yellow-300 transition-all duration-300"
+            >
+              <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-base md:text-lg font-semibold">
+                <span className="animate-pulse text-xl">🚀</span>
+                <span className="hidden sm:inline opacity-90">Ek-Prayas presents</span>
+                <span className="font-black tracking-tight text-xl">AAVISHKAAR</span>
+                <span className="hidden md:inline opacity-90">— A 36-Hour National Hackathon</span>
+                <span className="bg-black text-amber-400 text-sm font-bold px-4 py-1.5 rounded-full ml-3 group-hover:bg-black/80 group-hover:-translate-y-0.5 transition-all shadow-sm">
+                    Register Now →
+                </span>
+              </div>
+            </Link>
+            <Navbar />
+          </div>
         )}
 
         <main className="flex-grow flex flex-col">
