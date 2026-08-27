@@ -83,7 +83,7 @@ const Team = ({ isHome = false }) => {
   const [teamMembers, setTeamMembers] = useState(fallbackMembers);
 
   useEffect(() => {
-    document.title = 'Our Team | Ek-Prayas';
+    
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 2000);
@@ -92,7 +92,7 @@ const Team = ({ isHome = false }) => {
 
     return () => {
       clearInterval(interval);
-      document.title = 'Ek-Prayas | Together, We Can Change Lives';
+      
     };
   }, []);
 

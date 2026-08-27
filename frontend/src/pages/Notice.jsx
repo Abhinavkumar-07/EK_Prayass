@@ -8,9 +8,9 @@ const Notice = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = 'Notices | Ek-Prayas';
+    
     fetchNotices();
-    return () => { document.title = 'Ek-Prayas | Together, We Can Change Lives'; };
+    return () => {  };
   }, []);
 
   const fetchNotices = async () => {

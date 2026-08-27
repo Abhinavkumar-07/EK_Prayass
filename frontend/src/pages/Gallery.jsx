@@ -54,8 +54,8 @@ const Gallery = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    document.title = 'Gallery | Ek-Prayas';
-    return () => { document.title = 'Ek-Prayas | Together, We Can Change Lives'; };
+    
+    return () => {  };
   }, []);
 
   const filtered = activeCategory === 'All'

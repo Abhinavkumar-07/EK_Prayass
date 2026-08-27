@@ -88,9 +88,9 @@ const Project = () => {
   const [projects, setProjects] = useState(fallbackProjects);
 
   useEffect(() => {
-    document.title = 'Our Projects | Ek-Prayas';
+    
     fetchProjects();
-    return () => { document.title = 'Ek-Prayas | Together, We Can Change Lives'; };
+    return () => {  };
   }, []);
 
   const fetchProjects = async () => {

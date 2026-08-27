@@ -144,8 +144,8 @@ const Hackathon = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
-    document.title = 'Aavishkaar — Hackathon by Ek-Prayas';
-    return () => { document.title = 'Ek-Prayas | Together, We Can Change Lives'; };
+    
+    return () => {  };
   }, []);
 
   return (

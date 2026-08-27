@@ -7,8 +7,8 @@ import { useNavigate, useLocation  } from 'react-router-dom';
 
 const Volunteer = () => {
   useEffect(() => {
-    document.title = 'Volunteer | Ek-Prayas';
-    return () => { document.title = 'Ek-Prayas | Together, We Can Change Lives'; };
+    
+    return () => {  };
   }, []);
 
     const navigate = useNavigate();

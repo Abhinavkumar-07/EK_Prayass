@@ -15,9 +15,9 @@ const Partners = () => {
   const [formStatus, setFormStatus] = useState('');
 
   useEffect(() => {
-    document.title = 'Partner with Us | Ek-Prayas';
+    
     fetchSponsors();
-    return () => { document.title = 'Ek-Prayas | Together, We Can Change Lives'; };
+    return () => {  };
   }, []);
 
   const fetchSponsors = async () => {
