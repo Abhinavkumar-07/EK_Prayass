@@ -6,6 +6,7 @@ const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8000/api';
 const AdminDashboard = () => {
   const [token, setToken] = useState(localStorage.getItem('adminToken') || '');
   const [loginForm, setLoginForm] = useState({ username: '', password: '' });
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [activeTab, setActiveTab] = useState('notices');
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -148,6 +149,7 @@ const AdminDashboard = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setIsLoggingIn(true);
     try {
       const res = await fetch(`${API_BASE}/admin/login`, {
         method: 'POST',
@@ -164,10 +166,12 @@ const AdminDashboard = () => {
       setLoginForm({ username: '', password: '' });
     } catch (err) {
       if (err.message === 'Failed to fetch') {
-        alert('Cannot connect to the server. Ensure the backend is running on port 8000.');
+        alert('Cannot connect to the server. This usually takes a few seconds to wake up the database. Please try again!');
       } else {
         alert(err.message || 'Login failed. Check your credentials.');
       }
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 
@@ -409,9 +413,17 @@ const AdminDashboard = () => {
               </div>
               <button
                 type="submit"
-                className="w-full py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold rounded-[1.5rem] rounded-tl-md rounded-br-md hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] hover:-rotate-1"
+                disabled={isLoggingIn}
+                className="w-full py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold rounded-[1.5rem] rounded-tl-md rounded-br-md hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] hover:-rotate-1 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                Sign In
+                {isLoggingIn ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Authenticating...
+                  </>
+                ) : (
+                  'Sign In'
+                )}
               </button>
             </div>
           </form>

@@ -31,13 +31,23 @@ app.use(cors({
 
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URL)
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("MongoDB connection error:", err);
+// MongoDB Connection (Optimized for Serverless Cold Starts)
+const connectDB = async () => {
+  if (mongoose.connection.readyState >= 1) return;
+  return mongoose.connect(process.env.MONGO_URL, {
+    serverSelectionTimeoutMS: 5000,
   });
+};
+
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
+    res.status(500).json({ error: 'Database connection failed' });
+  }
+});
 
 app.get('/', (req, res) => {
   res.send('Ek-prayass Website is live');

@@ -162,7 +162,15 @@ const ClubMemberDashboard = () => {
     );
   }
 
-  if (!memberProfile) return <div className="min-h-screen flex items-center justify-center bg-slate-50">Loading...</div>;
+  if (!memberProfile) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 font-sans">
+        <div className="w-12 h-12 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mb-4 shadow-sm"></div>
+        <h2 className="text-xl font-bold text-slate-800 animate-pulse">Loading Member Portal...</h2>
+        <p className="text-sm text-slate-500 mt-2">Connecting to secure database</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans">
