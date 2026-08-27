@@ -13,6 +13,11 @@ import Avi_sir from '../assets/Avi_sir.jpeg';
 import prabhat from '../assets/prabhatsir.jpeg';
 import khushi from '../assets/khushimam.jpeg';
 import akshama from '../assets/akshma.jpg';
+import shorya from '../assets/shorya_sir.jpeg';
+import chirag from '../assets/chirag_sir.jpeg';
+import shreya from '../assets/shreya.jpeg';
+import vanshika from '../assets/vanshika.jpeg';
+import pushpanjali from '../assets/pushpanjali.jpeg';
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8000/api';
 
@@ -60,35 +65,35 @@ const otherMembers = [
     _id: 'shreya',
     name: "Shreya Sharma",
     position: "Secretary",
-    imageUrl: "",
+    imageUrl: shreya,
     quote: ["Dedicated to organizing and structuring our efforts to ensure smooth operations and maximum impact."]
   },
   {
     _id: 'chirag',
     name: "Chirag Goswami",
     position: "Operation Head",
-    imageUrl: "",
+    imageUrl: chirag,
     quote: ["Execution is everything. I strive to turn our ideas into reality through precise planning and operational excellence."]
   },
   {
     _id: 'pushpanjali',
     name: "Pushpanjali Srivastava",
     position: "Graphics Head",
-    imageUrl: "",
+    imageUrl: pushpanjali,
     quote: ["Visual storytelling is a powerful tool for change. I aim to create designs that inspire and resonate with our community."]
   },
   {
     _id: 'vanshika',
     name: "Vanshika Mittal",
     position: "Social Media Head",
-    imageUrl: "",
+    imageUrl: vanshika,
     quote: ["Connecting hearts through the digital world. I focus on spreading our message far and wide to build a stronger community."]
   },
   {
     _id: 'shorya',
     name: "Shorya Mittal",
     position: "Content Head",
-    imageUrl: "",
+    imageUrl: shorya,
     quote: ["Words have the power to heal, inspire, and drive action. My goal is to craft stories that leave a lasting impact."]
   }
 ];
