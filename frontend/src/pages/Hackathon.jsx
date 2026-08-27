@@ -83,58 +83,56 @@ const FaqItem = ({ question, answer }) => {
 // ─── Data ──────────────────────────────────────
 const REGISTER_URL = '#register'; // TEMPORARY: Replace with actual registration form URL
 
-const EVENT_DATE = '2026-10-15T09:00:00+05:30'; // Change to actual hackathon date
+const EVENT_DATE = '2026-09-05T09:00:00+05:30';
 
-const whyDifferent = [
-  { icon: <Trophy className="w-6 h-6" />, title: 'Real Prizes, Real Impact', desc: 'Cash prizes, internships, and mentorship opportunities — not just certificates.' },
-  { icon: <Users className="w-6 h-6" />, title: 'Industry Mentors', desc: 'Get guided by engineers from top companies who review your code live.' },
-  { icon: <Code className="w-6 h-6" />, title: 'Build, Don\'t Pitch', desc: 'This is a building hackathon. Working prototypes win, not slide decks.' },
-  { icon: <Lightbulb className="w-6 h-6" />, title: 'Problem Statements That Matter', desc: 'Solve real-world challenges from NGOs, startups, and government bodies.' },
-  { icon: <Zap className="w-6 h-6" />, title: '36 Hours of Pure Energy', desc: 'Non-stop hacking with food, music, and an electrifying atmosphere.' },
-  { icon: <Target className="w-6 h-6" />, title: 'Campus to National Stage', desc: 'Top teams get invited to represent at national-level hackathons.' },
+const keyHighlights = [
+  { icon: <Users className="w-6 h-6" />, title: '40 Max Teams', desc: 'Limited spots available for the most dedicated innovators.' },
+  { icon: <Shield className="w-6 h-6" />, title: '6 Members / Team', desc: 'Exactly 6 members required, with at least 1 female member mandatory.' },
+  { icon: <Trophy className="w-6 h-6" />, title: '₹5,000+ Prize Pool', desc: 'Win cash prizes and the chance for a direct entry to SIH National.' },
+  { icon: <Target className="w-6 h-6" />, title: '2 Competition Rounds', desc: 'Internal Screening followed by Final Evaluation.' },
+  { icon: <Zap className="w-6 h-6" />, title: 'Registration Fee', desc: '₹250 per team. Affordable entry to massive opportunities.' },
+  { icon: <Star className="w-6 h-6" />, title: 'SIH Inspired', desc: 'Top 3 teams get direct entry to the Smart India Hackathon (SIH) National.' },
 ];
 
 const howItWorks = [
-  { step: '01', title: 'Register Your Team', desc: 'Form a team of 2–4 members. Solo hackers can find teammates at the event.' },
-  { step: '02', title: 'Choose Your Track', desc: 'Pick from multiple problem tracks — social impact, fintech, healthtech, edtech, and more.' },
-  { step: '03', title: 'Build in 36 Hours', desc: 'Hack non-stop with access to mentors, APIs, cloud credits, and all the chai you need.' },
-  { step: '04', title: 'Demo & Win', desc: 'Present your working prototype to the jury. Best builds take home prizes and opportunities.' },
+  { step: '01', title: 'Round 1: Internal Screening', desc: '5 September 2026. 40 Teams compete, only 10 will advance to the finals.' },
+  { step: '02', title: 'Round 2: Final Evaluation', desc: '12 September 2026. The top 10 teams battle for the ultimate crown.' },
+  { step: '03', title: 'Top 3 Teams', desc: 'The final winners claim the ₹5,000+ prize pool and direct entry to SIH National!' }
 ];
 
 const timeline = [
-  { date: 'Sept 15', label: 'Registration Opens', status: 'active' },
-  { date: 'Oct 1', label: 'Registration Closes', status: 'upcoming' },
-  { date: 'Oct 5', label: 'Team Shortlisting', status: 'upcoming' },
-  { date: 'Oct 12', label: 'Opening Ceremony', status: 'upcoming' },
-  { date: 'Oct 13–14', label: '36-Hour Hackathon', status: 'upcoming' },
-  { date: 'Oct 15', label: 'Demo Day & Awards', status: 'upcoming' },
+  { date: 'Aug 20', label: 'Registration Opens', status: 'active' },
+  { date: 'Sept 4', label: 'Registration Closes', status: 'upcoming' },
+  { date: 'Sept 5', label: 'Round 1: Internal Screening', status: 'upcoming' },
+  { date: 'Sept 10', label: 'Round 1 Results Announced', status: 'upcoming' },
+  { date: 'Sept 12', label: 'Round 2: Final Evaluation', status: 'upcoming' },
+  { date: 'Sept 12', label: 'Winner Announcement', status: 'upcoming' },
 ];
 
 const rules = [
-  'All code must be written during the hackathon. Pre-built projects will be disqualified.',
-  'Teams must consist of 2–4 members. All members must be currently enrolled students.',
-  'Use of open-source libraries and APIs is allowed and encouraged.',
-  'Projects must have a working demo at the end of 36 hours.',
-  'Plagiarism or copying existing projects is strictly prohibited.',
-  'Judges\' decisions are final and binding.',
-  'All participants must follow the Code of Conduct.',
-  'Intellectual property belongs to the respective teams.',
+  'All participants must be students of KIET Deemed to be University.',
+  'Inter-college or inter-school teams are not permitted.',
+  'Teams may consist of students from different branches/departments/disciplines.',
+  'Each team must consist of exactly 6 members, including the Team Leader.',
+  'At least one female member is mandatory in every team.',
+  'A student can be part of only one registered team.',
+  'The Team Leader will be the primary point of contact.',
 ];
 
 const faqs = [
-  { q: 'Who can participate in Aavishkaar?', a: 'Any currently enrolled college/university student across India can participate. There\'s no restriction on year or branch — freshers to final years are all welcome.' },
-  { q: 'Do I need a team to register?', a: 'You can register solo and we\'ll help you find teammates during our team-matching session before the hackathon. But we recommend coming with a team of 2–4 members.' },
-  { q: 'Is there a registration fee?', a: 'No. Aavishkaar is completely free to participate. We cover food, swag, and workspace for all selected participants.' },
-  { q: 'What should I bring?', a: 'Your laptop, charger, valid college ID, and your best ideas. We provide the internet, food, chai, and vibes.' },
-  { q: 'Will there be hardware provided?', a: 'We have a limited hardware lab with Arduino, Raspberry Pi, sensors and more. If your project needs specific hardware, bring your own.' },
-  { q: 'Can I start working on my project before the event?', a: 'Absolutely not. All coding must begin after the hackathon officially starts. Pre-built solutions will be disqualified.' },
+  { q: 'Who can participate in Aavishkaar?', a: 'All participants must be students of KIET Deemed to be University. Inter-college or inter-school teams are not permitted.' },
+  { q: 'What is the team size requirement?', a: 'Each team must consist of exactly 6 members, including the Team Leader. At least one female member is mandatory in every team.' },
+  { q: 'Is there a registration fee?', a: 'Yes, the registration fee is ₹250 per team.' },
+  { q: 'Can I be in multiple teams?', a: 'No, a student can be part of only one registered team.' },
+  { q: 'What are the thematic tracks?', a: 'The tracks are: Healthcare for All, Rural & Livelihood Empowerment, Women & Community Empowerment, Environment & Disaster Resilience, and Inclusive Society.' },
+  { q: 'What do the winners get?', a: 'There is a prize pool of ₹5,000+, and the Top 3 teams get direct entry to the Smart India Hackathon (SIH) National.' },
 ];
 
 const stats = [
-  { number: '500+', label: 'Expected Participants' },
-  { number: '₹2L+', label: 'Prize Pool' },
-  { number: '36', label: 'Hours of Hacking' },
-  { number: '50+', label: 'Mentors & Judges' },
+  { number: '40', label: 'Max Teams' },
+  { number: '₹5K+', label: 'Prize Pool' },
+  { number: '2', label: 'Competition Rounds' },
+  { number: '₹250', label: 'Fee / Team' },
 ];
 
 
@@ -165,7 +163,7 @@ const Hackathon = () => {
             <a href="#timeline" className="text-gray-400 text-sm hover:text-white transition-colors">Timeline</a>
             <a href="#faq" className="text-gray-400 text-sm hover:text-white transition-colors">FAQ</a>
             <a
-              href={REGISTER_URL}
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe7d99M-xSBoL6jj8MjAjEihgHsgpcZtCiWze2kpSshUWuDPw/viewform"
               className="bg-amber-400 text-black font-bold text-sm px-5 py-2 rounded-lg hover:bg-amber-300 transition-all hover:shadow-lg hover:shadow-amber-400/20"
             >
               Register Now
@@ -213,8 +211,8 @@ const Hackathon = () => {
           </p>
 
           <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
-            A 36-hour hackathon where students build real solutions, compete nationally, 
-            and prove that the next big thing starts right here on campus.
+            A pathway to innovation! Join us for a massive competition inspired by the Smart India Hackathon (SIH) framework.
+            Organized by Club Ek-Prayass in collaboration with Club AISS.
           </p>
 
           {/* Countdown */}
@@ -236,7 +234,7 @@ const Hackathon = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={REGISTER_URL}
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe7d99M-xSBoL6jj8MjAjEihgHsgpcZtCiWze2kpSshUWuDPw/viewform"
               className="group bg-amber-400 hover:bg-amber-300 text-black font-bold px-10 py-4 rounded-xl text-lg transition-all hover:shadow-xl hover:shadow-amber-400/20 hover:-translate-y-0.5 flex items-center justify-center gap-2"
             >
               Register Your Team
@@ -263,13 +261,13 @@ const Hackathon = () => {
             <span className="text-gray-500">A launchpad for student innovators.</span>
           </h2>
           <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-6">
-            Aavishkaar is a 36-hour national-level hackathon organized by Ek-Prayas, designed to 
-            push students beyond classroom theory. Build real products, get mentored by industry leaders, 
-            and compete for prizes that actually matter.
+            Aavishkaar is a premium hackathon organized by Club Ek-Prayass and Club AISS, inspired by the 
+            Smart India Hackathon (SIH) framework. Build real products, get mentored, 
+            and compete for a direct entry to the national stage.
           </p>
           <p className="text-gray-500 text-lg leading-relaxed">
-            Whether you're a first-year curious about coding or a final-year with startup ambitions — 
-            this is your arena. No fluff, no filler. Just raw talent, tight deadlines, and the drive to create.
+            With thematic tracks ranging from Healthcare and Rural Empowerment to Environment and Inclusive Society,
+            this is your arena to build meaningful solutions that matter.
           </p>
         </div>
       </Section>
@@ -287,7 +285,7 @@ const Hackathon = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyDifferent.map((item, i) => (
+            {keyHighlights.map((item, i) => (
               <div
                 key={i}
                 className="group p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-amber-400/30 hover:bg-amber-400/[0.03] transition-all duration-300"
@@ -318,27 +316,27 @@ const Hackathon = () => {
             {/* 1st Prize */}
             <div className="relative p-8 rounded-2xl bg-gradient-to-b from-amber-400/10 to-transparent border border-amber-400/20 text-center group hover:border-amber-400/40 transition-all md:scale-105 md:-mt-4">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <span className="bg-amber-400 text-black text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">Winner</span>
+                <span className="bg-amber-400 text-black text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">Top 3 Winners</span>
               </div>
               <Trophy className="w-10 h-10 text-amber-400 mx-auto mt-4 mb-4" />
-              <p className="font-display font-black text-4xl text-amber-400 mb-2">₹50,000</p>
-              <p className="text-gray-400 text-sm">+ Internship Opportunities<br/>+ National Hackathon Invite</p>
+              <p className="font-display font-black text-4xl text-amber-400 mb-2">₹5,000+</p>
+              <p className="text-gray-400 text-sm">Total Prize Pool</p>
             </div>
 
-            {/* 2nd Prize */}
+            {/* SIH Entry */}
             <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/10 text-center hover:border-white/20 transition-all">
               <Star className="w-10 h-10 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider mb-2">1st Runner Up</p>
-              <p className="font-display font-black text-3xl text-white mb-2">₹30,000</p>
-              <p className="text-gray-500 text-sm">+ Mentorship Sessions<br/>+ Cloud Credits</p>
+              <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider mb-2">Direct Entry</p>
+              <p className="font-display font-black text-2xl text-white mb-2">SIH National</p>
+              <p className="text-gray-500 text-sm">Top 3 teams advance directly</p>
             </div>
 
-            {/* 3rd Prize */}
+            {/* Thematic Tracks */}
             <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/10 text-center hover:border-white/20 transition-all">
-              <Star className="w-10 h-10 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider mb-2">2nd Runner Up</p>
-              <p className="font-display font-black text-3xl text-white mb-2">₹20,000</p>
-              <p className="text-gray-500 text-sm">+ Swag Kits<br/>+ Cloud Credits</p>
+              <Lightbulb className="w-10 h-10 text-gray-400 mx-auto mb-4" />
+              <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider mb-2">Diverse Themes</p>
+              <p className="font-display font-black text-2xl text-white mb-2">5 Tracks</p>
+              <p className="text-gray-500 text-sm">Healthcare, Rural, Women, Environment</p>
             </div>
           </div>
 
@@ -389,13 +387,7 @@ const Hackathon = () => {
                 How your team<br /><span className="text-gray-500">should look.</span>
               </h3>
               <ul className="space-y-4">
-                {[
-                  '2–4 members per team. No exceptions.',
-                  'At least one person with coding chops.',
-                  'Cross-disciplinary teams encouraged (design + dev + domain).',
-                  'All members must be enrolled college students.',
-                  'Solo? We\'ll match you at the team-forming session.',
-                ].map((rule, i) => (
+                {rules.slice(0, 5).map((rule, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <ChevronRight className="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                     <span className="text-gray-400 text-sm leading-relaxed">{rule}</span>
@@ -409,18 +401,16 @@ const Hackathon = () => {
                 Your gear at<br /><span className="text-gray-500">the venue.</span>
               </h3>
               <ul className="space-y-4">
-                {[
-                  'Bring your own laptops and chargers — mandatory.',
-                  'High-speed WiFi provided at the venue.',
-                  'Limited hardware lab: Arduino, Raspberry Pi, sensors.',
-                  'Power strips and extension cords at every table.',
-                  'Specific hardware needs? Bring your own or pre-request.',
-                ].map((item, i) => (
+                {rules.slice(5).map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <ChevronRight className="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
                     <span className="text-gray-400 text-sm leading-relaxed">{item}</span>
                   </li>
                 ))}
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
+                  <span className="text-gray-400 text-sm leading-relaxed">Bring your laptops and passion!</span>
+                </li>
               </ul>
             </div>
           </div>
