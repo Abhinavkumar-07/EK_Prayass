@@ -29,6 +29,7 @@ function App () {
         <div className="flex flex-col min-h-screen bg-white">
         {!hideShell && (
           <div className="sticky top-0 z-50 w-full flex flex-col shadow-md">
+            <Navbar />
             <Link
               to="/hackathon"
               className="relative block bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-black py-4 px-6 text-center group hover:from-amber-400 hover:via-amber-300 hover:to-yellow-300 transition-all duration-300"
@@ -43,7 +44,6 @@ function App () {
                 </span>
               </div>
             </Link>
-            <Navbar />
           </div>
         )}
 
