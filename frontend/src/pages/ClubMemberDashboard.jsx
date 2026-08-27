@@ -209,56 +209,57 @@ const ClubMemberDashboard = () => {
         
         {/* Profile Directory */}
         {activeTab === 'profile' && (
-          <div className="space-y-8">
-            <div className="mb-6">
+          <div className="space-y-6">
+            <div className="mb-8">
               <h2 className="text-2xl font-bold text-slate-800">Club Members Directory</h2>
               <p className="text-slate-500">Welcome, {memberProfile.name}! View all club members below.</p>
             </div>
             
-            {allMembers.map(member => (
-              <div key={member._id} className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden transform transition-all hover:shadow-md">
-                <div className="p-8 sm:p-10 flex flex-col sm:flex-row items-center sm:items-start gap-8">
-                  
-                  {/* Profile Image with Cyan ring */}
-                  <div className="relative shrink-0">
-                    <div className="w-40 h-40 rounded-3xl overflow-hidden border-4 border-cyan-100 shadow-inner">
-                      {member.imageUrl ? (
-                        <img 
-                          src={member.imageUrl} 
-                          alt={member.name} 
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-cyan-100 to-blue-100 flex items-center justify-center text-cyan-600 text-5xl font-bold">
-                          {member.name.charAt(0)}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Details */}
-                  <div className="flex-grow text-center sm:text-left space-y-4 pt-2">
-                    <div>
-                      <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight flex items-center justify-center sm:justify-start gap-3">
-                        {member.name}
-                        {memberProfile._id === member._id && (
-                          <span className="text-xs font-semibold bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full uppercase tracking-wider">You</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+              {allMembers.map(member => (
+                <div key={member._id} className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden transform transition-all hover:shadow-md flex flex-col">
+                  <div className="p-8 flex flex-col items-center gap-6">
+                    
+                    {/* Profile Image with Cyan ring */}
+                    <div className="relative shrink-0">
+                      <div className="w-32 h-32 rounded-3xl overflow-hidden border-4 border-cyan-100 shadow-inner">
+                        {member.imageUrl ? (
+                          <img 
+                            src={member.imageUrl} 
+                            alt={member.name} 
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gradient-to-br from-cyan-100 to-blue-100 flex items-center justify-center text-cyan-600 text-5xl font-bold">
+                            {member.name.charAt(0)}
+                          </div>
                         )}
-                      </h1>
-                      <div className="inline-block mt-3 px-4 py-1.5 bg-cyan-50 text-cyan-700 font-semibold text-sm rounded-full border border-cyan-100">
-                        {member.role}
                       </div>
                     </div>
 
-                    <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 mt-6 inline-flex gap-8 justify-center sm:justify-start w-full sm:w-auto">
-                      <DonutChart percentage={member.meetingAttendance} color="text-blue-500" label="Meeting Attendance" />
-                      <DonutChart percentage={member.eventAttendance} color="text-purple-500" label="Event Attendance" />
+                    {/* Details */}
+                    <div className="flex-grow text-center space-y-4 w-full">
+                      <div>
+                        <h1 className="text-2xl font-extrabold text-slate-800 tracking-tight flex items-center justify-center gap-2 flex-wrap">
+                          {member.name}
+                          {memberProfile._id === member._id && (
+                            <span className="text-[10px] font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full uppercase tracking-wider">You</span>
+                          )}
+                        </h1>
+                        <div className="inline-block mt-3 px-4 py-1.5 bg-cyan-50 text-cyan-700 font-semibold text-sm rounded-full border border-cyan-100">
+                          {member.role}
+                        </div>
+                      </div>
+
+                      <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 mt-6 flex justify-center gap-6 w-full">
+                        <DonutChart percentage={member.meetingAttendance} color="text-blue-500" label="Meeting" />
+                        <DonutChart percentage={member.eventAttendance} color="text-purple-500" label="Event" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                
-                {/* Lower section of the card */}
-                <div className="border-t border-slate-100 bg-slate-50/50 p-8">
+                  
+                  {/* Lower section of the card */}
+                  <div className="border-t border-slate-100 bg-slate-50/50 p-6 flex-grow">
                   <h3 className="font-bold text-slate-800 flex items-center gap-2 mb-4">
                     <CheckCircle className="w-5 h-5 text-emerald-500" />
                     Assigned Events
