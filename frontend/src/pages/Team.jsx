@@ -45,30 +45,6 @@ const fallbackMembers = [
     ]
   },
   {
-    _id: 'akshama',
-    name: "Akshama",
-    position: "Event Management Head",
-    imageUrl: akshama,
-    quote: [
-      "As the Event Management Head, I believe that every event is an opportunity — to bring people together, to spark conversations, and to celebrate the spirit of सेवा (service) and togetherness.",
-      "Behind every successful आयोजन (event) is a team that works with दिल (heart), dedication, and determination. I'm proud to lead with those values at the core.",
-      "From the tiniest detail to the biggest moment, I strive to make every कार्यक्रम (program) impactful, inclusive, and full of positive energy.",
-      "सपने (dreams) take shape when passion meets planning — and that's exactly what I bring to the table, every single time."
-    ]
-  },
-  {
-    _id: 'anubha',
-    name: "Anubha",
-    position: "Social Media Head",
-    imageUrl: khushi,
-    quote: [
-      "As the Social Media Head, I see every post, story, and caption as a chance to connect, inspire, and spread our सोच (vision) to a wider audience.",
-      "Social media isn't just about content — it's about भावना (emotion), impact, and community. My goal is to ensure that our काम (work), events, and ideas reach लोगों तक (people far and wide) with authenticity and creativity.",
-      "Through visuals, words, and reels, I strive to highlight the जुनून (passion) and efforts behind everything we do.",
-      "In this digital age, our mission deserves a digital heartbeat — and I'm proud to be the one keeping it alive."
-    ]
-  },
-  {
     _id: 'abhinav',
     name: "Abhinav kumar",
     position: "Tech Domain",
@@ -79,12 +55,50 @@ const fallbackMembers = [
   }
 ];
 
+const otherMembers = [
+  {
+    _id: 'shreya',
+    name: "Shreya Sharma",
+    position: "Secretary",
+    imageUrl: "",
+    quote: ["Dedicated to organizing and structuring our efforts to ensure smooth operations and maximum impact."]
+  },
+  {
+    _id: 'chirag',
+    name: "Chirag Goswami",
+    position: "Operation Head",
+    imageUrl: "",
+    quote: ["Execution is everything. I strive to turn our ideas into reality through precise planning and operational excellence."]
+  },
+  {
+    _id: 'pushpanjali',
+    name: "Pushpanjali Srivastava",
+    position: "Graphics Head",
+    imageUrl: "",
+    quote: ["Visual storytelling is a powerful tool for change. I aim to create designs that inspire and resonate with our community."]
+  },
+  {
+    _id: 'vanshika',
+    name: "Vanshika Mittal",
+    position: "Social Media Head",
+    imageUrl: "",
+    quote: ["Connecting hearts through the digital world. I focus on spreading our message far and wide to build a stronger community."]
+  },
+  {
+    _id: 'shorya',
+    name: "Shorya Mittal",
+    position: "Content Head",
+    imageUrl: "",
+    quote: ["Words have the power to heal, inspire, and drive action. My goal is to craft stories that leave a lasting impact."]
+  }
+];
+
 const Team = ({ isHome = false }) => {
   const [index, setIndex] = useState(0);
   const [teamMembers, setTeamMembers] = useState(fallbackMembers);
 
   useEffect(() => {
-    
+
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 2000);
@@ -93,7 +107,7 @@ const Team = ({ isHome = false }) => {
 
     return () => {
       clearInterval(interval);
-      
+
     };
   }, []);
 
@@ -138,7 +152,7 @@ const Team = ({ isHome = false }) => {
         <div className="mt-20 mb-20 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
           <div className="bg-white/70 backdrop-blur-md rounded-[2.5rem] rounded-tl-[4rem] rounded-br-[4rem] shadow-xl shadow-cyan-900/5 overflow-hidden border border-white/80 ring-1 ring-slate-900/5">
             <div className="bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500 p-8 relative overflow-hidden">
-               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
               <h2 className="text-3xl md:text-4xl font-display font-bold text-center text-white relative z-10 tracking-tight">
                 Together We Can
               </h2>
@@ -147,9 +161,9 @@ const Team = ({ isHome = false }) => {
             <div className="p-6 md:p-10">
               <div className="relative rounded-3xl overflow-hidden aspect-[21/9] shadow-2xl group cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <img 
-                  src={images[index]} 
-                  alt={`Ek-Prayas team group photo ${index + 1}`} 
+                <img
+                  src={images[index]}
+                  alt={`Ek-Prayas team group photo ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
@@ -166,10 +180,14 @@ const Team = ({ isHome = false }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
           {teamMembers.filter(member => {
+            const name = member.name ? member.name.toLowerCase() : '';
+            if (name.includes('akshama') || name.includes('anubha')) {
+              return false;
+            }
             if (isHome) {
-              return !(member.name && member.name.toLowerCase().includes('abhinav'));
+              return !name.includes('abhinav');
             }
             return true;
           }).map((member, idx) => (
@@ -179,8 +197,8 @@ const Team = ({ isHome = false }) => {
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                     <div className="relative">
                       <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-[2rem] rounded-tl-[3rem] rounded-br-[3rem] overflow-hidden ring-4 ring-cyan-50 shadow-xl shadow-cyan-900/5 group-hover:ring-cyan-200 transition-all duration-500 rotate-[-4deg] group-hover:rotate-0">
-                        <img 
-                          src={member.imageUrl || member.image} 
+                        <img
+                          src={member.imageUrl || member.image}
                           alt={`${member.name} - ${member.position}`}
                           className="w-full h-full object-cover bg-slate-100 transition-transform duration-500 group-hover:scale-110"
                         />
@@ -198,15 +216,52 @@ const Team = ({ isHome = false }) => {
                 </div>
 
                 <div className="p-8 flex-1 flex flex-col justify-center bg-slate-50/50 relative overflow-hidden">
-                   {/* Decorative Quote Mark */}
+                  {/* Decorative Quote Mark */}
                   <div className="absolute top-4 right-6 text-8xl text-slate-100 font-serif leading-none select-none pointer-events-none group-hover:text-cyan-50 transition-colors duration-500">"</div>
-                  
+
                   <div className="relative z-10 space-y-4">
                     {(member.quote || []).map((paragraph, pIdx) => (
                       <p key={pIdx} className="text-slate-600 leading-relaxed text-sm lg:text-base font-light">
                         {paragraph}
                       </p>
                     ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap justify-center -mx-3 lg:-mx-4">
+          {otherMembers.map((member, idx) => (
+            <div key={idx} className="w-full md:w-1/2 lg:w-1/3 px-3 lg:px-4 mb-6 lg:mb-8 flex">
+              <div className="w-full group h-full transform transition-transform duration-500 hover:-translate-y-1">
+                <div className="h-full bg-white/70 backdrop-blur-md rounded-[1.5rem] shadow-md shadow-cyan-900/5 hover:shadow-xl hover:shadow-cyan-500/15 transition-all duration-500 overflow-hidden border border-white/80 ring-1 ring-slate-900/5 flex flex-col">
+                  <div className="p-6 pb-4 border-b border-slate-100 bg-gradient-to-br from-white to-slate-50/50">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden ring-4 ring-cyan-50 shadow-md shadow-cyan-900/5 group-hover:ring-cyan-200 transition-all duration-500">
+                        <img
+                          src={member.imageUrl || team1}
+                          alt={`${member.name} - ${member.position}`}
+                          className="w-full h-full object-cover bg-slate-100 transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="text-center sm:text-left flex-1 pt-1">
+                        <h2 className="text-xl font-display font-bold text-slate-800 mb-1 truncate tracking-tight">
+                          {member.name}
+                        </h2>
+                        <div className="inline-block px-3 py-1 bg-gradient-to-r from-cyan-50 to-teal-50 text-cyan-800 rounded-lg text-xs font-semibold border border-cyan-100 shadow-sm">
+                          {member.position}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6 flex-1 bg-slate-50/50 relative overflow-hidden">
+                    <div className="relative z-10 space-y-2">
+                      <p className="text-slate-600 leading-relaxed text-sm font-light">
+                        {member.quote[0]}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

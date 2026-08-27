@@ -220,7 +220,11 @@ const Hackathon = () => {
       {/* ════════════ HACKATHON NAVBAR ════════════ */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between relative">
-          <Link to="/" className="text-gray-400 text-sm hover:text-white transition-colors z-10">
+          <Link 
+            to="/" 
+            onClick={() => window.scrollTo(0, 0)}
+            className="text-gray-400 text-sm hover:text-white transition-colors z-10"
+          >
             ← Ek-Prayas
           </Link>
           <button 
