@@ -229,6 +229,7 @@ const Hackathon = () => {
           <div className="hidden md:flex items-center gap-6 z-10">
             <a href="#about" className="text-gray-400 text-sm hover:text-white transition-colors">About</a>
             <a href="#timeline" className="text-gray-400 text-sm hover:text-white transition-colors">Timeline</a>
+            <a href="#tracks" className="text-gray-400 text-sm hover:text-white transition-colors">Tracks</a>
             <a href="#faq" className="text-gray-400 text-sm hover:text-white transition-colors">FAQ</a>
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSe7d99M-xSBoL6jj8MjAjEihgHsgpcZtCiWze2kpSshUWuDPw/viewform"
@@ -250,6 +251,7 @@ const Hackathon = () => {
           <div className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-xl border-t border-white/5 px-6 py-6 space-y-4 animate-fade-in">
             <a href="#about" onClick={() => setMobileMenu(false)} className="block text-gray-300 hover:text-white py-2">About</a>
             <a href="#timeline" onClick={() => setMobileMenu(false)} className="block text-gray-300 hover:text-white py-2">Timeline</a>
+            <a href="#tracks" onClick={() => setMobileMenu(false)} className="block text-gray-300 hover:text-white py-2">Tracks</a>
             <a href="#faq" onClick={() => setMobileMenu(false)} className="block text-gray-300 hover:text-white py-2">FAQ</a>
             <a href={REGISTER_URL} className="block bg-amber-400 text-black font-bold text-center px-5 py-3 rounded-lg">Register Now</a>
           </div>
@@ -309,10 +311,10 @@ const Hackathon = () => {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              href="#about"
+              href="#tracks"
               className="border border-white/20 hover:border-white/40 text-white font-semibold px-10 py-4 rounded-xl text-lg transition-all hover:bg-white/5 flex items-center justify-center gap-2"
             >
-              Learn More
+              View Tracks
               <ChevronDown className="w-5 h-5" />
             </a>
           </div>
