@@ -32,6 +32,7 @@ function App () {
             <Navbar />
             <Link
               to="/hackathon"
+              onClick={() => window.scrollTo(0, 0)}
               className="relative block bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-black py-4 px-6 text-center group hover:from-amber-400 hover:via-amber-300 hover:to-yellow-300 transition-all duration-300"
             >
               <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-base md:text-lg font-semibold">
