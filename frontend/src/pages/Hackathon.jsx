@@ -122,7 +122,6 @@ const rules = [
 const faqs = [
   { q: 'Who can participate in Aavishkaar?', a: 'All participants must be students of KIET Deemed to be University. Inter-college or inter-school teams are not permitted.' },
   { q: 'What is the team size requirement?', a: 'Each team must consist of exactly 6 members, including the Team Leader. At least one female member is mandatory in every team.' },
-  { q: 'Is there a registration fee?', a: 'Yes, the registration fee is ₹250 per team.' },
   { q: 'Can I be in multiple teams?', a: 'No, a student can be part of only one registered team.' },
   { q: 'What are the thematic tracks?', a: 'The tracks are: Healthcare for All, Rural & Livelihood Empowerment, Women & Community Empowerment, Environment & Disaster Resilience, and Inclusive Society.' },
   { q: 'What do the winners get?', a: 'There is a prize pool of ₹5,000+, and the Top 3 teams get direct entry to the Smart India Hackathon (SIH) National.' },
