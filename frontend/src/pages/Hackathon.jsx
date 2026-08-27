@@ -485,27 +485,6 @@ const Hackathon = () => {
       </Section>
 
 
-      {/* ════════════ LEARN + BUILD ════════════ */}
-      <Section className="py-24 md:py-32 bg-[#0f0f0f]">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight mb-8">
-            <span className="text-amber-400">Learn</span> + <span className="text-white">Build</span> = <span className="text-gray-500">Aavishkaar</span>
-          </h2>
-          <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
-            Pre-hackathon workshops on AI/ML, Web3, Cloud, and UI/UX — so even beginners 
-            come prepared. Then build with that knowledge. That's the Aavishkaar way.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['AI / ML', 'Web3', 'Cloud & DevOps', 'UI/UX Design'].map((topic, i) => (
-              <div key={i} className="py-4 px-3 rounded-xl bg-white/[0.03] border border-white/5 text-center">
-                <p className="text-white font-semibold text-sm">{topic}</p>
-                <p className="text-gray-600 text-xs mt-1">Workshop</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
 
       {/* ════════════ FAQ ════════════ */}
       <Section id="faq" className="py-24 md:py-32">
@@ -607,7 +586,7 @@ const Hackathon = () => {
             href={REGISTER_URL}
             className="group inline-flex items-center gap-3 bg-amber-400 hover:bg-amber-300 text-black font-bold px-12 py-5 rounded-xl text-lg transition-all hover:shadow-2xl hover:shadow-amber-400/20 hover:-translate-y-1"
           >
-            Register Now — It's Free
+            Register Now
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
