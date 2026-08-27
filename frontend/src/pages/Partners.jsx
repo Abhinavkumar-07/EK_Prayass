@@ -254,11 +254,11 @@ const Partners = () => {
           <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
           <h3 className="text-3xl font-display font-bold mb-8">Prefer to reach out directly?</h3>
           <div className="flex flex-col sm:flex-row justify-center gap-8 md:gap-12">
-            <a href="mailto:club_ekprayass@kiet.edu" className="flex items-center justify-center gap-3 text-cyan-50 hover:text-white transition-colors text-lg font-medium group/link">
+            <a href="mailto:club_ekprayss@kiet.edu" className="flex items-center justify-center gap-3 text-cyan-50 hover:text-white transition-colors text-lg font-medium group/link">
               <div className="p-3 bg-white/10 rounded-full group-hover/link:bg-white/20 transition-colors">
                   <Mail className="w-6 h-6" /> 
               </div>
-              club_ekprayass@kiet.edu
+              club_ekprayss@kiet.edu
             </a>
             <a href="https://instagram.com/club_ekprayass" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 text-cyan-50 hover:text-white transition-colors text-lg font-medium group/link">
               <div className="p-3 bg-white/10 rounded-full group-hover/link:bg-white/20 transition-colors">

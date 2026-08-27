@@ -668,8 +668,8 @@ const Hackathon = () => {
             Reach out to us anytime. We're happy to help.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:club_ekprayass@kiet.edu" className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white font-semibold transition-all hover:bg-white/10">
-              📧 club_ekprayass@kiet.edu
+            <a href="mailto:club_ekprayss@kiet.edu" className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white font-semibold transition-all hover:bg-white/10">
+              📧 club_ekprayss@kiet.edu
             </a>
             <a href="https://instagram.com/club_ekprayass" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white font-semibold transition-all hover:bg-white/10">
               📸 @club_ekprayass
