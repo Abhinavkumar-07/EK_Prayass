@@ -10,14 +10,14 @@ const Footer = () => {
                     {/* 1st section */}
                     <div className="space-y-4 pr-4">
                         <div className="flex items-center gap-3">
-                            <img src={logo} alt="Ek-Prayass logo" className="h-[46px] w-[46px] rounded-full ring-1 ring-cyan-500/30" />
+                            <img src={logo} alt="Ek-Prayas logo" className="h-[46px] w-[46px] rounded-full ring-1 ring-cyan-500/30" />
                             <div className="flex flex-col">
-                                <h2 className="font-display font-bold text-lg text-white tracking-tight leading-tight">Ek-Prayass</h2>
+                                <h2 className="font-display font-bold text-lg text-white tracking-tight leading-tight">Ek-Prayas</h2>
                                 <p className="text-[10px] font-semibold text-[#17c1c8] tracking-[0.15em] uppercase mt-0.5">JAAGROOKTA KI ORR</p>
                             </div>
                         </div>
                         <p className="text-slate-400 text-[13px] leading-[1.6]">
-                            Founded in 2021, Ek-Prayass is a group of dedicated individuals who came together to create awareness and sensitize youth about the harmful impacts of tobacco consumption and engage in various social welfare activities.
+                            Founded in 2021, Ek-Prayas is a group of dedicated individuals who came together to create awareness and sensitize youth about the harmful impacts of tobacco consumption and engage in various social welfare activities.
                         </p>
                     </div>
 
@@ -75,7 +75,7 @@ const Footer = () => {
 
                 <div className="border-t border-slate-800/80 pt-6 mt-6 pb-2">
                     <p className="text-slate-500 text-[13px]">
-                        &copy; {new Date().getFullYear()} Ek-Prayass. All rights reserved.
+                        &copy; {new Date().getFullYear()} Ek-Prayas. All rights reserved.
                     </p>
                 </div>
             </div>

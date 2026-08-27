@@ -27,20 +27,20 @@ const galleryItems = [
   { src: kitabi3, alt: 'Kitabi Udan team with collected notebooks', category: 'Events', type: 'image' },
   { src: clean1, alt: 'Cleanliness drive - volunteers cleaning public area', category: 'Events', type: 'image' },
   { src: clean2, alt: 'Cleanliness drive - community participation', category: 'Events', type: 'image' },
-  { src: heroImage, alt: 'Ek-Prayass community awareness campaign', category: 'Events', type: 'image' },
+  { src: heroImage, alt: 'Ek-Prayas community awareness campaign', category: 'Events', type: 'image' },
   // Team
-  { src: team1, alt: 'Ek-Prayass core team group photo', category: 'Team', type: 'image' },
+  { src: team1, alt: 'Ek-Prayas core team group photo', category: 'Team', type: 'image' },
   { src: team2, alt: 'Team members during an outdoor event', category: 'Team', type: 'image' },
   { src: team3, alt: 'Team collaboration meeting', category: 'Team', type: 'image' },
   { src: team4, alt: 'Volunteers at campus event', category: 'Team', type: 'image' },
   { src: team5, alt: 'Team photo at awareness session', category: 'Team', type: 'image' },
   { src: team6, alt: 'Full team celebration photo', category: 'Team', type: 'image' },
   // Members
-  { src: prabhat, alt: 'Prabhat Kumar Rai - President of Ek-Prayass', category: 'Members', type: 'image' },
-  { src: khushi, alt: 'Khushi - Vice-President of Ek-Prayass', category: 'Members', type: 'image' },
+  { src: prabhat, alt: 'Prabhat Kumar Rai - President of Ek-Prayas', category: 'Members', type: 'image' },
+  { src: khushi, alt: 'Khushi - Vice-President of Ek-Prayas', category: 'Members', type: 'image' },
   { src: akshma, alt: 'Akshama - Event Management Head', category: 'Members', type: 'image' },
   // Videos
-  { src: mainVideo, alt: 'Ek-Prayass journey and impact video', category: 'Videos', type: 'video' },
+  { src: mainVideo, alt: 'Ek-Prayas journey and impact video', category: 'Videos', type: 'video' },
   { src: laborVideo, alt: 'Labour Day celebration and tribute video', category: 'Videos', type: 'video' },
   { src: menstrualVideo, alt: 'Menstrual health awareness campaign video', category: 'Videos', type: 'video' },
 ];
@@ -54,8 +54,8 @@ const Gallery = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    document.title = 'Gallery | Ek-Prayass';
-    return () => { document.title = 'Ek Prayass'; };
+    document.title = 'Gallery | Ek-Prayas';
+    return () => { document.title = 'Ek-Prayas | Together, We Can Change Lives'; };
   }, []);
 
   const filtered = activeCategory === 'All'
@@ -79,7 +79,7 @@ const Gallery = () => {
             Community <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500">Gallery</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
-            Explore moments of impact, community engagement, and the journeys that define Ek-Prayass.
+            Explore moments of impact, community engagement, and the journeys that define Ek-Prayas.
           </p>
         </div>
 

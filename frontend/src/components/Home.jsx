@@ -52,7 +52,7 @@ const Home = () => {
           </h1>
 
           <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0 font-light">
-            Ek-Prayass empowers communities through innovative social and health awareness campaigns, creating lasting positive impact one person at a time.
+            Ek-Prayas empowers communities through innovative social and health awareness campaigns, creating lasting positive impact one person at a time.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 pt-4 items-center justify-center lg:justify-start">
@@ -132,7 +132,7 @@ const Home = () => {
             <div className="bg-slate-900 border-t border-slate-800 p-6 text-center">
               <h3 className="text-2xl font-display font-semibold text-white mb-2">Our Journey of Impact</h3>
               <p className="text-slate-400 text-sm max-w-2xl mx-auto">
-                Discover how Ek-Prayass is transforming communities through awareness and action.
+                Discover how Ek-Prayas is transforming communities through awareness and action.
               </p>
             </div>
           </div>

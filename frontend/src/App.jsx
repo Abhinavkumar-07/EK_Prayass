@@ -37,7 +37,7 @@ function App () {
           >
             <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-base md:text-lg font-semibold">
               <span className="animate-pulse text-xl">🚀</span>
-              <span className="hidden sm:inline opacity-90">Ek-Prayass presents</span>
+              <span className="hidden sm:inline opacity-90">Ek-Prayas presents</span>
               <span className="font-black tracking-tight text-xl">AAVISHKAAR</span>
               <span className="hidden md:inline opacity-90">— A 36-Hour National Hackathon</span>
               <span className="bg-black text-amber-400 text-sm font-bold px-4 py-1.5 rounded-full ml-3 group-hover:bg-black/80 group-hover:-translate-y-0.5 transition-all shadow-sm">

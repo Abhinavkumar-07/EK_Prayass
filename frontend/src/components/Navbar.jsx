@@ -42,11 +42,11 @@ const Navbar = () => {
         {/* Logo Section */}
         <div className="flex items-center gap-4 group cursor-pointer" onClick={() => navigate('/')}>
           <div className="relative overflow-hidden rounded-full ring-2 ring-white/50 shadow-sm transition-all group-hover:shadow-white/80 group-hover:scale-105 duration-300">
-             <img src={logo} alt="Ek-Prayass logo" height="45" width="45" className="object-cover" />
+             <img src={logo} alt="Ek-Prayas logo" height="45" width="45" className="object-cover" />
           </div>
           <div className="flex flex-col">
             <span className="font-display font-bold text-[22px] text-white tracking-tight flex flex-col items-start gap-0.5">
-              Ek-Prayass
+              Ek-Prayas
               <span className="w-[105%] h-[3px] bg-white rounded-full"></span>
             </span>
           </div>

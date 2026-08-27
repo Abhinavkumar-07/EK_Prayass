@@ -15,9 +15,9 @@ const Partners = () => {
   const [formStatus, setFormStatus] = useState('');
 
   useEffect(() => {
-    document.title = 'Partner with Us | Ek-Prayass';
+    document.title = 'Partner with Us | Ek-Prayas';
     fetchSponsors();
-    return () => { document.title = 'Ek Prayass'; };
+    return () => { document.title = 'Ek-Prayas | Together, We Can Change Lives'; };
   }, []);
 
   const fetchSponsors = async () => {
@@ -65,7 +65,7 @@ const Partners = () => {
             Partner with <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500">Us</span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light mb-12">
-            Join hands with Ek-Prayass to amplify social impact. Your support powers health awareness campaigns,
+            Join hands with Ek-Prayas to amplify social impact. Your support powers health awareness campaigns,
             education initiatives, and community-driven change.
           </p>
 
@@ -146,7 +146,7 @@ const Partners = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 relative z-10 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-800 mb-5 tracking-tight">Our Partners</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light">Organizations making a positive difference alongside Ek-Prayass</p>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light">Organizations making a positive difference alongside Ek-Prayas</p>
           </div>
 
           {[

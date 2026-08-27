@@ -118,7 +118,7 @@ const ClubMemberDashboard = () => {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center p-4">
         <Link to="/" className="mb-8">
-          <img src={logo} alt="Ek-Prayass" className="h-20 w-auto rounded-full" />
+          <img src={logo} alt="Ek-Prayas" className="h-20 w-auto rounded-full" />
         </Link>
         <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-100">
           <div className="text-center mb-8">
@@ -172,7 +172,7 @@ const ClubMemberDashboard = () => {
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center gap-3">
               <Link to="/">
-                <img src={logo} alt="Ek-Prayass" className="h-10 w-auto rounded-full" />
+                <img src={logo} alt="Ek-Prayas" className="h-10 w-auto rounded-full" />
               </Link>
               <span className="font-bold text-slate-800 hidden sm:block border-l pl-3 border-slate-200">Member Portal</span>
             </div>

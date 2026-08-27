@@ -4,8 +4,8 @@ import videoSrc from '../assets/vi.mp4';  // Import your video file
 
 const About = () => {
   useEffect(() => {
-    document.title = 'About Us | Ek-Prayass';
-    return () => { document.title = 'Ek Prayass'; };
+    document.title = 'About Us | Ek-Prayas';
+    return () => { document.title = 'Ek-Prayas | Together, We Can Change Lives'; };
   }, []);
 
   return (

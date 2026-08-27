@@ -98,7 +98,7 @@ const Form = () => {
                     <h1 className="text-5xl md:text-7xl font-display font-black tracking-tight text-slate-800 mb-6 drop-shadow-sm">
                         Get Involved With <br className="hidden sm:block" />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500">
-                             Ek-Prayass
+                             Ek-Prayas
                         </span>
                     </h1>
                     <p className="text-teal-600 text-lg md:text-xl font-medium italic mb-6 max-w-2xl mx-auto" >

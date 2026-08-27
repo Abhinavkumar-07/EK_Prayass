@@ -144,8 +144,8 @@ const Hackathon = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
-    document.title = 'Aavishkaar — Hackathon by Ek-Prayass';
-    return () => { document.title = 'Ek Prayass'; };
+    document.title = 'Aavishkaar — Hackathon by Ek-Prayas';
+    return () => { document.title = 'Ek-Prayas | Together, We Can Change Lives'; };
   }, []);
 
   return (
@@ -155,7 +155,7 @@ const Hackathon = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between relative">
           <Link to="/" className="text-gray-400 text-sm hover:text-white transition-colors z-10">
-            ← Ek-Prayass
+            ← Ek-Prayas
           </Link>
           <span className="absolute left-1/2 -translate-x-1/2 font-display font-bold text-lg tracking-tight">
             <span className="text-amber-400">AAVISH</span>KAAR
@@ -200,7 +200,7 @@ const Hackathon = () => {
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-2 rounded-full text-sm mb-10">
             <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></span>
-            <span className="text-gray-300">Ek-Prayass presents</span>
+            <span className="text-gray-300">Ek-Prayas presents</span>
           </div>
 
           <h1 className="font-display font-black text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tighter leading-[0.9] mb-8">
@@ -263,7 +263,7 @@ const Hackathon = () => {
             <span className="text-gray-500">A launchpad for student innovators.</span>
           </h2>
           <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-6">
-            Aavishkaar is a 36-hour national-level hackathon organized by Ek-Prayass, designed to 
+            Aavishkaar is a 36-hour national-level hackathon organized by Ek-Prayas, designed to 
             push students beyond classroom theory. Build real products, get mentored by industry leaders, 
             and compete for prizes that actually matter.
           </p>
@@ -632,11 +632,11 @@ const Hackathon = () => {
               <span className="text-amber-400">AAVISH</span>KAAR
             </span>
             <span className="text-gray-700">•</span>
-            <span className="text-gray-600 text-sm">by Ek-Prayass</span>
+            <span className="text-gray-600 text-sm">by Ek-Prayas</span>
           </div>
-          <p className="text-gray-700 text-sm">© {new Date().getFullYear()} Ek-Prayass. All rights reserved.</p>
+          <p className="text-gray-700 text-sm">© {new Date().getFullYear()} Ek-Prayas. All rights reserved.</p>
           <Link to="/" className="text-gray-500 text-sm hover:text-amber-400 transition-colors">
-            ← Back to Ek-Prayass
+            ← Back to Ek-Prayas
           </Link>
         </div>
       </footer>

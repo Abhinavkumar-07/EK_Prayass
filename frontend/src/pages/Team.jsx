@@ -83,7 +83,7 @@ const Team = ({ isHome = false }) => {
   const [teamMembers, setTeamMembers] = useState(fallbackMembers);
 
   useEffect(() => {
-    document.title = 'Our Team | Ek-Prayass';
+    document.title = 'Our Team | Ek-Prayas';
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 2000);
@@ -92,7 +92,7 @@ const Team = ({ isHome = false }) => {
 
     return () => {
       clearInterval(interval);
-      document.title = 'Ek Prayass';
+      document.title = 'Ek-Prayas | Together, We Can Change Lives';
     };
   }, []);
 
@@ -148,7 +148,7 @@ const Team = ({ isHome = false }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <img 
                   src={images[index]} 
-                  alt={`Ek-Prayass team group photo ${index + 1}`} 
+                  alt={`Ek-Prayas team group photo ${index + 1}`} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
