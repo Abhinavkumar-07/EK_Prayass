@@ -713,11 +713,11 @@ const Hackathon = () => {
               <span className="text-amber-400">AAVISH</span>KAAR
             </span>
             <span className="text-gray-700">•</span>
-            <span className="text-gray-600 text-sm">by Ek-Prayas</span>
+            <span className="text-gray-600 text-sm">by Ek-Prayass</span>
           </div>
           <p className="text-gray-700 text-sm">© {new Date().getFullYear()} Ek-Prayas. All rights reserved.</p>
           <Link to="/" className="text-gray-500 text-sm hover:text-amber-400 transition-colors">
-            ← Back to Ek-Prayas
+            ← Back to Ek-Prayass
           </Link>
         </div>
       </footer>
