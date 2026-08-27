@@ -384,7 +384,7 @@ const AdminDashboard = () => {
               <Shield className="w-10 h-10 text-white transform rotate-2" />
             </div>
             <h1 className="text-3xl font-bold text-white mb-2">Admin Panel</h1>
-            <p className="text-gray-400">Ek-Prayas Dashboard</p>
+            <p className="text-gray-400">Ek-Prayass Dashboard</p>
           </div>
 
           <form onSubmit={handleLogin} className="bg-gray-800/80 backdrop-blur-sm rounded-[2rem] rounded-tr-[1rem] rounded-bl-[1rem] p-8 shadow-2xl border border-gray-700">

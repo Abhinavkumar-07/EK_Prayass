@@ -43,7 +43,7 @@ const Notice = () => {
             <Bell className="w-8 h-8 text-teal-500" />
           </div>
           <h1 className="text-5xl md:text-6xl font-display font-black text-slate-800 mb-4 tracking-tight">Notice <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">Board</span></h1>
-          <p className="text-lg md:text-xl text-slate-600 font-light">Stay updated with the latest announcements from Ek-Prayas</p>
+          <p className="text-lg md:text-xl text-slate-600 font-light">Stay updated with the latest announcements from Ek-Prayass</p>
         </div>
 
         {/* Notice Count & Loading */}

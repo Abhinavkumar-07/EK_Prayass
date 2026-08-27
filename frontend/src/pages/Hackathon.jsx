@@ -104,7 +104,7 @@ const timeline = [
   { date: 'Aug 20', label: 'Registration Opens', status: 'active' },
   { date: 'Sept 4', label: 'Registration Closes', status: 'upcoming' },
   { date: 'Sept 5', label: 'Round 1: Internal Screening', status: 'upcoming' },
-  { date: 'Sept 10', label: 'Round 1 Results Announced', status: 'upcoming' },
+  { date: 'Sept 6', label: 'Round 1 Results Announced', status: 'upcoming' },
   { date: 'Sept 12', label: 'Round 2: Final Evaluation', status: 'upcoming' },
   { date: 'Sept 12', label: 'Winner Announcement', status: 'upcoming' },
 ];
@@ -668,8 +668,8 @@ const Hackathon = () => {
             Reach out to us anytime. We're happy to help.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:ekprayass@gmail.com" className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white font-semibold transition-all hover:bg-white/10">
-              📧 ekprayass@gmail.com
+            <a href="mailto:club_ekprayass@kiet.edu" className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white font-semibold transition-all hover:bg-white/10">
+              📧 club_ekprayass@kiet.edu
             </a>
             <a href="https://instagram.com/club_ekprayass" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white font-semibold transition-all hover:bg-white/10">
               📸 @club_ekprayass

@@ -65,7 +65,7 @@ const Partners = () => {
             Partner with <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500">Us</span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light mb-12">
-            Join hands with Ek-Prayas to amplify social impact. Your support powers health awareness campaigns,
+            Join hands with Ek-Prayass to amplify social impact. Your support powers health awareness campaigns,
             education initiatives, and community-driven change.
           </p>
 
@@ -146,7 +146,7 @@ const Partners = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 relative z-10 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-800 mb-5 tracking-tight">Our Partners</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light">Organizations making a positive difference alongside Ek-Prayas</p>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light">Organizations making a positive difference alongside Ek-Prayass</p>
           </div>
 
           {[
@@ -254,11 +254,11 @@ const Partners = () => {
           <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
           <h3 className="text-3xl font-display font-bold mb-8">Prefer to reach out directly?</h3>
           <div className="flex flex-col sm:flex-row justify-center gap-8 md:gap-12">
-            <a href="mailto:ekprayass@gmail.com" className="flex items-center justify-center gap-3 text-cyan-50 hover:text-white transition-colors text-lg font-medium group/link">
+            <a href="mailto:club_ekprayass@kiet.edu" className="flex items-center justify-center gap-3 text-cyan-50 hover:text-white transition-colors text-lg font-medium group/link">
               <div className="p-3 bg-white/10 rounded-full group-hover/link:bg-white/20 transition-colors">
                   <Mail className="w-6 h-6" /> 
               </div>
-              ekprayass@gmail.com
+              club_ekprayass@kiet.edu
             </a>
             <a href="https://instagram.com/club_ekprayass" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 text-cyan-50 hover:text-white transition-colors text-lg font-medium group/link">
               <div className="p-3 bg-white/10 rounded-full group-hover/link:bg-white/20 transition-colors">

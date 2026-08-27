@@ -18,7 +18,7 @@ const fallbackProjects = [
     _id: 'kitabi',
     title: 'Kitabi Udan',
     tagline: '"हर पन्ना नई उड़ान"',
-    description: 'Kitabi Udaan is a heartfelt initiative by Ek-Prayas that embodies the spirit of giving and sustainability. The project collects old and partially used notebooks, carefully selects the unused pages, and creates new notebooks for children in need. With every page, we aim to provide not just paper, but the wings to dream, learn, and grow. True to its motto—"हर पन्ना नई उड़ान"—every page becomes a fresh start and a step towards a brighter future.',
+    description: 'Kitabi Udaan is a heartfelt initiative by Ek-Prayass that embodies the spirit of giving and sustainability. The project collects old and partially used notebooks, carefully selects the unused pages, and creates new notebooks for children in need. With every page, we aim to provide not just paper, but the wings to dream, learn, and grow. True to its motto—"हर पन्ना नई उड़ान"—every page becomes a fresh start and a step towards a brighter future.',
     images: [kitabi1, kitabi2, kitabi3],
     colorScheme: 'cyan'
   },
@@ -121,7 +121,7 @@ const Project = () => {
           
           <div className="max-w-4xl mx-auto bg-white/60 backdrop-blur-xl rounded-[2rem] p-8 shadow-xl shadow-slate-200/50 border border-white/80 ring-1 ring-slate-900/5">
             <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-light">
-              Ek-Prayas is a youth-led initiative dedicated to creating positive change in society through collective action and compassion. Our mission is to empower communities, support the underprivileged, and drive impactful projects in areas like education, environment, health, and social welfare. Every step we take is a small yet meaningful effort towards building a better, more inclusive world.
+              Ek-Prayass is a youth-led initiative dedicated to creating positive change in society through collective action and compassion. Our mission is to empower communities, support the underprivileged, and drive impactful projects in areas like education, environment, health, and social welfare. Every step we take is a small yet meaningful effort towards building a better, more inclusive world.
             </p>
           </div>
       </div>

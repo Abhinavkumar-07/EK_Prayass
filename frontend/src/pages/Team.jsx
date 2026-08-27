@@ -168,7 +168,7 @@ const Team = ({ isHome = false }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <img
                   src={images[index]}
-                  alt={`Ek-Prayas team group photo ${index + 1}`}
+                  alt={`Ek-Prayass team group photo ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
