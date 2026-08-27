@@ -7,8 +7,9 @@ import team3 from '../assets/team3.jpeg';
 import team4 from '../assets/team4.jpeg';
 import team5 from '../assets/team5.jpeg';
 import team6 from '../assets/team6.jpeg';
-
 import abhinavImg from '../assets/new.jpeg';
+import swasti_maam from '../assets/swasti_maam.jpeg';
+import Avi_sir from '../assets/Avi_sir.jpeg';
 import prabhat from '../assets/prabhatsir.jpeg';
 import khushi from '../assets/khushimam.jpeg';
 import akshama from '../assets/akshma.jpg';
@@ -22,7 +23,7 @@ const fallbackMembers = [
     _id: 'prabhat',
     name: "Swasti Mitaal",
     position: "President",
-    imageUrl: prabhat,
+    imageUrl: swastiImg,
     quote: [
       "As the President of our social club, I feel deeply honored to lead a team of passionate individuals committed to making a difference.",
       "For me, this club is more than just a group — it's a community built on compassion, inclusivity, and the belief that small actions can create meaningful change.",
@@ -34,7 +35,7 @@ const fallbackMembers = [
     _id: 'khushi',
     name: "Avi Gupta",
     position: "Vice-President",
-    imageUrl: khushi,
+    imageUrl: aviImg,
     quote: [
       "Being the Vice President of this club is not just a role, it's a भावना (emotion) close to my heart.",
       "I believe true समाज सेवा (social service) starts with listening — to each other, to our communities, and to the बदलाव (change) we want to see.",
