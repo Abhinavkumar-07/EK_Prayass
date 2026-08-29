@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Route, Routes, useLocation, Link } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react';
 import './App.css'
 import './index.css';
 import Navbar from './components/Navbar.jsx';
@@ -66,6 +67,7 @@ function App () {
            
 
         {!hideShell && <Footer />}
+        <Analytics />
         </div>
     )
 }
