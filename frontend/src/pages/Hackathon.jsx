@@ -216,7 +216,7 @@ const Hackathon = () => {
   }, []);
 
   return (
-    <div className="bg-[#0a0a0a] text-white min-h-screen font-sans selection:bg-amber-400/30 selection:text-amber-200 animate-zoom-in">
+    <div className="bg-[#0a0a0a] text-white min-h-screen font-sans selection:bg-amber-400/30 selection:text-amber-200 animate-fade-in">
 
       {/* ════════════ HACKATHON NAVBAR ════════════ */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5">
