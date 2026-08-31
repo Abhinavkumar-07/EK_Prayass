@@ -265,7 +265,7 @@ const Hackathon = () => {
 
 
       {/* ════════════ HERO ════════════ */}
-      <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
         {/* Ambient glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-amber-500/5 blur-[150px] rounded-full pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400/30 to-transparent"></div>
