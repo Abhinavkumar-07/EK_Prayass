@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ChevronRight, ArrowRight, Users, Clock, Trophy, Zap, Code, Lightbulb, Target, Shield, Star, MapPin, Calendar, ExternalLink } from 'lucide-react';
+import logo from '../assets/ek_prayas-logo.png';
 
 /* ──────────────────────────────────────────────
    AAVISHKAAR — Hackathon Landing Page
@@ -220,13 +221,10 @@ const Hackathon = () => {
       {/* ════════════ HACKATHON NAVBAR ════════════ */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between relative">
-          <Link 
-            to="/" 
-            onClick={() => window.scrollTo(0, 0)}
-            className="text-gray-400 text-sm hover:text-white transition-colors z-10"
-          >
-            ← Ek-Prayass
-          </Link>
+          {/* Logo on the left */}
+          <div className="z-10 flex items-center">
+            <img src={logo} alt="Ek-Prayass Logo" className="h-10 w-auto object-contain" />
+          </div>
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="absolute left-1/2 -translate-x-1/2 font-display font-bold text-lg tracking-tight hover:opacity-80 transition-opacity"
@@ -293,21 +291,23 @@ const Hackathon = () => {
           </p>
 
           {/* Countdown */}
-          <div className="flex justify-center gap-4 sm:gap-6 mb-12">
-            {[
-              { val: countdown.days, label: 'Days' },
-              { val: countdown.hours, label: 'Hours' },
-              { val: countdown.minutes, label: 'Mins' },
-              { val: countdown.seconds, label: 'Secs' },
-            ].map((item) => (
-              <div key={item.label} className="text-center">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center mb-2">
-                  <span className="font-display font-bold text-2xl sm:text-3xl text-white">{String(item.val).padStart(2, '0')}</span>
+          {(countdown.days > 0 || countdown.hours > 0 || countdown.minutes > 0 || countdown.seconds > 0) && (
+            <div className="flex justify-center gap-4 sm:gap-6 mb-12">
+              {[
+                { val: countdown.days, label: 'Days' },
+                { val: countdown.hours, label: 'Hours' },
+                { val: countdown.minutes, label: 'Mins' },
+                { val: countdown.seconds, label: 'Secs' },
+              ].map((item) => (
+                <div key={item.label} className="text-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center mb-2">
+                    <span className="font-display font-bold text-2xl sm:text-3xl text-white">{String(item.val).padStart(2, '0')}</span>
+                  </div>
+                  <span className="text-gray-500 text-xs uppercase tracking-widest">{item.label}</span>
                 </div>
-                <span className="text-gray-500 text-xs uppercase tracking-widest">{item.label}</span>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -716,9 +716,11 @@ const Hackathon = () => {
             <span className="text-gray-600 text-sm">by Ek-Prayass</span>
           </div>
           <p className="text-gray-700 text-sm">© {new Date().getFullYear()} Ek-Prayass. All rights reserved.</p>
+          {/*
           <Link to="/" className="text-gray-500 text-sm hover:text-amber-400 transition-colors">
             ← Back to Ek-Prayass
           </Link>
+          */}
         </div>
       </footer>
     </div>

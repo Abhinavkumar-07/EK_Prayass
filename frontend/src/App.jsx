@@ -22,9 +22,10 @@ import ClubMemberDashboard from './pages/ClubMemberDashboard.jsx';
 function App () {
     const location = useLocation();
     const isAdmin = location.pathname === '/admin';
-    const isHackathon = location.pathname === '/hackathon'; // TEMPORARY: Remove after October 2026
     const isClubMember = location.pathname === '/clubmember';
-    const hideShell = isAdmin || isHackathon || isClubMember;
+    
+    // Temporarily hide shell completely since main site is off
+    const hideShell = true;
 
     return(
         <div className="flex flex-col min-h-screen bg-white">
@@ -50,6 +51,7 @@ function App () {
 
         <main className="flex-grow flex flex-col">
             <Routes>
+                {/* --- MAIN SITE TEMPORARILY DISABLED --- 
                 <Route path ='/' element={<Landing />} />
                 <Route path='/about' element={<About />} />
                 <Route path='/team' element={<Team />} />
@@ -59,9 +61,14 @@ function App () {
                 <Route path='/notice' element={<Notice />} />
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/partners' element={<Partners />} />
+                */}
+
                 <Route path='/admin' element={<AdminDashboard />} />
                 <Route path='/clubmember' element={<ClubMemberDashboard />} />
-                <Route path='/hackathon' element={<Hackathon />} /> {/* TEMPORARY: Remove after October 2026 */}
+                
+                {/* Make Hackathon the main page for now */}
+                <Route path='/' element={<Hackathon />} /> 
+                <Route path='*' element={<Hackathon />} />
             </Routes>
         </main>
            
