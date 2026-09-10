@@ -573,8 +573,20 @@ const Hackathon = () => {
               <span className="text-gray-500">Problem Statements.</span>
             </h2>
             <p className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto">
-              Explore the real-world SIH problem statements you can tackle during Aavishkaar '26.
+              Explore some of the real-world SIH problem statements you can tackle during Aavishkaar '26.
             </p>
+            
+            <div className="mt-8 bg-amber-400/10 border border-amber-400/20 rounded-xl p-6 text-left max-w-3xl mx-auto">
+              <div className="flex items-start gap-4">
+                <Lightbulb className="w-6 h-6 text-amber-400 flex-shrink-0 mt-1" />
+                <div>
+                  <span className="text-amber-400 font-bold uppercase tracking-wider text-xs block mb-1">Flexibility Allowed</span>
+                  <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                    You are <span className="text-white font-semibold">NOT restricted</span> to the problem statements listed below. You are free to choose <span className="text-white font-semibold">ANY problem statement</span> from the official Smart India Hackathon (SIH) portal that aligns with our thematic tracks.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="space-y-4">
