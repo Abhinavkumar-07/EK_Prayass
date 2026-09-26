@@ -150,35 +150,36 @@ const Team = () => {
 
         {/* Leadership Grid */}
         <div className="space-y-8">
-          <div className="text-center">
+          <div className="text-center md:text-left">
             <h2 className="font-serif text-3xl font-bold text-[#1c1917]">Core Leadership</h2>
             <p className="text-[#666666] text-sm font-light">Guiding our direction, ethics, and community impact.</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
             {leadership.map((member, i) => (
               <div 
                 key={member._id || i}
-                className="card-orenda p-8 flex flex-col justify-between group w-full md:w-[calc(50%-1rem)] max-w-md"
+                className="card-orenda p-6 sm:p-8 flex flex-col sm:flex-row gap-6 sm:gap-7 items-center sm:items-stretch group"
               >
-                <div className="space-y-5">
-                  <div className="aspect-square rounded-[2rem] overflow-hidden bg-slate-100 ring-2 ring-black/5">
-                    <img 
-                      src={member.imageUrl || member.image} 
-                      alt={member.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-2xl font-bold text-[#1c1917]">{member.name}</h3>
-                    <p className="text-xs font-semibold text-[#4a1c00] uppercase tracking-wider mt-1">{member.position}</p>
-                  </div>
+                <div className="w-full sm:w-48 md:w-56 aspect-square rounded-[1.8rem] overflow-hidden bg-slate-100 ring-2 ring-black/5 flex-shrink-0">
+                  <img 
+                    src={member.imageUrl || member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  />
                 </div>
 
-                <div className="pt-5 mt-5 border-t border-black/6">
-                  <p className="text-xs sm:text-sm text-[#666666] italic leading-relaxed font-light">
-                    "{member.quote}"
-                  </p>
+                <div className="flex flex-col justify-between flex-1 py-1 space-y-4 text-center sm:text-left w-full">
+                  <div>
+                    <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1c1917]">{member.name}</h3>
+                    <p className="text-xs font-semibold text-[#4a1c00] uppercase tracking-wider mt-1">{member.position}</p>
+                  </div>
+
+                  <div className="pt-4 border-t border-black/6">
+                    <p className="text-xs sm:text-sm text-[#666666] italic leading-relaxed font-light">
+                      "{member.quote}"
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
