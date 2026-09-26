@@ -150,16 +150,16 @@ const Team = () => {
 
         {/* Leadership Grid */}
         <div className="space-y-8">
-          <div className="text-center md:text-left">
+          <div className="text-center">
             <h2 className="font-serif text-3xl font-bold text-[#1c1917]">Core Leadership</h2>
             <p className="text-[#666666] text-sm font-light">Guiding our direction, ethics, and community impact.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
             {leadership.map((member, i) => (
               <div 
                 key={member._id || i}
-                className="card-orenda p-8 flex flex-col justify-between group"
+                className="card-orenda p-8 flex flex-col justify-between group w-full md:w-[calc(50%-1rem)] max-w-md"
               >
                 <div className="space-y-5">
                   <div className="aspect-square rounded-[2rem] overflow-hidden bg-slate-100 ring-2 ring-black/5">
