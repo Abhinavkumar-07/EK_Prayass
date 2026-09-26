@@ -1,123 +1,149 @@
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
 import logo from '../assets/favicon.jpg';
-import { Home, User, Menu, X, HeartHandshake } from 'lucide-react';
+import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleDonateClick = () => {
     if (location.pathname === '/') {
-      document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('donate-section')?.scrollIntoView({ behavior: 'smooth' });
     } else {
-      navigate('/');
+      navigate('/#donate-section');
       setTimeout(() => {
-        document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+        document.getElementById('donate-section')?.scrollIntoView({ behavior: 'smooth' });
+      }, 200);
     }
   };
 
   const navLinks = [
-    { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
-    { label: 'Projects', path: '/project' },
-    { label: 'Notice', path: '/notice' },
-    { label: 'Volunteer', path: '/volunteer' },
-    { label: 'Our Team', path: '/team' },
+    { label: 'Programs', path: '/project' },
+    { label: 'Team', path: '/team' },
     { label: 'Gallery', path: '/gallery' },
-    { label: 'Partners', path: '/partners' }
+    { label: 'Volunteer', path: '/volunteer' },
+    { label: 'Notice', path: '/notice' },
   ];
 
   return (
-    <nav className="py-4 bg-gradient-to-r from-[#17c1c8] to-[#6ed2fc] px-8 w-full transition-all duration-300">
-      <div className="flex justify-between items-center max-w-7xl mx-auto">
-        {/* Logo Section */}
-        <div className="flex items-center gap-4 group cursor-pointer" onClick={() => navigate('/')}>
-          <div className="relative overflow-hidden rounded-full ring-2 ring-white/50 shadow-sm transition-all group-hover:shadow-white/80 group-hover:scale-105 duration-300">
-             <img src={logo} alt="Ek-Prayass logo" height="45" width="45" className="object-cover" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-display font-bold text-[22px] text-white tracking-tight flex flex-col items-start gap-0.5">
+    <>
+      {/* Floating Centered Pill Navbar - Luxury Liquid Glassmorphism */}
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[94%] sm:w-auto max-w-[calc(100vw-2rem)]">
+        <div 
+          className={`backdrop-blur-xl backdrop-saturate-150 border border-white/70 ring-1 ring-black/[0.06] rounded-full transition-all duration-300 px-3.5 sm:px-5 lg:px-6 py-1.5 sm:py-2 flex items-center justify-between gap-3 sm:gap-4 md:gap-5 lg:gap-7 ${
+            isScrolled
+              ? 'bg-white/80 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_12px_32px_-6px_rgba(43,20,8,0.14),0_4px_12px_rgba(0,0,0,0.04)]'
+              : 'bg-white/65 shadow-[inset_0_1px_1px_rgba(255,255,255,0.95),0_8px_24px_-4px_rgba(43,20,8,0.08),0_2px_8px_rgba(0,0,0,0.02)]'
+          }`}
+        >
+          
+          {/* Logo & Brand Name */}
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 sm:gap-2.5 group flex-shrink-0"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden ring-1 ring-black/10 shadow-sm flex-shrink-0">
+              <img src={logo} alt="Ek-Prayass logo" className="w-full h-full object-cover" />
+            </div>
+            <span className="font-serif font-bold text-sm sm:text-base md:text-lg text-[#1c1917] tracking-tight whitespace-nowrap">
               Ek-Prayass
-              <span className="w-[105%] h-[3px] bg-white rounded-full"></span>
             </span>
+          </Link>
+
+          {/* Desktop Nav Links with frosted micro-interaction pills */}
+          <nav className="hidden md:flex items-center gap-1 sm:gap-1.5 lg:gap-2 text-xs md:text-[13px] lg:text-sm font-medium text-[#444444] flex-shrink-0">
+            {navLinks.map((item) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.label}
+                  to={item.path}
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className={`px-2.5 sm:px-3 py-1 rounded-full transition-all duration-200 whitespace-nowrap ${
+                    isActive
+                      ? 'text-[#1c1917] font-semibold bg-black/[0.06] shadow-[inset_0_1px_1px_rgba(0,0,0,0.04)]'
+                      : 'hover:text-[#1c1917] hover:bg-black/[0.04]'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Right Action: Donate Now Button with Circular Arrow */}
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+            <button
+              onClick={handleDonateClick}
+              className="group relative inline-flex items-center h-8 sm:h-9 pl-3.5 sm:pl-4 pr-7 sm:pr-9 rounded-full bg-[#2b1408] border-2 border-[#2b1408] overflow-hidden shadow-sm flex-shrink-0"
+            >
+              <span 
+                className="absolute right-1 top-1 bottom-1 w-6 sm:w-7 group-hover:w-[calc(100%-8px)] rounded-full bg-[#f8f5ee] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none"
+              />
+              <span className="relative z-10 font-serif text-white group-hover:text-[#2b1408] transition-colors duration-300 text-xs sm:text-sm select-none whitespace-nowrap">
+                Donate now
+              </span>
+              <span className="absolute right-1 top-1 bottom-1 w-6 sm:w-7 flex items-center justify-center text-[#2b1408] z-10 pointer-events-none">
+                <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:-rotate-45" />
+              </span>
+            </button>
+
+            {/* Mobile menu toggle button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-1.5 text-[#1c1917] hover:bg-black/5 rounded-full flex-shrink-0"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
+
         </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:block">
-          <ul className="flex gap-2 text-white font-semibold items-center text-[15px]">
-            {navLinks.map((item) => (
-              <li key={item.label}>
-                <Link 
-                  to={item.path}
-                  className="px-3 py-2 rounded-lg hover:bg-white/20 transition-colors duration-300"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-            
-            <li className="ml-4">
-              <button
-                onClick={handleDonateClick}
-                className="group flex items-center justify-center text-teal-700 bg-white font-bold rounded-[1.5rem] rounded-tr-[0.5rem] rounded-bl-[0.5rem] px-5 py-2.5 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:rotate-1"
-              >
-                Donate
-                <HeartHandshake className="inline-block ml-2 text-teal-600 group-hover:scale-110 transition-transform" size={18} />
-              </button>
-            </li>
-          </ul>
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <div className="lg:hidden">
-          <button onClick={toggleMenu} className="p-2 text-white hover:bg-white/20 rounded-lg transition-colors">
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu Dropdown */}
-      {isMenuOpen && (
-        <div className="lg:hidden mt-4 pt-4 pb-4 border-t border-white/30 animate-fade-in-up">
-          <ul className="flex flex-col gap-1 text-white font-medium px-2">
-            {navLinks.map((item) => (
-               <li key={`mobile-${item.label}`}>
-                <Link 
-                  to={item.path}
-                  onClick={toggleMenu}
-                  className="block p-3 rounded-xl hover:bg-white/20 transition-colors text-center"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-           
-            <li className="mt-6 px-2">
-              <button
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  handleDonateClick();
-                }}
-                className="w-full text-teal-700 font-bold bg-white rounded-xl p-3 shadow-md hover:shadow-lg transition-all flex items-center justify-center"
-              >
-                Donate
-                <HeartHandshake className="inline-block ml-2 text-teal-600" size={18} />
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}
-    </nav>
+        {/* Mobile Dropdown with matching frosted glassmorphism */}
+        {isMenuOpen && (
+          <div className="md:hidden mt-2 bg-white/80 backdrop-blur-2xl backdrop-saturate-150 border border-white/70 ring-1 ring-black/10 rounded-[28px] p-3 shadow-[0_20px_40px_-12px_rgba(43,20,8,0.18),inset_0_1px_1px_rgba(255,255,255,0.9)] animate-fade-in">
+            <ul className="flex flex-col gap-1 text-sm font-medium text-[#444444]">
+              {navLinks.map((item) => {
+                const isActive = location.pathname === item.path;
+                return (
+                  <li key={item.label}>
+                    <Link
+                      to={item.path}
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className={`block px-4 py-2.5 rounded-2xl transition-all ${
+                        isActive
+                          ? 'bg-black/[0.06] text-[#1c1917] font-semibold'
+                          : 'hover:bg-black/[0.04] hover:text-[#1c1917]'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+      </header>
+    </>
   );
 };
 

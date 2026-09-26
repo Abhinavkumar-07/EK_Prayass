@@ -1,86 +1,132 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/favicon.jpg';
+import { ArrowRight, Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
-    return (
-        <footer className="bg-[#020617] pt-12 pb-6 border-t border-slate-800/80">
-            <div className="max-w-7xl mx-auto px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-                    {/* 1st section */}
-                    <div className="space-y-4 pr-4">
-                        <div className="flex items-center gap-3">
-                            <img src={logo} alt="Ek-Prayass logo" className="h-[46px] w-[46px] rounded-full ring-1 ring-cyan-500/30" />
-                            <div className="flex flex-col">
-                                <h2 className="font-display font-bold text-lg text-white tracking-tight leading-tight">Ek-Prayass</h2>
-                                <p className="text-[10px] font-semibold text-[#17c1c8] tracking-[0.15em] uppercase mt-0.5">JAAGROOKTA KI ORR</p>
-                            </div>
-                        </div>
-                        <p className="text-slate-400 text-[13px] leading-[1.6]">
-                            Founded in 2021, Ek-Prayass is a group of dedicated individuals who came together to create awareness and sensitize youth about the harmful impacts of tobacco consumption and engage in various social welfare activities.
-                        </p>
-                    </div>
-
-                    {/* 2nd section */}
-                    <div className="lg:pl-8">
-                        <h3 className="font-semibold text-[15px] text-white mb-5">Quick Links</h3>
-                        <ul className="space-y-3">
-                            {['Home', 'About', 'Our Work', 'Notice', 'Gallery', 'Partners', 'Volunteer'].map(item => (
-                                <li key={item}>
-                                    <Link to={item === 'Home' ? '/' : item === 'Our Work' ? '/project' : `/${item.toLowerCase()}`} className="text-slate-400 text-[14px] hover:text-[#17c1c8] transition-colors duration-200">
-                                        {item}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* 3rd section */}
-                    <div>
-                        <h3 className="font-semibold text-[15px] text-white mb-5">Get Involved</h3>
-                        <ul className="space-y-3">
-                            {[
-                                { label: 'Volunteer With Us', path: '/volunteer' },
-                                { label: 'Our Projects', path: '/project' },
-                                { label: 'Our Team', path: '/team' },
-                                { label: 'Contact Us', path: '/form' },
-                            ].map(item => (
-                                <li key={item.label}>
-                                    <Link to={item.path} className="text-slate-400 text-[14px] hover:text-[#17c1c8] transition-colors duration-200">
-                                        {item.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-
-                    {/* 4th section - Follow Us */}
-                    <div>
-                        <h3 className="font-semibold text-[15px] text-white mb-5">Follow Us</h3>
-                        <div className="flex gap-3">
-                            <a href="https://instagram.com/club_ekprayass?utm_medium=copy_link" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-[1rem] rounded-br-[4px] rounded-tl-[4px] bg-slate-800/80 flex items-center justify-center hover:bg-[#17c1c8] hover:text-white text-slate-400 transition-all duration-300 transform hover:rotate-[-5deg]">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-                                    <path d="M7.75 2C4.95 2 2.75 4.2 2.75 7v10c0 2.8 2.2 5 5 5h8.5c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7.75zm0 1.5h8.5c1.93 0 3.5 1.57 3.5 3.5v10c0 1.93-1.57 3.5-3.5 3.5h-8.5c-1.93 0-3.5-1.57-3.5-3.5V7c0-1.93 1.57-3.5 3.5-3.5zm8.75 2a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 1.5a3.5 3.5 0 110 7 3.5 3.5 0 010-7z" />
-                                </svg>
-                            </a>
-                            <a href="https://www.facebook.com/profile.php?id=100075500094241" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-[1rem] rounded-br-[4px] rounded-tl-[4px] bg-slate-800/80 flex items-center justify-center hover:bg-[#17c1c8] hover:text-white text-slate-400 transition-all duration-300 transform hover:rotate-[5deg]">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-                                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54v-2.89h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.89h-2.33V21.878C18.343 21.128 22 16.991 22 12z" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="border-t border-slate-800/80 pt-6 mt-6 pb-2">
-                    <p className="text-slate-500 text-[13px]">
-                        &copy; {new Date().getFullYear()} Ek-Prayass. All rights reserved.
-                    </p>
-                </div>
+  return (
+    <footer className="w-full bg-[#f8f4ec] pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-black/8">
+      <div className="max-w-7xl mx-auto space-y-14">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+          
+          {/* Brand Column & Newsletter */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full overflow-hidden ring-1 ring-black/10">
+                <img src={logo} alt="Ek-Prayass logo" className="w-full h-full object-cover" />
+              </div>
+              <span className="font-serif font-bold text-xl text-[#1c1917]">Ek-Prayass</span>
             </div>
-        </footer>
-    );
+            <p className="text-sm text-[#666666] font-light leading-relaxed">
+              Compassion in Action, <br />
+              Hope in Every Heart.
+            </p>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-3 pt-1">
+              <a 
+                href="https://instagram.com/club_ekprayass?utm_medium=copy_link" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white border border-black/10 text-[#1c1917] flex items-center justify-center hover:bg-[#2b1408] hover:text-white transition-all shadow-sm"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a 
+                href="https://www.facebook.com/profile.php?id=100075500094241" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white border border-black/10 text-[#1c1917] flex items-center justify-center hover:bg-[#2b1408] hover:text-white transition-all shadow-sm"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+            </div>
+
+            {/* Newsletter Subscribe Card (Ditto Orenda) */}
+            <div className="rounded-[28px] bg-[#e9e8e4]/60 p-6 border border-black/5 space-y-4">
+              <h4 className="font-serif text-lg font-normal text-[#1c1917]">
+                Subscribe to our newsletter
+              </h4>
+              <div className="space-y-3">
+                <input
+                  type="email"
+                  placeholder="your.email@gmail.com"
+                  className="w-full px-4 py-3 bg-white/90 border border-black/10 rounded-2xl text-xs text-[#292929] focus:outline-none focus:border-[#2b1408]"
+                />
+                <button
+                  type="submit"
+                  className="group relative inline-flex items-center justify-between w-full h-10 pl-5 pr-11 rounded-full bg-[#2b1408] border-2 border-[#2b1408] overflow-hidden shadow-sm flex-shrink-0"
+                >
+                  <span 
+                    className="absolute right-1 top-1 bottom-1 w-8 group-hover:w-[calc(100%-8px)] rounded-full bg-[#f8f5ee] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none"
+                  />
+                  <span className="relative z-10 font-serif text-white group-hover:text-[#2b1408] transition-colors duration-300 text-[14px] select-none">
+                    Subscribe
+                  </span>
+                  <span className="absolute right-1 top-1 bottom-1 w-8 flex items-center justify-center text-[#2b1408] z-10 pointer-events-none">
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-rotate-45" />
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation Column 1 */}
+          <div className="lg:col-span-2 space-y-3 text-sm">
+            <p className="font-serif font-medium text-[#1c1917] mb-4">Explore</p>
+            <ul className="space-y-2.5 text-[#666666]">
+              <li><Link to="/about" className="hover:text-[#1c1917] transition-colors">About</Link></li>
+              <li><Link to="/project" className="hover:text-[#1c1917] transition-colors">Programs</Link></li>
+              <li><Link to="/volunteer" className="hover:text-[#1c1917] transition-colors">Join Community</Link></li>
+              <li><Link to="/gallery" className="hover:text-[#1c1917] transition-colors">Previous events</Link></li>
+              <li><Link to="/project" className="hover:text-[#1c1917] transition-colors">Success stories</Link></li>
+            </ul>
+          </div>
+
+          {/* Navigation Column 2 */}
+          <div className="lg:col-span-2 space-y-3 text-sm">
+            <p className="font-serif font-medium text-[#1c1917] mb-4">Legal & Notice</p>
+            <ul className="space-y-2.5 text-[#666666]">
+              <li><Link to="/notice" className="hover:text-[#1c1917] transition-colors">Notices</Link></li>
+              <li><Link to="/partners" className="hover:text-[#1c1917] transition-colors">Partners</Link></li>
+              <li><Link to="/about" className="hover:text-[#1c1917] transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/about" className="hover:text-[#1c1917] transition-colors">Terms of Service</Link></li>
+            </ul>
+          </div>
+
+          {/* Contact Column */}
+          <div className="lg:col-span-4 space-y-3 text-sm">
+            <p className="font-serif font-medium text-[#1c1917] mb-4">Contact us</p>
+            <div className="space-y-3 text-[#666666]">
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-[#2b1408]" />
+                <span>+91 98765 43210</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-[#2b1408]" />
+                <span>contact.ekprayass@gmail.com</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#2b1408] flex-shrink-0 mt-0.5" />
+                <span>Kanpur, Uttar Pradesh, India</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Copyright Bar */}
+        <div className="pt-8 border-t border-black/8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#737373] gap-4">
+          <p>Copyright © {new Date().getFullYear()} Ek-Prayass. All rights reserved.</p>
+          <p>Ek-Prayass Social Welfare Organization</p>
+        </div>
+
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
