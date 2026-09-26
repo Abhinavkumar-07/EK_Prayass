@@ -35,13 +35,13 @@ const fallbackLeadership = [
     imageUrl: Avi_sir,
     quote: "Being the Vice President of this club is a भावना (emotion) close to my heart. True समाज सेवा (social service) starts with listening — to each other, to our communities, and to the बदलाव (change) we want to see."
   },
-  {
-    _id: 'abhinav',
-    name: "Abhinav Kumar",
-    position: "Tech Domain Lead",
-    imageUrl: abhinavImg,
-    quote: "Supporting an NGO is not just charity, it's an enduring investment in dignity, education, and a better tomorrow."
-  }
+  // {
+  //   _id: 'abhinav',
+  //   name: "Abhinav Kumar",
+  //   position: "Tech Domain Lead",
+  //   imageUrl: abhinavImg,
+  //   quote: "Supporting an NGO is not just charity, it's an enduring investment in dignity, education, and a better tomorrow."
+  // }
 ];
 
 const domainHeads = [
