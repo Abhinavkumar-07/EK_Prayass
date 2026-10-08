@@ -582,16 +582,27 @@ const RadialLivesImpactedCard = () => {
     };
   }, []);
 
-  // 7 community avatars arranged in a mathematically equidistant, mirror-symmetrical ellipse
-  const avatars = [
-    { img: swasti_maam, targetX: 50, targetY: 12, rot: 0 },   // Top Center Crown
-    { img: Avi_sir, targetX: 83, targetY: 26, rot: 8 },      // Upper Right
-    { img: shreya, targetX: 17, targetY: 26, rot: -8 },      // Upper Left
-    { img: chirag, targetX: 91, targetY: 58, rot: 12 },      // Mid Right
-    { img: pushpanjali, targetX: 9, targetY: 58, rot: -12 },  // Mid Left
-    { img: vanshika, targetX: 68, targetY: 84, rot: 6 },     // Bottom Right
-    { img: shorya, targetX: 32, targetY: 84, rot: -6 },      // Bottom Left
+  // 7 community avatars mathematically spaced along a perfect circle (360° / 7 = 51.43° each)
+  const avatarList = [
+    swasti_maam,  // 12 o'clock top crown
+    Avi_sir,      // ~1:45
+    chirag,       // ~3:25
+    vanshika,     // ~5:05
+    shorya,       // ~6:50
+    pushpanjali,  // ~8:35
+    shreya,       // ~10:15
   ];
+
+  const total = avatarList.length;
+  // Starting at -90deg (12 o'clock crown) and evenly distributed at 360/7 degrees
+  const avatars = avatarList.map((img, i) => {
+    const angle = -Math.PI / 2 + (i * 2 * Math.PI) / total;
+    return {
+      img,
+      cos: Math.cos(angle),
+      sin: Math.sin(angle),
+    };
+  });
 
   // Center text opacity and scale (revealed smoothly with spring ease)
   const textProgress = Math.min(Math.max((separationProgress - 0.2) / 0.8, 0), 1);
@@ -620,40 +631,42 @@ const RadialLivesImpactedCard = () => {
         </p>
       </div>
 
-      {/* 7 Avatar Photos revolving continuously & separating radially on scroll */}
-      <div 
-        className="absolute inset-0 pointer-events-none animate-orbit"
-        style={{ transformOrigin: '50% 50%' }}
-      >
-        {avatars.map((avatar, idx) => {
-          // Progress goes from 0 (clustered tightly in center) to 1 (separated outward)
-          const currentFactor = 0.16 + 0.84 * separationProgress;
-          const currentX = 50 + (avatar.targetX - 50) * currentFactor;
-          const currentY = 50 + (avatar.targetY - 50) * currentFactor;
-          const scale = 0.82 + 0.18 * separationProgress;
+      {/* Centered Square Orbit Container (Prevents rectangular distortion & edge clipping) */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div 
+          className="relative w-[330px] h-[330px] sm:w-[390px] sm:h-[390px] md:w-[440px] md:h-[440px] aspect-square rounded-full animate-orbit"
+          style={{ transformOrigin: '50% 50%' }}
+        >
+          {avatars.map((avatar, idx) => {
+            // Expand outward from 18% radius to 38% radius based on scroll
+            const radius = 18 + 20 * separationProgress;
+            const currentX = 50 + radius * avatar.cos;
+            const currentY = 50 + radius * avatar.sin;
+            const scale = 0.84 + 0.16 * separationProgress;
 
-          return (
-            <div
-              key={idx}
-              style={{
-                left: `${currentX}%`,
-                top: `${currentY}%`,
-                transform: `translate(-50%, -50%) scale(${scale})`,
-                transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), left 0.4s cubic-bezier(0.16, 1, 0.3, 1), top 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                zIndex: idx + 5,
-              }}
-              className="absolute pointer-events-auto"
-            >
-              {/* Counter-rotating portrait container (keeps face upright!) */}
-              <div 
-                className="animate-orbit-counter w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden ring-4 ring-white shadow-lg hover:scale-115 hover:z-30 hover:shadow-2xl transition-all duration-300 cursor-pointer"
-                style={{ transformOrigin: 'center center' }}
+            return (
+              <div
+                key={idx}
+                style={{
+                  left: `${currentX}%`,
+                  top: `${currentY}%`,
+                  transform: `translate(-50%, -50%) scale(${scale})`,
+                  transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), left 0.4s cubic-bezier(0.16, 1, 0.3, 1), top 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                  zIndex: idx + 5,
+                }}
+                className="absolute pointer-events-auto"
               >
-                <img src={avatar.img} alt="" className="w-full h-full object-cover" />
+                {/* Counter-rotating portrait container (keeps face upright!) */}
+                <div 
+                  className="animate-orbit-counter w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full overflow-hidden ring-4 ring-white shadow-lg hover:scale-115 hover:z-30 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                  style={{ transformOrigin: 'center center' }}
+                >
+                  <img src={avatar.img} alt="" className="w-full h-full object-cover" />
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
