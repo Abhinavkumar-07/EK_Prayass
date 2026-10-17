@@ -39,11 +39,11 @@ const Partners = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f4ec] text-[#292929] pt-28 pb-16 sm:pt-36 sm:pb-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#f8f4ec] text-[#292929] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-20">
-        
+
         {/* Header */}
-        <div className="max-w-4xl mx-auto text-center space-y-6 pt-2 sm:pt-4">
+        <div className="max-w-4xl mx-auto text-center space-y-6 pt-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-black/8 text-xs font-semibold text-[#4a1c00] uppercase tracking-wider">
             <Handshake className="w-3.5 h-3.5" />
             <span>Synergy for Good</span>

@@ -50,11 +50,11 @@ const Gallery = () => {
     : galleryItems.filter(item => item.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-[#f8f4ec] text-[#292929] pt-28 pb-16 sm:pt-36 sm:pb-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#f8f4ec] text-[#292929] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-16">
-        
+
         {/* Header */}
-        <div className="max-w-4xl mx-auto text-center space-y-6 pt-2 sm:pt-4">
+        <div className="max-w-4xl mx-auto text-center space-y-6 pt-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-black/8 text-xs font-semibold text-[#4a1c00] uppercase tracking-wider">
             <Camera className="w-3.5 h-3.5" />
             <span>Memories & Moments</span>
@@ -75,11 +75,10 @@ const Gallery = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                  activeCategory === cat
+                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${activeCategory === cat
                     ? 'bg-[#4a1c00] text-white shadow-sm'
                     : 'bg-white border border-black/8 text-[#444444] hover:bg-[#f2f3f7]'
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -97,9 +96,9 @@ const Gallery = () => {
             >
               {item.type === 'video' ? (
                 <div className="relative w-full h-full bg-black flex items-center justify-center">
-                  <video 
-                    src={item.src} 
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" 
+                  <video
+                    src={item.src}
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="w-14 h-14 rounded-full bg-white/80 group-hover:bg-[#4a1c00] group-hover:text-white text-[#4a1c00] flex items-center justify-center shadow-lg transition-colors">

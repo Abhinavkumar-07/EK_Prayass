@@ -6,7 +6,7 @@ import heroImage from '../assets/new.jpeg';
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-[#f8f4ec] text-[#292929] pt-28 pb-16 sm:pt-36 sm:pb-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#f8f4ec] text-[#292929] pt-27 pb-16 sm:pt-20 sm:pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-20">
         
         {/* Header Section */}

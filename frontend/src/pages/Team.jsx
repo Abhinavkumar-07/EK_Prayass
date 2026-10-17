@@ -108,11 +108,11 @@ const Team = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f4ec] text-[#292929] pt-28 pb-16 sm:pt-36 sm:pb-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#f8f4ec] text-[#292929] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-20">
-        
+
         {/* Header */}
-        <div className="max-w-4xl mx-auto text-center space-y-6 pt-2 sm:pt-4">
+        <div className="max-w-4xl mx-auto text-center space-y-6 pt-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-black/8 text-xs font-semibold text-[#4a1c00] uppercase tracking-wider">
             <Users className="w-3.5 h-3.5" />
             <span>Passionate Changemakers</span>
@@ -131,10 +131,10 @@ const Team = () => {
         {/* Group Photo Showcase */}
         <div className="card-orenda p-6 sm:p-10 overflow-hidden space-y-6">
           <div className="relative rounded-[2rem] overflow-hidden aspect-[21/9] bg-black shadow-lg">
-            <img 
-              src={images[index]} 
+            <img
+              src={images[index]}
               alt="Ek-Prayass team in action"
-              className="w-full h-full object-cover transition-opacity duration-700" 
+              className="w-full h-full object-cover transition-opacity duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
             <div className="absolute bottom-6 left-6 text-white">
@@ -155,31 +155,30 @@ const Team = () => {
             <p className="text-[#666666] text-sm font-light">Guiding our direction, ethics, and community impact.</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {leadership.map((member, i) => (
-              <div 
+              <div
                 key={member._id || i}
-                className="card-orenda p-6 sm:p-8 flex flex-col sm:flex-row gap-6 sm:gap-7 items-center sm:items-stretch group"
+                className="card-orenda p-8 flex flex-col justify-between group"
               >
-                <div className="w-full sm:w-48 md:w-56 aspect-square rounded-[1.8rem] overflow-hidden bg-slate-100 ring-2 ring-black/5 flex-shrink-0">
-                  <img 
-                    src={member.imageUrl || member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                  />
-                </div>
-
-                <div className="flex flex-col justify-between flex-1 py-1 space-y-4 text-center sm:text-left w-full">
+                <div className="space-y-5">
+                  <div className="aspect-square rounded-[2rem] overflow-hidden bg-slate-100 ring-2 ring-black/5">
+                    <img
+                      src={member.imageUrl || member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
                   <div>
-                    <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1c1917]">{member.name}</h3>
+                    <h3 className="font-serif text-2xl font-bold text-[#1c1917]">{member.name}</h3>
                     <p className="text-xs font-semibold text-[#4a1c00] uppercase tracking-wider mt-1">{member.position}</p>
                   </div>
+                </div>
 
-                  <div className="pt-4 border-t border-black/6">
-                    <p className="text-xs sm:text-sm text-[#666666] italic leading-relaxed font-light">
-                      "{member.quote}"
-                    </p>
-                  </div>
+                <div className="pt-5 mt-5 border-t border-black/6">
+                  <p className="text-xs sm:text-sm text-[#666666] italic leading-relaxed font-light">
+                    "{member.quote}"
+                  </p>
                 </div>
               </div>
             ))}
@@ -195,15 +194,15 @@ const Team = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {domainHeads.map((head, i) => (
-              <div 
+              <div
                 key={head._id || i}
                 className="card-orenda p-6 flex flex-col justify-between group"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-black/5">
-                    <img 
-                      src={head.imageUrl} 
-                      alt={head.name} 
+                    <img
+                      src={head.imageUrl}
+                      alt={head.name}
                       className="w-full h-full object-cover"
                     />
                   </div>

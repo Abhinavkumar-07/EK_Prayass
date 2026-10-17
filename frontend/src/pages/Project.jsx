@@ -71,11 +71,11 @@ const Project = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f4ec] text-[#292929] pt-28 pb-16 sm:pt-36 sm:pb-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#f8f4ec] text-[#292929] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-20">
-        
+
         {/* Header Section */}
-        <div className="max-w-4xl mx-auto text-center space-y-6 pt-2 sm:pt-4">
+        <div className="max-w-4xl mx-auto text-center space-y-6 pt-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-black/8 text-xs font-semibold text-[#4a1c00] uppercase tracking-wider">
             <BookOpen className="w-3.5 h-3.5" />
             <span>Real Causes · Tangible Change</span>
@@ -94,7 +94,7 @@ const Project = () => {
         {/* Projects List with Orenda Card Aesthetics */}
         <div className="space-y-16">
           {projects.map((proj, idx) => (
-            <div 
+            <div
               key={proj._id || idx}
               className="card-orenda p-8 sm:p-12 lg:p-14 border border-black/8 space-y-8"
             >
@@ -145,13 +145,13 @@ const Project = () => {
                 {proj.images && proj.images.length > 0 && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {proj.images.map((img, imgIdx) => (
-                      <div 
+                      <div
                         key={imgIdx}
                         className="rounded-[1.75rem] overflow-hidden aspect-[4/3] bg-slate-100 shadow-sm border border-black/5 group"
                       >
-                        <img 
-                          src={img} 
-                          alt={`${proj.title} - photo ${imgIdx + 1}`} 
+                        <img
+                          src={img}
+                          alt={`${proj.title} - photo ${imgIdx + 1}`}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
